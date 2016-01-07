@@ -105,6 +105,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    materialize-sass (0.97.5)
+      sass (~> 3.3)
     method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
@@ -195,6 +197,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   lograge
+  materialize-sass
   puma
   rails (>= 5.0.0.beta1, < 5.1)
   sass-rails (~> 5.0)
