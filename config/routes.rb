@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'test_delay', to: 'test#delay'
+  get 'delay/:minutes', to: 'test#delay'
 
   root 'test#index'
 

@@ -3,7 +3,7 @@ class TestController < ApplicationController
   end
 
   def delay
-    ActionCable.server.broadcast 'notification_channel', notification: 'test'
+    ActionCable.server.broadcast 'notification_channel', minutes: params[:minutes]
 
     head :ok
   end
