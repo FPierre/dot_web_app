@@ -4,7 +4,7 @@ ruby '2.3.0'
 
 gem 'awesome_print'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'devise', '~> 3.5', '>= 3.5.3'
+gem 'devise', git: 'git://github.com/plataformatec/devise.git', branch: 'master'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'lograge'
