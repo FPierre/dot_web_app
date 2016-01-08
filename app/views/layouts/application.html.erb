@@ -13,8 +13,14 @@
   <body>
     <%= render 'header' %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice || alert %>
+    <div class="row">
+      <div class="col s12">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    </div>
+    <% end %>
 
     <main><%= yield %></main>
   </body>
