@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'delay/:minutes', to: 'test#delay'
 
-  root 'test#index'
+  devise_scope :user do
+    get '/users/delay/:minutes', to: 'user#delay'
+  end
+
+  root to: 'test#index'
 
   mount ActionCable.server => '/cable'
 end
