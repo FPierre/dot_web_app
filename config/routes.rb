@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/users/delay/:minutes', to: 'user#delay'
   end
 
-  root to: 'test#index'
+  root to: 'dashboard#index'
 
   mount ActionCable.server => '/cable'
 end
