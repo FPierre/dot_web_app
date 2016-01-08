@@ -1,9 +1,17 @@
-<nav>
+<nav style="background-color: #e4db7c;">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo">Itnovem</a>
 
     <ul id="nav-mobile" class="right">
-      <li><a href="">Back</a></li>
+      <% if user_signed_in? %>
+        <li><%= current_user.email %></li>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <li><%= link_to 'Déconnexion', user_session_path %></li>
+      <% else %>
+        <li><%= link_to 'Connexion', destroy_user_session_path %></li>
+      <% end %>
     </ul>
   </div>
 </nav>
