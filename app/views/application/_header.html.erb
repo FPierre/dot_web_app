@@ -12,6 +12,7 @@
           <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to 'Connexion', user_session_path %></li>
+          <li><%= link_to 'Enregistrement', new_user_registration_path %></li>
         <% end %>
       </ul>
     </div>
