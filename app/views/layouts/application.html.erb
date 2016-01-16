@@ -14,12 +14,12 @@
     <%= render 'header' %>
 
     <% if notice || alert %>
-    <div class="row">
-      <div class="col s12">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+      <div class="row">
+        <div class="col s12">
+          <p class="notice center-text"><%= notice %></p>
+          <p class="alert center-text"><%= alert %></p>
+        </div>
       </div>
-    </div>
     <% end %>
 
     <main><%= yield %></main>
