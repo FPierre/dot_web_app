@@ -1,0 +1,46 @@
+.row
+  .col.s2
+    .card-panel.teal
+      span.white-text = wi_icon codes[@weather.condition.code.to_s], class: 'wi-5x'
+      span.white-text = "#{@weather.condition.temp} #{@weather.units.temperature}"
+
+/ https://github.com/manzhikov/yahoo_weather/blob/master/config/locales/en.yml
+
+/ http://erikflowers.github.io/weather-icons/
+
+/ https://github.com/CodySchaaf/weather-icons-rails
+
+/ .row
+/   .col.s12
+/     - @weather.forecasts.each do |forecast|
+/       = forecast.day
+/       = forecast.high
+/       = forecast.low
+
+.row
+  .col.s12
+    h2.center-align Utilisateurs
+
+- if @users_to_approve
+  .row
+    .col.s6.offset-s3
+      ul.collection
+        - @users_to_approve.each do |user|
+          li.collection-item.avatar
+            img.circle src="images/yuna.jpg" alt=""
+            span.title = user.email
+            p = user.created_at
+            a.secondary-content href="#!"
+              i.material-icons grade
+
+- if @users
+  .row
+    .col.s6.offset-s3
+        ul.collection
+          - @users.each do |user|
+            li.collection-item.avatar
+              img.circle src="images/yuna.jpg" alt=""
+              span.title = user.email
+              p = user.created_at
+              a.secondary-content href="#!"
+                i.material-icons grade

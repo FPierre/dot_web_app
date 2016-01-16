@@ -16,6 +16,8 @@ gem 'slim', '~> 3.0', '>= 3.0.6'
 gem 'sqlite3'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'weather-icons-rails'
+gem 'yahoo_weather'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
