@@ -1,15 +1,17 @@
-nav.cyan.darken-3
+nav
   .nav-wrapper
-    a.brand-logo.center href="#" Itnovem
-    a.button-collapse href="#" data-activates="mobile-demo"
-      i.material-icons menu
+    = link_to 'itnovem.', root_path, class: 'brand-logo center'
+    a.button-collapse.blue-grey-text.text-lighten-2 href='#' data-activates='mobile-demo'
+      = fa_icon 'bars'
 
     .right.hide-on-med-and-down
       - if user_signed_in?
-        span = current_user.email
+        span.blue-grey-text.text-lighten-2 = current_user.email
 
       ul#nav-mobile.right
         - if user_signed_in?
+          / - if current_user.admin?
+          li = link_to 'Configuration', settings_path
           li = link_to 'Déconnexion', destroy_user_session_path, method: :delete
         - else
           li = link_to 'Connexion', user_session_path
@@ -17,6 +19,7 @@ nav.cyan.darken-3
 
     ul#mobile-demo.side-nav
       - if user_signed_in?
+        li = link_to 'Configuration', settings_path
         li = link_to 'Déconnexion', destroy_user_session_path, method: :delete
       - else
         li = link_to 'Connexion', user_session_path

@@ -1,0 +1,91 @@
+.row
+  .responsive-col
+    h2 Utilisateurs
+
+    - if @users
+      span En attente de confirmation
+      ul.collection
+        - @users.each do |user|
+          li.collection-item.avatar
+            img.circle src='' alt=''
+            span.title = user.email
+            p = user.created_at
+            a.secondary-content href='#!'
+            / = fa_icon 'check', class: 'material-icons'
+
+.row
+  .responsive-col
+    .card-panel.blue-grey.lighten-5
+      h2 SARAH
+
+      span Activer
+      .switch
+        label
+          | Off
+          input type='checkbox'
+          span.lever
+          | On
+
+      span Mettre en veille pendant
+      p.range-field
+        input type='range' min='0' max='60'
+
+      span Liste des commandes vocales
+      ul
+        li cmd 1
+        li cmd 2
+        li cmd 3
+
+.row
+  .responsive-col
+    .card-panel.blue-grey.lighten-5
+      h2 Météo
+
+      span Toujours afficher
+      .switch
+        label
+          | Off
+          input type='checkbox'
+          span.lever
+          | On
+
+
+/ = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+/   .row
+/     .responsive-col
+/       .file-field.input-field
+/         .btn
+/           span File
+/           input type='file'
+
+/         .file-path-wrapper
+/           = f.file_field :avatar, class: 'file-path validate'
+
+/   .row
+/     .responsive-col
+/       = devise_error_messages!
+
+/   .row
+/     .responsive-col
+/       = f.label :email
+/       = f.email_field :email, autofocus: true
+
+/   .row
+/     .responsive-col
+/       = f.label :password
+
+/       - if @minimum_password_length
+/         em "(#{@minimum_password_length} characters minimum)"
+
+/       = f.password_field :password, autocomplete: 'off'
+
+/   .row
+/     .responsive-col
+/       = f.label :password_confirmation
+/       = f.password_field :password_confirmation, autocomplete: 'off'
+
+/   .row
+/     .responsive-col
+/       .center-align
+/         = f.submit class: 'btn-large waves-effect waves-light' do
+/           i.material-icons.right send

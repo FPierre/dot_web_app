@@ -8,6 +8,15 @@ Rails.application.routes.draw do
     get '/users/delay/:minutes', to: 'user#delay'
   end
 
+  # resources :notifications, only: :create
+  # resources :alarms, only: :create
+  # resources :reminders
+  # resources :commands
+
+  get 'settings', to: 'settings#index'
+
+  get 'routes/from/:from/to/:to', to: 'routes#show'
+
   root to: 'dashboard#index'
 
   mount ActionCable.server => '/cable'
