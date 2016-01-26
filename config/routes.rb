@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  devise_scope :user do
-    get '/users/delay/:minutes', to: 'user#delay'
-  end
+  # devise_scope :user do
+  #   get '/users/delay/:minutes', to: 'user#delay'
+  # end
 
   # resources :notifications, only: :create
   # resources :alarms, only: :create

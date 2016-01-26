@@ -1,33 +1,45 @@
+.main
+  .row
+    .col.s12.l11
+      .content
+        .row
+          .col.s6
+            / https://github.com/apneadiving/Google-Maps-for-Rails
+            / Map
+            #zone-1.zone
+              .label Zone 1
+
+          / https://github.com/manzhikov/yahoo_weather/blob/master/config/locales/en.yml
+          / http://erikflowers.github.io/weather-icons/
+          / https://github.com/CodySchaaf/weather-icons-rails
+          .col.s6
+            #zone-2.zone
+              .label Zone 2
+
+        .row
+          .col.s6
+            #zone-3.zone
+              .label Zone 3
+
+          .col.s6
+            #zone-4.zone
+              .label Zone 4
+
+    .col.l1.hide-on-med-and-down
+      .aside
+        - if @weather
+          span = wi_icon codes[@weather.condition.code.to_s], class: 'wi-4x'
+          span = "#{@weather.condition.temp} #{@weather.units.temperature}"
+
+        / - @weather.forecasts.each do |forecast|
+        /   / = ap(forecast).html_safe
+        /   / = ap(forecast.code.to_s).html_safe
+        /   .col.s2
+        /     span = forecast.day
+        /     span = wi_icon codes[forecast.code.to_s], class: 'wi-5x'
+        /     span = "#{forecast.high} #{forecast.low}"
+
 / .row
 /   .responsive-col
 /     - @tweets.each do |tweet|
 /       = ap tweet.name
-
-/ #test1
-/   .row
-/     .col.s2
-/       span = wi_icon codes[@weather.condition.code.to_s], class: 'wi-5x'
-/       span = "#{@weather.condition.temp} #{@weather.units.temperature}"
-
-/     - @weather.forecasts.each do |forecast|
-/       / = ap(forecast).html_safe
-
-/       .col.s2
-/         span = forecast.day
-/         span = wi_icon codes[forecast.code.to_s], class: 'wi-5x'
-/         span = "#{forecast.high} #{forecast.low}"
-
-/ / https://github.com/apneadiving/Google-Maps-for-Rails
-
-
-.row
-  .col.s12
-    .z-depth-1
-      #map style='height: 300px;'
-
-
-/ https://github.com/manzhikov/yahoo_weather/blob/master/config/locales/en.yml
-
-/ http://erikflowers.github.io/weather-icons/
-
-/ https://github.com/CodySchaaf/weather-icons-rails

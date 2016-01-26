@@ -1,23 +1,37 @@
+# https://github.com/lucek/avatarly/blob/master/lib/avatarly.rb
+class Avatarly
+  def self.generate_avatar text, opts={}
+    if opts[:lang]
+      text = UnicodeUtils.upcase(self.send(:initials, text.to_s.strip), opts[:lang])
+    else
+      text = self.send(:initials, text.to_s.strip).upcase
+    end
+
+    self.send(:generate_image, text, parse_options(opts)).to_blob
+  end
+end
+
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super do |resource|
-      ap resource
-
-      # img = Avatarly.generate_avatar resource
-
-      # File.open("public/images/#{resource}.png", 'wb') do |f|
-      #   f.write img
-      # end
-  end
-
-  # POST /resource
-  # def create
+  # def new
   #   super
   # end
+
+  # POST /resource
+  def create
+    super do |resource|
+      avatar = Avatarly.generate_avatar resource.email, size: 256
+
+      File.open("public/images/#{resource.email.parameterize}.png", 'wb') do |f|
+        f.write avatar
+      end
+
+      resource.update avatar: File.new("public/images/#{resource.email.parameterize}.png")
+    end
+  end
 
   # GET /resource/edit
   # def edit

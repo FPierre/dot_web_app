@@ -1,12 +1,18 @@
 class DashboardController < ApplicationController
   def index
     # TODO Initializer
-    weather_client = YahooWeatherService.new
-    @weather = weather_client.fetch
+    # weather_client = YahooWeatherService.new
+    # @weather = weather_client.fetch
 
     # api_sarah
     # Gmail : Sarah Paris, api.test.sarah@gmail.com, SarahParisAPI
     # Twitter : SarahParisTest, api.test.sarah@gmail.com, TwSarahParisAPIitter
+
+    # Sarah Dot
+    # projet.dot@gmail.com
+    # .dot.project2016
+    # +33651043417
+
 
 
     # http://www.matheuslima.com/twitters-streaming-api-with-ruby-on-rails/
@@ -28,8 +34,6 @@ class DashboardController < ApplicationController
     #   config.access_token        = '4839018556-okWUT63S7kf4Uo9lC909siHXCNaFVGBilBrldZw'
     #   config.access_token_secret = '3wjflgAkvtG0jwLXXeGNzsjLa4BzWg71YzZf19pLgXaB0'
     # end
-
-
   end
 
   def delay

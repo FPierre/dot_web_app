@@ -1,53 +1,92 @@
 .row
-  .responsive-col
-    h2 Utilisateurs
+  div style='width: 100%; border-bottom: 1px solid #ddd;'
+    ul.tabs
+      li.tab.col.s4
+        a.active href='#test1'
+          = fa_icon 'user'
+          .hide-on-small-only Utilisateurs
+      li.tab.col.s4
+        a href='#test2'
+          = fa_icon 'rocket'
+          .hide-on-small-only Widgets
+      li.tab.col.s4
+        a.active href='#test3'
+          = fa_icon 'bar-chart'
+          .hide-on-small-only Statistiques
 
-    - if @users
-      span En attente de confirmation
-      ul.collection
-        - @users.each do |user|
-          li.collection-item.avatar
-            img.circle src='' alt=''
-            span.title = user.email
-            p = user.created_at
-            a.secondary-content href='#!'
-            / = fa_icon 'check', class: 'material-icons'
+#test1
+  .row
+    .responsive-col
+      - if @users
+        ul.collection
+          - @users.each do |user|
+            li.collection-item.avatar
+              = image_tag user.avatar.url, class: 'circle'
+              span.title = user.email
+              p = user.created_at
+              a.secondary-content href='#!'
+                - if user.approved
+                  = fa_icon 'check'
+                - else
+                  = fa_icon 'question'
 
-.row
-  .responsive-col
-    .card-panel.blue-grey.lighten-5
-      h2 SARAH
+  .fixed-action-btn style='bottom: 45px; right: 24px;'
+    a.btn-floating.btn-large.indigo.darken-3
+      = fa_icon 'bars'
 
-      span Activer
-      .switch
-        label
-          | Off
-          input type='checkbox'
-          span.lever
-          | On
+    ul
+      li
+        / a.btn-floating.green
+        /   = fa_icon 'check'
+      li
+        span.label.red.white-text Supprimer
+        a.btn-floating.red
+          = fa_icon 'trash'
 
-      span Mettre en veille pendant
-      p.range-field
-        input type='range' min='0' max='60'
+#test2
+  .row
+    .responsive-col
+      .card-panel.blue-grey.lighten-5
+        h2 SARAH
 
-      span Liste des commandes vocales
-      ul
-        li cmd 1
-        li cmd 2
-        li cmd 3
+        span Activer
+        .switch
+          label
+            | Off
+            input type='checkbox'
+            span.lever
+            | On
 
-.row
-  .responsive-col
-    .card-panel.blue-grey.lighten-5
-      h2 Météo
+        span Mettre en veille pendant
+        p.range-field
+          input type='range' min='0' max='60'
 
-      span Toujours afficher
-      .switch
-        label
-          | Off
-          input type='checkbox'
-          span.lever
-          | On
+        span Liste des commandes vocales
+        ul
+          li cmd 1
+          li cmd 2
+          li cmd 3
+
+  .row
+    .responsive-col
+      .card-panel.blue-grey.lighten-5
+        h2 Météo
+
+        span Afficher
+        .switch
+          label
+            | Off
+            input type='checkbox'
+            span.lever
+            | On
+
+        span Jour courant uniquement
+        .switch
+          label
+            | Off
+            input type='checkbox'
+            span.lever
+            | On
 
 
 / = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|

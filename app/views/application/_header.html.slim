@@ -4,6 +4,8 @@ nav
     a.button-collapse.blue-grey-text.text-lighten-2 href='#' data-activates='mobile-demo'
       = fa_icon 'bars'
 
+
+    / A afficher en mobile uniquement
     .right.hide-on-med-and-down
       - if user_signed_in?
         span.blue-grey-text.text-lighten-2 = current_user.email
