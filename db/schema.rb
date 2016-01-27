@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160108124020) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.text     "authentication_token",   default: ""
+    t.string   "authentication_token",   default: ""
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

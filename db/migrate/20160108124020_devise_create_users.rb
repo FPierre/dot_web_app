@@ -1,6 +1,6 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
-    create_table(:users) do |t|
+    create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ''
       t.string :encrypted_password, null: false, default: ''
@@ -10,10 +10,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Rememberable
       t.datetime :remember_created_at
 
-      t.text :authentication_token, default: ''
+      t.string :authentication_token, default: ''
 
       t.attachment :avatar
-      t.boolean :approved, default: false, null: false
+      t.boolean :approved, null: false, default: false
 
       t.timestamps null: false
     end
