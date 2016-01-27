@@ -98,3 +98,15 @@ nav {
 .aside {
   @extend .z-depth-1;
 }
+
+// #toast-container {
+//   @media #{$medium-only} {
+//     left: 0; // Reset
+//     bottom: 0; // Reset
+//   }
+
+//   @media #{$large-and-up} {
+//     top: 74px; // Reset
+//     right: 0; // Reset
+//   }
+// }
