@@ -1,4 +1,6 @@
 class RoutesController < ApplicationController
+  acts_as_token_authentication_handler_for User
+
   def show
     if params[:from].present? && params[:to].present?
       from = Geocoder.search params[:from]
