@@ -3,18 +3,18 @@ default: &default
   pool: 5
   timeout: 5000
   encoding: utf8
-  username:
-  password:
+  username: dot_web_app
+  password: K7Ui9b.s6^-U4fp
   socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database:
+  database: dot_development
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: dot_test
 
 production:
   <<: *default
-  database:
+  database: dot_production
