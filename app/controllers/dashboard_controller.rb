@@ -1,18 +1,28 @@
+require 'tweetstream'
+
 class DashboardController < ApplicationController
   def index
     # TODO Initializer
     # weather_client = YahooWeatherService.new
     # @weather = weather_client.fetch
 
+    # Ancien
     # api_sarah
     # Gmail : Sarah Paris, api.test.sarah@gmail.com, SarahParisAPI
     # Twitter : SarahParisTest, api.test.sarah@gmail.com, TwSarahParisAPIitter
 
+    # Nouveau
+    #
+    # Gmail
     # Sarah Dot
     # projet.dot@gmail.com
     # .dot.project2016
     # +33651043417
-
+    #
+    # Twitter
+    # dot_project_16
+    # projet.dot@gmail.com
+    # 2016_dot_pftasanj
 
 
     # http://www.matheuslima.com/twitters-streaming-api-with-ruby-on-rails/
@@ -33,6 +43,37 @@ class DashboardController < ApplicationController
     #   config.consumer_secret     = 'cmeo9G5Hv6oQQqpHbYRx9aR4UD8C1CAabirknMobHfVQhdrPxi'
     #   config.access_token        = '4839018556-okWUT63S7kf4Uo9lC909siHXCNaFVGBilBrldZw'
     #   config.access_token_secret = '3wjflgAkvtG0jwLXXeGNzsjLa4BzWg71YzZf19pLgXaB0'
+    # end
+
+    TweetStream.configure do |config|
+      config.consumer_key       = 'b03z1apXYtpHHFWJY0LYRN4uI'
+      config.consumer_secret    = 'ADJm66KjZjZxId3MfIuoZZ7W2pvTBavSGtq2Plk44n0fXllO24'
+      config.oauth_token        = '4853273541-Bbab8VYmVwZt3e4FUkVnzg5WPKR3a0Ds48mG2Ax'
+      config.oauth_token_secret = '45rJCCPJJjUMK9qndAqmEKrzbsaLi0YgzEf4qF68Dv8Aa'
+      config.auth_method        = :oauth
+    end
+
+    # http://gettwitterid.com/?user_name=Ligne1_RATP&submit=GET+USER+ID
+
+    # PierreFlauder => 1882342668
+    # Ligne1_RATP => 799788259
+    # Ligne13_RATP => 799916960
+
+
+    # TweetStream::Client.new.track('SNCF') do |status|
+    #   # puts "#{status.text}"
+
+    #   ActionCable.server.broadcast 'notification_channel', author: 'SNCF', message: status.text, duration: 10000
+
+    #   head :ok
+    # end
+
+    # TweetStream::Client.new.follow(799788259, 799916960) do |status|
+    #   ap "#{status.text}"
+
+    #   ActionCable.server.broadcast 'notification_channel'
+
+    #   head :ok
     # end
   end
 

@@ -1,6 +1,6 @@
 .main
   .row
-    .col.s12.l11
+    .col.s12.l12
       .content
         .row
           .col.s6
@@ -25,11 +25,11 @@
             #zone-4.zone
               .label Zone 4
 
-    .col.l1.hide-on-med-and-down
-      .aside
-        - if @weather
-          span = wi_icon codes[@weather.condition.code.to_s], class: 'wi-4x'
-          span = "#{@weather.condition.temp} #{@weather.units.temperature}"
+    / .col.l1.hide-on-med-and-down
+      / .aside
+      /   - if @weather
+      /     span = wi_icon codes[@weather.condition.code.to_s], class: 'wi-4x'
+      /     span = "#{@weather.condition.temp} #{@weather.units.temperature}"
 
         / - @weather.forecasts.each do |forecast|
         /   / = ap(forecast).html_safe

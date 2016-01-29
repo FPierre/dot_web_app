@@ -21,6 +21,8 @@ nav {
   @extend .white, .blue-grey-text, .text-darken-2;
   // @extend .white, .blue-grey-text, .text-darken-2, .z-depth-0;
 
+  // TODO Passer par $navbar-height-mobile
+
   height: 66px;
   line-height: 66px;
   // border-bottom: 1px solid #cfd8dc; // blue-grey lighten-4
@@ -37,6 +39,8 @@ nav {
 }
 
 .tabs {
+  @extend .z-depth-1;
+
   height: 60px;
 
   .tab {

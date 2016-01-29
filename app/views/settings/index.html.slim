@@ -1,18 +1,17 @@
 .row
-  div style='width: 100%; border-bottom: 1px solid #ddd;'
-    ul.tabs
-      li.tab.col.s4
-        a.active href='#test1'
-          = fa_icon 'user'
-          .hide-on-small-only Utilisateurs
-      li.tab.col.s4
-        a href='#test2'
-          = fa_icon 'rocket'
-          .hide-on-small-only Widgets
-      li.tab.col.s4
-        a.active href='#test3'
-          = fa_icon 'bar-chart'
-          .hide-on-small-only Statistiques
+  ul.tabs
+    li.tab.col.s4
+      a.active href='#test1'
+        = fa_icon 'user'
+        .hide-on-small-only Utilisateurs
+    li.tab.col.s4
+      a href='#test2'
+        = fa_icon 'rocket'
+        .hide-on-small-only Widgets
+    li.tab.col.s4
+      a.active href='#test3'
+        = fa_icon 'bar-chart'
+        .hide-on-small-only Statistiques
 
 #test1
   .row
@@ -46,47 +45,53 @@
 #test2
   .row
     .responsive-col
-      .card-panel.blue-grey.lighten-5
-        h2 SARAH
-
-        span Activer
-        .switch
-          label
-            | Off
-            input type='checkbox'
-            span.lever
-            | On
-
-        span Mettre en veille pendant
-        p.range-field
-          input type='range' min='0' max='60'
-
-        span Liste des commandes vocales
-        ul
-          li cmd 1
-          li cmd 2
-          li cmd 3
-
-  .row
-    .responsive-col
-      .card-panel.blue-grey.lighten-5
-        h2 Météo
-
-        span Afficher
-        .switch
-          label
-            | Off
-            input type='checkbox'
-            span.lever
-            | On
-
-        span Jour courant uniquement
-        .switch
-          label
-            | Off
-            input type='checkbox'
-            span.lever
-            | On
+      ul.collection.with-header
+        li.collection-header
+          h4 SARAH
+        li.collection-item
+          div
+            | Activer
+            a.secondary-content href="#!"
+              .switch
+                label
+                  | Off
+                  input type='checkbox'
+                  span.lever
+                  | On
+        li.collection-header
+          h4 Météo
+        li.collection-item
+          div
+            | Activer
+            a.secondary-content href="#!"
+              .switch
+                label
+                  | Off
+                  input type='checkbox'
+                  span.lever
+                  | On
+        li.collection-item
+          div
+            | Jour courant uniquement
+            a.secondary-content href="#!"
+              .switch
+                label
+                  | Off
+                  input type='checkbox'
+                  span.lever
+                  | On
+        li.collection-header
+          h4 Mémos
+        li.collection-item
+          div
+            | Afficher les notifications
+            a.secondary-content href="#!"
+              .switch
+                label
+                  | Off
+                  input type='checkbox'
+                  span.lever
+                  | On
 
 
 / = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|

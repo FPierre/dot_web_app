@@ -8,9 +8,10 @@
 //= require_tree .
 
 $(document).on('ready page:load', function() {
+  // Taille des zones sur dashboard#index
   var windowsHeight = $(window).height(),
-      headerHeight = $('.nav-wrapper').height(),
-      zoneHeight = (windowsHeight - headerHeight - 20 - 20 - 20 - 5) / 2;
+      headerHeight = $('nav').height(),
+      zoneHeight = (windowsHeight - headerHeight - 20 - 20 - 20) / 2;
 
   $('.zone').height(zoneHeight);
 });
