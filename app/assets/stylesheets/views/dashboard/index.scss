@@ -1,0 +1,35 @@
+body.dashboard.index {
+  .col {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+
+    &.full {
+      @extend .s12;
+    }
+
+    &.half {
+      @extend .s6;
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .zone {
+    @extend .valign-wrapper, .z-depth-1;
+
+    min-height: 200px;
+
+    .label {
+      @extend .valign, .blue-grey-text, .text-lighten-5;
+
+      margin: auto;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+  }
+}

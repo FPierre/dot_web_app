@@ -7,51 +7,15 @@
 // $tabs-underline-color: #283593;
 
 @import 'font-awesome';
+@import 'base/fonts';
+// @import 'base/custom';
 @import 'materialize';
-
-body {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-.responsive-col {
-  @extend .col, .s12, .m8, .offset-m2, .l6, .offset-l3;
-}
-
-nav {
-  @extend .white, .blue-grey-text, .text-darken-2;
-  // @extend .white, .blue-grey-text, .text-darken-2, .z-depth-0;
-
-  // TODO Passer par $navbar-height-mobile
-
-  height: 66px;
-  line-height: 66px;
-  // border-bottom: 1px solid #cfd8dc; // blue-grey lighten-4
-
-  a {
-    @extend .blue-grey-text, .text-darken-2;
-  }
-
-  .button-collapse {
-    i {
-      font-size: 2.3rem;
-    }
-  }
-}
-
-.tabs {
-  @extend .z-depth-1;
-
-  height: 60px;
-
-  .tab {
-    line-height: 60px;
-    height: 60px;
-  }
-
-  .indicator {
-    height: 4px;
-  }
-}
+// @import 'base/mixins';
+@import 'base/global';
+@import 'components/*';
+@import 'partials/*';
+@import 'views/**/*';
+@import 'layouts/*';
 
 .fixed-action-btn {
   li {
@@ -77,30 +41,6 @@ nav {
       transform: scaleY(1) scaleX(1) translateY(0) translateX(0);
     }
   }
-}
-
-.main {
-  margin-top: 20px;
-}
-
-.content {
-  .zone {
-    @extend .valign-wrapper, .z-depth-1;
-
-    min-height: 100px;
-
-    .label {
-      @extend .valign, .blue-grey-text, .text-lighten-5;
-
-      margin: auto;
-      font-size: 1rem;
-      text-transform: uppercase;
-    }
-  }
-}
-
-.aside {
-  @extend .z-depth-1;
 }
 
 // #toast-container {

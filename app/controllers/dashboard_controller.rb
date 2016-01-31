@@ -77,6 +77,12 @@ class DashboardController < ApplicationController
     # end
   end
 
+  def resize
+    if params[:zone] && params[:size]
+      ActionCable.server.broadcast 'resize_channel', zone: params[:zone], size: params[:size]
+    end
+  end
+
   def delay
     ActionCable.server.broadcast 'notification_channel', minutes: params[:minutes]
 

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     # get 'delay/:minutes', to: 'user#delay'
   end
 
+  # dashboard/resize/1/full
+  # dashboard/resize/2/half
+  get 'dashboard/resize/:zone/:size', to: 'dashboard#resize'
 
   # get 'delay/:minutes', to: 'dashboard#delay'
 
