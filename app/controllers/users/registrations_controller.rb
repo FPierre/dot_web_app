@@ -20,7 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
+  # POST /users
   def create
     super do |resource|
       avatar = Avatarly.generate_avatar resource.email, size: 256

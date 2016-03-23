@@ -1,46 +1,116 @@
+/ = form_for 'user' do |f|
+/   .row
+/     .responsive-col
+/       = f.label :email
+/       = f.email_field :email, autofocus: true
+
+/   .row
+/     .responsive-col
+/       = f.label :password
+
+/       - if @minimum_password_length
+/         em  "(#{@minimum_password_length} characters minimum)"
+
+/       = f.password_field :password, autocomplete: 'off'
+
+/   .row
+/     .responsive-col
+/       = f.label :password_confirmation
+/       = f.password_field :password_confirmation, autocomplete: 'off'
+
+/   .row
+/     .responsive-col
+/       / = f.label :password_confirmation
+/       = f.check_box :password_confirmation
+
+/   .row
+/     .responsive-col
+/       .center-align
+/         = f.submit class: 'btn-large waves-effect waves-light' do
+/           i.material-icons.right send
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fixed-action-btn style='bottom: 45px; right: 24px;'
+  a.btn.btn-floating.btn-large.waves-effect.waves-light.green.modal-trigger href='#modal1' = fa_icon 'plus'
+
+#modal1.modal.bottom-sheet
+  .modal-content
+    h4 Modal Header
+    p A bunch of text
+
+  .modal-footer
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat href='#!' Agree
+
+
+
+
+
+
+
 .row
   ul.tabs
     li.tab.col.s4
       a.active href='#test1'
-        = fa_icon 'user'
-        .hide-on-small-only Utilisateurs
+        .hide-on-small-only
+          = fa_icon 'user', text: 'Utilisateurs'
+        .hide-on-med-and-up
+          = fa_icon 'user'
+
     li.tab.col.s4
       a href='#test2'
-        = fa_icon 'rocket'
-        .hide-on-small-only Widgets
+        .hide-on-small-only
+          = fa_icon 'rocket', text: 'Comportements'
+        .hide-on-med-and-up
+          = fa_icon 'rocket'
+
     li.tab.col.s4
       a.active href='#test3'
-        = fa_icon 'bar-chart'
-        .hide-on-small-only Statistiques
+        .hide-on-small-only
+          = fa_icon 'bar-chart', text: 'Statistiques'
+        .hide-on-med-and-up
+          = fa_icon 'bar-chart'
 
 #test1
   .row
     .responsive-col
-      - if @users
-        ul.collection
-          - @users.each do |user|
-            li.collection-item.avatar
+      ul.collection
+        - @users.each do |user|
+          li.collection-item.avatar
+            = link_to edit_user_registration_path do
               = image_tag user.avatar.url, class: 'circle'
               span.title = user.email
               p = user.created_at
+
+              - if user.admin?
+                p Administrateur
+
               a.secondary-content href='#!'
                 - if user.approved
                   = fa_icon 'check'
                 - else
                   = fa_icon 'question'
 
-  .fixed-action-btn style='bottom: 45px; right: 24px;'
-    a.btn-floating.btn-large.indigo.darken-3
-      = fa_icon 'bars'
 
-    ul
-      li
-        / a.btn-floating.green
-        /   = fa_icon 'check'
-      li
-        span.label.red.white-text Supprimer
-        a.btn-floating.red
-          = fa_icon 'trash'
+    / ul
+    /   li
+    /     / a.btn-floating.green
+    /     /   = fa_icon 'check'
+    /   li
+    /     span.label.red.white-text Supprimer
+    /     a.btn-floating.red
+    /       = fa_icon 'trash'
 
 #test2
   .row

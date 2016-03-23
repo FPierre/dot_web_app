@@ -1,6 +1,8 @@
 require 'tweetstream'
 
 class DashboardController < ApplicationController
+  layout 'screen'
+
   def index
     # TODO Initializer
     # weather_client = YahooWeatherService.new
@@ -87,5 +89,15 @@ class DashboardController < ApplicationController
     ActionCable.server.broadcast 'notification_channel', minutes: params[:minutes]
 
     head :ok
+  end
+
+  def routes
+    if params[:from].present? && params[:to].present?
+      from = Geocoder.search params[:from]
+      to   = Geocoder.search params[:to]
+
+      @from = from.first.data['geometry']['location']
+      @to = to.first.data['geometry']['location']
+    end
   end
 end

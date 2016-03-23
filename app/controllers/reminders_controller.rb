@@ -1,5 +1,5 @@
 class RemindersController < ApplicationController
-  acts_as_token_authentication_handler_for User
+  acts_as_token_authentication_handler_for User, fallback: :none
 
   before_action :set_reminder, only: [:show, :edit, :update, :destroy]
 
