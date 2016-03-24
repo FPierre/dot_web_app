@@ -1,6 +1,6 @@
 # https://github.com/lucek/avatarly/blob/master/lib/avatarly.rb
 class Avatarly
-  def self.generate_avatar text, opts={}
+  def self.generate_avatar text, opts = {}
     if opts[:lang]
       text = UnicodeUtils.upcase(self.send(:initials, text.to_s.strip), opts[:lang])
     else

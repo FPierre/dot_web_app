@@ -18,10 +18,10 @@ html
   body class="#{controller_name.deconstantize} #{controller_name.demodulize} #{action_name}"
     = render 'header'
 
-    / - if notice || alert
-    /   .row
-    /     .col.s12
-    /       p.notice.center-text = notice
-    /       p.alert.center-text = alert
+    - if notice || alert
+      .row
+        .col.s12
+          p.notice.center-text = notice
+          p.alert.center-text = alert
 
     main = yield

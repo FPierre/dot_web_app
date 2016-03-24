@@ -2,6 +2,9 @@ App.notification = App.cable.subscriptions.create('NotificationChannel', {
   connected: function() {},
   disconnected: function() {},
   received: function(data) {
+
+    console.log('received: function(data)');
+
     if ($('body.dashboard.index').length) {
       var toastContent = $('<div class="tweet"><span>' + data['author'] + '</span><p>' + data['message'] + '</p></div>');
 

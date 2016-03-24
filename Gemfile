@@ -5,7 +5,7 @@ ruby '2.3.0'
 
 gem 'simple_token_authentication', git: 'git://github.com/FPierre/simple_token_authentication.git', branch: 'master'
 
-gem 'avatarly'
+gem 'avatarly', '~> 1.4'
 gem 'awesome_print'
 gem 'browser', '~> 1.1'
 gem 'coffee-rails', '~> 4.1.0'

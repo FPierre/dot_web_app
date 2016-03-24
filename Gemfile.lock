@@ -283,7 +283,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  avatarly
+  avatarly (~> 1.4)
   awesome_print
   browser (~> 1.1)
   byebug
