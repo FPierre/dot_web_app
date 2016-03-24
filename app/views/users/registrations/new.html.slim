@@ -1,0 +1,39 @@
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  .row
+    .responsive-col
+      .file-field.input-field
+        .btn
+          span File
+          input type='file'
+
+        .file-path-wrapper
+          = f.file_field :avatar, class: 'file-path validate'
+
+  .row
+    .responsive-col
+      = devise_error_messages!
+
+  .row
+    .responsive-col
+      = f.label :email
+      = f.email_field :email, autofocus: true
+
+  .row
+    .responsive-col
+      = f.label :password
+
+      - if @minimum_password_length
+        em  "(#{@minimum_password_length} characters minimum)"
+
+      = f.password_field :password, autocomplete: 'off'
+
+  .row
+    .responsive-col
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: 'off'
+
+  .row
+    .responsive-col
+      .center-align
+        = f.submit class: 'btn-large waves-effect waves-light' do
+          i.material-icons.right send
