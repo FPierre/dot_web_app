@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   end
 
   scope 'dashboard', controller: :dashboard do
-    # dashboard/resize/1/full
-    # dashboard/resize/2/half
+    # ex : dashboard/resize/1/full, dashboard/resize/2/half
     get 'resize/:zone/:size',       action: :resize
     get 'routes/from/:from/to/:to', action: :routes
   end

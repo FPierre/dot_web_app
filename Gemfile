@@ -30,8 +30,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 gem 'weather-icons-rails'
 gem 'yahoo_weather'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
