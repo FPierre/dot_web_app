@@ -20,12 +20,8 @@ gem 'materialize-sass'
 gem 'mysql2'
 gem 'paperclip', '~> 4.3'
 gem 'puma'
-<<<<<<< HEAD
-gem 'rails', '5.0.0.beta3'
-gem 'redis'
-=======
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
->>>>>>> rails_beta_3
+gem 'redis', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'slim', '~> 3.0', '>= 3.0.6'
 gem 'sqlite3'
@@ -35,7 +31,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 gem 'weather-icons-rails'
 gem 'yahoo_weather'
-gem 'redis', '~> 3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
