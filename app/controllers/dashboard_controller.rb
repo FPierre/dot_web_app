@@ -79,8 +79,12 @@ class DashboardController < ApplicationController
     # end
   end
 
+  api :GET, '/resize/zone/:zone/size/:size', 'Resize the zone'
+  description 'Get a document if user has the rights'
+  param :zone, [:one, :two], desc: 'Zone ID', required: true
+  param :size, [:full, :half], desc: 'Size', required: true
   def resize
-    if params[:zone] && params[:size]
+    if params[:zone].present? && params[:size].present?
       ActionCable.server.broadcast 'resize_channel', zone: params[:zone], size: params[:size]
     end
   end
@@ -91,6 +95,10 @@ class DashboardController < ApplicationController
     head :ok
   end
 
+  api :GET, '/routes/from/:from/to/:to', 'Display the route in zone one'
+  description 'Fetch Google API to get the route from/to'
+  param :from, String, desc: '', required: true
+  param :to, String, desc: '', required: true
   def routes
     if params[:from].present? && params[:to].present?
       from = Geocoder.search params[:from]
