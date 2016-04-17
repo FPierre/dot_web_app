@@ -27,7 +27,7 @@
       <% m[:apis].each do |a| %>
         <li>
           <div class="collapsible-header">
-            <div class="chip get"><%= a[:http_method] %></div>
+            <div class="chip <%= a[:http_method].downcase! %>"><%= a[:http_method] %></div>
 
             <%= a[:api_url] %>
 
