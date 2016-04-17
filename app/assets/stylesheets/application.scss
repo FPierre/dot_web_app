@@ -15,7 +15,10 @@
 @import 'components/*';
 @import 'partials/*';
 @import 'views/**/*';
-@import 'layouts/*';
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
 .fixed-action-btn {
   li {

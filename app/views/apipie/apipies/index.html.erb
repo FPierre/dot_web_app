@@ -20,6 +20,8 @@
 
   <ul class="collapsible" data-collapsible="expandable">
     <% api[:methods].each do |m| %>
+      <%#= ap(api).html_safe %>
+
       <% if !m[:show] %>
         <% next %>
       <% end %>
@@ -35,15 +37,88 @@
               <span class="left"><%= a[:short_description] %></span>
 
               <% if a[:deprecated] %>
-                <%= fa_icon 'exclamation', class: 'orange-text text-lighten-2' %>
-              <% else %>
+                <%= fa_icon 'exclamation-triangle', class: 'red-text text-lighten-2' %>
+              <% elsif a.dig :metadata, :status == :pending %>
+                <%= fa_icon 'comments', class: 'orange-text text-lighten-2' %>
+              <% elsif a.dig :metadata, :status == 'ok' %>
                 <%= fa_icon 'check', class: 'green-text text-lighten-2' %>
+              <% elsif a[:metadata].blank? %>
+                <%= fa_icon 'question' %>
               <% end %>
             </div>
           </div>
 
           <div class="collapsible-body">
-            <p><%= raw a[:full_description] %></p>
+            <h3>Full description</h3>
+
+            <%= raw m[:full_description] %>
+
+            <h3>Parameters</h3>
+
+            <table class="bordered centered">
+              <thead>
+                <tr>
+                  <th data-field="full_name">Full Name</th>
+                  <th data-field="name">Required</th>
+                  <th data-field="price">Allow null</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% m[:params].each do |param| %>
+                  <tr>
+                    <td><%= param[:full_name] %></td>
+                    <td><%= param[:required] ? t('apipie.required') : t('apipie.optional') %></td>
+                    <td><%= param[:allow_nil] ? ', '+t('apipie.nil_allowed') : '' %></td>
+                  </tr>
+
+
+
+                  <%#= param[:description].html_safe %>
+
+              <%#- if param[:validations].present? || param[:validator].present? %>
+                <!-- <p><strong>Validations:</strong></p> -->
+<!--
+                <ul>
+                  <%#- if param[:validator].present? %>
+                    <li><%#= Apipie.markup_to_html(param[:validator]).html_safe %></li>
+                  <%#- end %>
+
+                  <%#- param[:validations].each do |item| %>
+                    <li><%#= item.html_safe %></li>
+                  <%#- end %>
+                </ul>
+              <%#- end %>
+ -->
+              <%# unless param[:metadata].blank? %>
+                <!-- <br> -->
+                <!-- Metadata: -->
+                <%#= render(:partial => "metadata", :locals => {:meta => param[:metadata]}) %>
+              <%# end %>
+              <% end %>
+            </tbody>
+          </table>
+
+          <% if m[:metadata].present? %>
+            <h3>Metadata</h3>
+
+            <table class="bordered centered">
+              <thead>
+                <tr>
+                  <th data-field="full_name">Full Name</th>
+                  <th data-field="name">Required</th>
+                  <th data-field="price">Allow null</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% m[:params].each do |param| %>
+                  <pre class="prettyprint lang-yaml"><%= param[:meta].to_yaml.gsub(/---\n/, "") %></pre>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
+
 
             <% unless a[:formats].blank? %>
               <%= heading(t('apipie.supported_formats'), h_level) %>
