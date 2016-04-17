@@ -14,6 +14,52 @@
 
 <% @doc[:resources].sort_by(&:first).each do |key, api| %>
   <h2>
+    <%= api[:name] %>
+    <small><%= api[:short_description] %></small>
+  </h2>
+
+  <ul class="collapsible" data-collapsible="expandable">
+    <% api[:methods].each do |m| %>
+      <% if !m[:show] %>
+        <% next %>
+      <% end %>
+
+      <% m[:apis].each do |a| %>
+        <li>
+          <div class="collapsible-header">
+            <span><%= a[:http_method] %></span>
+            <span><%= a[:api_url] %></span>
+            <p><%= api[:short_description] %></p>
+            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+          </div>
+
+          <div class="collapsible-body">
+            <%= a[:http_method] %>
+            <%= a[:api_url] %>
+
+            <p>
+              <%= api[:short_description] %>
+              <br>
+              Second Line
+            </p>
+
+            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+
+            <% if a[:deprecated] %>
+              <code>DEPRECATED</code>
+            <% end %>
+
+            <%= a[:short_description] %></td>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<% @doc[:resources].sort_by(&:first).each do |key, api| %>
+  <h2>
     <a href='<%= api[:doc_url] %><%= @doc[:link_extension] %>'>
       <%= api[:name] %>
     </a><br>
