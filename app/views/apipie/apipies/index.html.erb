@@ -27,29 +27,40 @@
       <% m[:apis].each do |a| %>
         <li>
           <div class="collapsible-header">
-            <span><%= a[:http_method] %></span>
-            <span><%= a[:api_url] %></span>
-            <p><%= api[:short_description] %></p>
-            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            <div class="chip get"><%= a[:http_method] %></div>
+
+            <%= a[:api_url] %>
+
+            <div class="right">
+              <span class="left"><%= a[:short_description] %></span>
+
+              <% if a[:deprecated] %>
+                <%= fa_icon 'exclamation', class: 'orange-text text-lighten-2' %>
+              <% else %>
+                <%= fa_icon 'check', class: 'green-text text-lighten-2' %>
+              <% end %>
+            </div>
           </div>
 
           <div class="collapsible-body">
-            <%= a[:http_method] %>
-            <%= a[:api_url] %>
+            <p><%= raw a[:full_description] %></p>
 
-            <p>
-              <%= api[:short_description] %>
-              <br>
-              Second Line
-            </p>
-
-            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-
-            <% if a[:deprecated] %>
-              <code>DEPRECATED</code>
+            <% unless a[:formats].blank? %>
+              <%= heading(t('apipie.supported_formats'), h_level) %>
+              <%= a[:formats].join(', ') %>
             <% end %>
 
-            <%= a[:short_description] %></td>
+            <% unless a[:errors].blank? %>
+              <%= heading(t('apipie.errors'), h_level) %>
+              <%= render(:partial => "errors", :locals => {:errors => a[:errors]}) %>
+            <% end %>
+
+            <% unless a[:examples].blank? %>
+              <%= heading(t('apipie.examples'), h_level) %>
+              <% a[:examples].each do |example| %>
+                <pre class="prettyprint"><%= example %></pre>
+              <% end %>
+            <% end %>
           </div>
         </li>
       <% end %>
