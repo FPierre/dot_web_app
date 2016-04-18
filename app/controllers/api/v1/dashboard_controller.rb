@@ -3,28 +3,34 @@ module Api
     class DashboardController < ApplicationController
       api :GET, '/dashboard/path/from/:from/to/:to', 'Display the path between two cities'
       description 'Request Google API to get the car path between the city "from" and the other city "to"'
+      error code: 400, desc: 'Bad request'
+      example 'curl http://<domain_url>/api/v1/dashboard/path/from/paris/to/lyon'
+      meta client: [:sarah], status: :pending
       param :from, String, desc: 'Departure city', required: true
       param :to, String, desc: 'Arrival city', required: true
-      meta target: :sarah, status: 'ok'
-      # show false
       def path
         if params[:from].blank? || params[:to].blank?
-          render json: { status: :bad_request, message: "Absence du paramètre from ou to" }
+          render json: { status: :bad_request, message: "Absence du paramètre from ou to" } and return
         end
 
-        from = Geocoder.search params[:from]
-        to = Geocoder.search params[:to]
+        request_from = Geocoder.search params[:from]
+        request_to = Geocoder.search params[:to]
 
-        if from.blank? || to.blank?
-          render json: { status: :bad_request, message: "Erreur lors de la recherche de l'itinéraire" }
+        if request_from.blank? || request_to.blank?
+          render json: { status: :bad_request, message: "Erreur lors de la recherche de l'itinéraire" } and return
         end
+
+        from = request_from&.first&.data['geometry']['location'],
+        to = request_to&.first&.data['geometry']['location']
 
         path = {
-          from: from&.first&.data['geometry']['location'],
-          to: to&.first&.data['geometry']['location']
+          from: { lat: from.dig('lat'), lon: from.dig('lon') },
+          to: { lat: to.dig('lat'), lon: to.dig('lon') }
         }
 
-        render head :ok
+        ActionCable.server.broadcast 'path_channel', path: path
+
+        render head :ok and return
       end
     end
   end
