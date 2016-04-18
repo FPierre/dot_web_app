@@ -35,6 +35,10 @@
     }
   }
 
+  .row {
+    margin-bottom: 0;
+  }
+
   i {
     margin: {
       right: 0;
@@ -44,8 +48,18 @@
 }
 
 .collapsible-body {
+  padding-bottom: 10px;
+
+  .row {
+    margin-bottom: 0;
+  }
+
   h3 {
     font-size: 1.6rem;
+  }
+
+  p {
+    padding: 15px 0;
   }
 }
 
