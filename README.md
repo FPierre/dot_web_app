@@ -1,24 +1,27 @@
-## README
+# DotWebApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Features
 
-Things you may want to cover:
+### Alerts
 
-* Ruby version
+* Displayed to the internal screen only
+* Trigger by a date and time
+* Stay to the screen during X minutes
+* All users can create Alerts
+* Created by Android application only
 
-* System dependencies
+### Memos
 
-* Configuration
+* Displayed to the internal screen only
+* Stay to the screen during X minutes
+* All users can create Memos
+* Created by Android application only
 
-* Database creation
+## Concepts
 
-* Database initialization
+### Users
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Two status: Basic and Administrator
+* Created by Android application or Web application by anyone
+* Granted by Administrator by Web application
+* Gives access to Android application
