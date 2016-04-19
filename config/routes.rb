@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     scope 'users' do
-      resources :reminders, only: [:create, :update, :destroy]
+
     end
 
     get 'settings', to: 'settings#index'
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
         post 'alert-state/:state', action: :alert_state
         post 'memo-state/:state', action: :memo_state
       end
+
+      resources :reminders, only: [:create, :update, :destroy]
     end
   end
 
