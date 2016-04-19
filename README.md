@@ -2,12 +2,12 @@
 
 ## Features
 
-### Alerts
+### Reminders
 
 * Displayed to the internal screen only
 * Trigger by a date and time
 * Stay to the screen during X minutes
-* All users can create Alerts
+* All users can create Reminders
 * Created by Android application only
 
 ### Memos

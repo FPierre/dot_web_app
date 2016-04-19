@@ -19,11 +19,11 @@ module Api
 
       end
 
-      api :POST, '/settings/alert-state/:state', 'Set the Alert display state'
-      description 'Set the Alert display state if user has the rights'
-      example 'curl http://<domain_url>/api/v1/settings/alert-state/active'
+      api :POST, '/settings/reminder-state/:state', 'Set the Reminder display state'
+      description 'Set the Reminder display state if user has the rights'
+      example 'curl http://<domain_url>/api/v1/settings/reminder-state/active'
       meta client: [:android_application, :web_application], status: :pending
-      param :state, [:sleep, :active], desc: 'Alert display state', required: true
+      param :state, [:sleep, :active], desc: 'Reminder display state', required: true
       def alert_state
 
       end
