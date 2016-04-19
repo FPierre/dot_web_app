@@ -25,7 +25,7 @@ Rails.application.routes.draw do
         post 'memo-state/:state', action: :memo_state
       end
 
-      resources :reminders, only: [:create, :update, :destroy]
+      resources :reminders, only: [:create]
     end
   end
 
