@@ -1,0 +1,33 @@
+body.settings.index {
+  main {
+    .collection {
+      @extend .z-depth-1;
+
+      &.with-header {
+        .collection-header {
+          h4 {
+            margin: {
+              top: 10px;
+              bottom: 10px;
+            };
+            font: {
+              weight: bold;
+              size: 1.3rem;
+            };
+          }
+        }
+      }
+
+      .collection-item {
+        // "title"
+        & > div {
+          padding: {
+            top: 15px;
+            bottom: 15px;
+          };
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}

@@ -59,30 +59,15 @@
 
 
 
-.row
-  ul.tabs
-    li.tab.col.s4
-      a.active href='#test1'
-        .hide-on-small-only
-          = fa_icon 'user', text: 'Utilisateurs'
-        .hide-on-med-and-up
-          = fa_icon 'user'
 
-    li.tab.col.s4
-      a href='#test2'
-        .hide-on-small-only
-          = fa_icon 'rocket', text: 'Comportements'
-        .hide-on-med-and-up
-          = fa_icon 'rocket'
+ul.tabs
+  li.tab
+    a.active href='#users' Utilisateurs
 
-    li.tab.col.s4
-      a.active href='#test3'
-        .hide-on-small-only
-          = fa_icon 'bar-chart', text: 'Statistiques'
-        .hide-on-med-and-up
-          = fa_icon 'bar-chart'
+  li.tab
+    a href='#settings' Comportements
 
-#test1
+#users
   .row
     .responsive-col
       ul.collection
@@ -90,13 +75,14 @@
           li.collection-item.avatar
             = link_to edit_user_registration_path do
               = image_tag user.avatar.url, class: 'circle'
+
               span.title = user.email
               p = user.created_at
 
               - if user.admin?
                 p Administrateur
 
-              a.secondary-content href='#!'
+              div.secondary-content
                 - if user.approved
                   = fa_icon 'check'
                 - else
@@ -112,57 +98,96 @@
     /     a.btn-floating.red
     /       = fa_icon 'trash'
 
-#test2
+#settings
+  .row
+    .responsive-col
+      ul.collection.with-header
+        li.collection-header
+          h4 Général
+
+        li.collection-item
+          div
+            | Stopper tous les affichages
+            div.secondary-content
+              .switch
+                label
+                  input type='checkbox'
+                  span.lever
+
   .row
     .responsive-col
       ul.collection.with-header
         li.collection-header
           h4 SARAH
+
         li.collection-item
           div
             | Activer
-            a.secondary-content href="#!"
+            div.secondary-content
               .switch
                 label
-                  | Off
                   input type='checkbox'
                   span.lever
-                  | On
+
+  .row
+    .responsive-col
+      ul.collection.with-header
+        li.collection-header
+          h4 Tweets
+
+        li.collection-item
+          div
+            | Activer
+            div.secondary-content
+              .switch
+                label
+                  input type='checkbox'
+                  span.lever
+
+  .row
+    .responsive-col
+      ul.collection.with-header
+        li.collection-header
+          h4 Mémos
+
+        li.collection-item
+          div
+            | Afficher
+            div.secondary-content
+              .switch
+                label
+                  input type='checkbox'
+                  span.lever
+
+        li.collection-item
+          div
+            | Durée d'affichage
+            p.range-field
+              input#test5 type='range' min='10' max='60'
+
+  .row
+    .responsive-col
+      ul.collection.with-header
         li.collection-header
           h4 Météo
+
         li.collection-item
           div
             | Activer
-            a.secondary-content href="#!"
+            div.secondary-content
               .switch
                 label
-                  | Off
                   input type='checkbox'
                   span.lever
-                  | On
+
         li.collection-item
           div
             | Jour courant uniquement
-            a.secondary-content href="#!"
+            div.secondary-content
               .switch
                 label
-                  | Off
                   input type='checkbox'
                   span.lever
-                  | On
-        li.collection-header
-          h4 Mémos
-        li.collection-item
-          div
-            | Afficher les notifications
-            a.secondary-content href="#!"
-              .switch
-                label
-                  | Off
-                  input type='checkbox'
-                  span.lever
-                  | On
-
 
 / = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
 /   .row
