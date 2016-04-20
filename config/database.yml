@@ -9,12 +9,12 @@ default: &default
 
 development:
   <<: *default
-  database: dot_development
+  database: dot_web_app_development
 
 test:
   <<: *default
-  database: dot_test
+  database: dot_web_app_test
 
 production:
   <<: *default
-  database: dot_production
+  database: dot_web_app_production
