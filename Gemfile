@@ -33,6 +33,11 @@ gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 gem 'weather-icons-rails'
 gem 'yahoo_weather'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-vue'
+  gem 'rails-assets-vue-resource'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
