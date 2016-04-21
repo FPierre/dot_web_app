@@ -10,7 +10,7 @@
 @import 'base/fonts';
 // @import 'base/custom';
 @import 'materialize/components/color';
-$primary-color: color('green', 'darken-3') !default;
+@import 'base/variables';
 @import 'materialize';
 // @import 'base/mixins';
 @import 'base/global';
