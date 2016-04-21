@@ -14,5 +14,41 @@ $(document).on('ready page:load', function() {
     // Sidebar
 
     $('.sidebar').sideNav();
+
+    new Vue({
+      el: '#settings',
+      data: {
+        general: {
+          stopEverything: false
+        },
+        sarah: {
+          active: true
+        },
+        tweets: {
+          active: true
+        },
+        reminders: {
+          active: true,
+          displayDuration: 10
+        },
+        weather: {
+          active: true,
+          currentDayOnly: true
+        }
+      },
+      ready: function () {
+
+      },
+      watch: {
+        'general.stopEverything': function(newVal, oldVal) {
+          if (newVal === true) {
+            this.sarah.active = false
+            this.tweets.active = false
+            this.reminders.active = false
+            this.weather.active = false
+          }
+        }
+      }
+    })
   }
 });
