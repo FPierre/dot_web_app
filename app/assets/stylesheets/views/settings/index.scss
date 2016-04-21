@@ -12,20 +12,30 @@ body.settings.index {
             };
             font: {
               weight: bold;
-              size: 1.3rem;
+              size: 1.2rem;
             };
+            color: $primary-color;
           }
         }
       }
 
       .collection-item {
         // "title"
-        & > div {
-          padding: {
+        & > div, .title {
+          display: block;
+          margin: {
             top: 15px;
             bottom: 15px;
           };
           font-size: 1.5rem;
+          color: #37474f; // blue grey darken 3
+        }
+
+        .subtitle {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 1.1rem;
+          color: $primary-color;
         }
       }
     }

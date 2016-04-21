@@ -34,8 +34,8 @@ nav
       /   li = link_to new_user_registration_path do
       /     = fa_icon 'user-plus', text: 'Enregistrement'
 
-      / - if user_signed_in?
-      span.blue-grey-text.text-lighten-2 = current_user.email
+      - if user_signed_in?
+        span.blue-grey-text.text-lighten-2 = current_user.email
 
     / TODO Afficher en mobile uniquement
     / .right.hide-on-med-and-down = render 'sidebar'

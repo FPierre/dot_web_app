@@ -77,10 +77,11 @@ ul.tabs
               = image_tag user.avatar.url, class: 'circle'
 
               span.title = user.email
-              p = user.created_at
+              span.subtitle
+                - if user.admin?
+                  | Administrateur
 
-              - if user.admin?
-                p Administrateur
+              / = user.created_at
 
               div.secondary-content
                 - if user.approved
