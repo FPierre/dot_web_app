@@ -1,8 +1,5 @@
 ul#mobile-demo.side-nav
   - if user_signed_in?
-    span.blue-grey-text.text-lighten-2 = current_user.email
-
-  - if user_signed_in?
     / - if current_user.admin?
     li = link_to settings_path do
       = fa_icon 'cog', text: 'Configuration'
@@ -13,3 +10,8 @@ ul#mobile-demo.side-nav
       = fa_icon 'sign-in', text: 'Connexion'
     li = link_to new_user_registration_path do
       = fa_icon 'user-plus', text: 'Enregistrement'
+
+  - if user_signed_in?
+    .current-user
+      = image_tag current_user.avatar.url, class: 'circle'
+      span.blue-grey-text.text-lighten-2 = current_user.email
