@@ -17,26 +17,52 @@ $(document).on('ready page:load', function() {
 
     new Vue({
       el: '#settings',
+      http: {
+        root: '/api/v1/settings/'
+      },
       data: {
         general: {
-          stopEverything: false
+          stopEverything: {
+            value: false
+          }
         },
         sarah: {
-          active: true
+          active: {
+            value: true,
+            apiUrl: 'sarah-state'
+          }
         },
-        tweets: {
-          active: true
+        twitter: {
+          active: {
+            value: true,
+            apiUrl: 'twitter-state'
+          }
         },
         reminders: {
-          active: true,
-          displayDuration: 10
+          active: {
+            value: true,
+            apiUrl: 'reminders-state'
+          },
+          displayDuration: {
+            value: 10,
+            apiUrl: 'display-duration-state'
+          }
         },
         weather: {
-          active: true,
-          currentDayOnly: true
+          active: {
+            value: true,
+            apiUrl: 'weather-state'
+          },
+          currentDayOnly: {
+            value: false,
+            apiUrl: 'current-day-only'
+          }
         }
       },
       ready: function () {
+
+      },
+      computed: {
 
       },
       watch: {
@@ -47,6 +73,18 @@ $(document).on('ready page:load', function() {
             this.reminders.active = false
             this.weather.active = false
           }
+        }
+      },
+      methods: {
+        update: function (event) {
+          console.log()
+          var settingUrl = ''
+
+          this.$http.post(settingUrl, { state: event.target.value }).then(function (response) {
+
+          }).catch(function (response) {
+
+          })
         }
       }
     })

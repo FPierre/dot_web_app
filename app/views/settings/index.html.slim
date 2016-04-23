@@ -9,7 +9,7 @@
 /       = f.label :password
 
 /       - if @minimum_password_length
-/         em  "(#{@minimum_password_length} characters minimum)"
+/         em  '(#{@minimum_password_length} characters minimum)'
 
 /       = f.password_field :password, autocomplete: 'off'
 
@@ -112,7 +112,7 @@ ul.tabs
             div.secondary-content
               .switch
                 label
-                  input type='checkbox' v-model='general.stopEverything'
+                  input type='checkbox' v-model='general.stopEverything.value'
                   span.lever
 
   .row
@@ -127,14 +127,14 @@ ul.tabs
             div.secondary-content
               .switch
                 label
-                  input type='checkbox' v-model='sarah.active'
+                  input type='checkbox' v-model='sarah.active.value' @change='update'
                   span.lever
 
   .row
     .responsive-col
       ul.collection.with-header
         li.collection-header
-          h4 Tweets
+          h4 Twitter
 
         li.collection-item
           div
@@ -142,7 +142,7 @@ ul.tabs
             div.secondary-content
               .switch
                 label
-                  input type='checkbox' v-model='tweets.active'
+                  input type='checkbox' v-model='twitter.active.value' @change='update'
                   span.lever
 
   .row
@@ -157,7 +157,7 @@ ul.tabs
             div.secondary-content
               .switch
                 label
-                  input type='checkbox' v-model='reminders.active'
+                  input type='checkbox' v-model='reminders.active.value' @change='update'
                   span.lever
 
         li.collection-item
@@ -178,7 +178,7 @@ ul.tabs
             div.secondary-content
               .switch
                 label
-                  input type='checkbox' v-model='weather.active'
+                  input type='checkbox' v-model='weather.active.value' @change='update'
                   span.lever
 
         li.collection-item
@@ -187,7 +187,7 @@ ul.tabs
             div.secondary-content
               .switch
                 label
-                  input type='checkbox' v-model='weather.currentDayOnly'
+                  input type='checkbox' v-model='weather.currentDayOnly.value' @change='update'
                   span.lever
 
 / = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
@@ -215,7 +215,7 @@ ul.tabs
 /       = f.label :password
 
 /       - if @minimum_password_length
-/         em "(#{@minimum_password_length} characters minimum)"
+/         em '(#{@minimum_password_length} characters minimum)'
 
 /       = f.password_field :password, autocomplete: 'off'
 
