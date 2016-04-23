@@ -1,14 +1,13 @@
 module Api
   module V1
     class Users::SessionsController < Devise::SessionsController
-    # before_action :configure_sign_in_params, only: [:create]
+      resource_description do
+        resource_id 'Users'
+      end
 
-      # TODO Sortir de api/v1
-      # def new
-      #   super
-      # end
+      # before_action :configure_sign_in_params, only: [:create]
 
-      # POST /resource/sign_in
+      api :POST, '/users/sign_in', 'Connect an User'
       def create
         super
       end

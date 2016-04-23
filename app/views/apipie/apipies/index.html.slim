@@ -32,16 +32,19 @@ ul.breadcrumb
             li
               .collapsible-header
                 .row
-                  .col.s1
+                  .col.m1.hide-on-small-only
                     span class="chip #{a[:http_method].downcase!}" = a[:http_method]
 
-                  .col.s5
+                  .col.s12.m5.truncate
                     = a[:api_url]
 
-                  .col.s5
+                  .col.s2.hide-on-med-and-up
+                    span class="chip #{a[:http_method].downcase!}" = a[:http_method]
+
+                  .col.s8.m5.truncate
                     = a[:short_description]
 
-                  .col.s1
+                  .col.s2.m1
                     - if a[:deprecated]
                       = fa_icon 'exclamation-triangle', class: 'red-text text-lighten-2'
                     - elsif a.dig :metadata, :status == :pending

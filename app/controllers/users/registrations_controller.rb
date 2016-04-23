@@ -1,21 +1,13 @@
-# # https://github.com/lucek/avatarly/blob/master/lib/avatarly.rb
-# class Avatarly
-#   def self.generate_avatar text, opts = {}
-#     if opts[:lang]
-#       text = UnicodeUtils.upcase(self.send(:initials, text.to_s.strip), opts[:lang])
-#     else
-#       text = self.send(:initials, text.to_s.strip).upcase
-#     end
-
-#     self.send(:generate_image, text, parse_options(opts)).to_blob
-#   end
-# end
-
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_action :configure_sign_up_params, only: [:create]
-# before_action :configure_account_update_params, only: [:update]
+  resource_description do
+    resource_id 'Users'
+  end
 
-  # GET /users/sign_up
+  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
+
+  api :GET, '/users/sign_up', 'Display the form for create an User'
+  show false
   def new
     super
   end
@@ -38,9 +30,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   end
   # end
 
-  # GET /resource/edit
+  api :GET, '/users/edit', 'Display the form for edit an User'
+  show false
   def edit
-    ap 'USERS/REGISTRATIONS#EDIT'
     super
   end
 

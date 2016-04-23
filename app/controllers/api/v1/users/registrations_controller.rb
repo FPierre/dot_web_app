@@ -14,13 +14,12 @@ end
 module Api
   module V1
     class Users::RegistrationsController < Devise::RegistrationsController
-    # before_action :configure_sign_up_params, only: [:create]
-    # before_action :configure_account_update_params, only: [:update]
+      resource_description do
+        resource_id 'Users'
+      end
 
-      # GET /resource/sign_up
-      # def new
-      #   super
-      # end
+      # before_action :configure_sign_up_params, only: [:create]
+      # before_action :configure_account_update_params, only: [:update]
 
       api :POST, '/users', 'Create an User'
       def create
@@ -35,7 +34,7 @@ module Api
         end
       end
 
-      # PUT /resource
+      api :PUT, '/users', 'Update an User'
       def update
         super
       end
