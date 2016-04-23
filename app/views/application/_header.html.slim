@@ -26,7 +26,7 @@ nav
         / - if current_user.admin?
       li = link_to settings_path do
         = fa_icon 'cog', text: 'Configuration'
-      li = link_to destroy_user_session_path, method: :delete do
+      li = link_to api_v1_destroy_user_session_path, method: :delete do
         = fa_icon 'sign-out', text: 'Déconnexion'
       / - else
       /   li = link_to user_session_path do
