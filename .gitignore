@@ -25,3 +25,4 @@ tracker.output
 
 # Ignore generated Users image
 public/images
+public/system
