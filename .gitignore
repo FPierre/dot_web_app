@@ -22,3 +22,6 @@
 
 # Ignore Twitter Daemon output file
 tracker.output
+
+# Ignore generated Users image
+public/images
