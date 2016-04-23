@@ -19,23 +19,28 @@ module Api
 
       end
 
-      api :POST, '/settings/reminder-state/:state', 'Set the Reminder display state'
-      description 'Set the Reminder display state if user has the rights'
-      example 'curl http://<domain_url>/api/v1/settings/reminder-state/active'
+      api :POST, '/settings/reminders-state/:state', 'Set the Reminders display state'
+      description 'Set the Reminders display state if user has the rights'
+      example 'curl http://<domain_url>/api/v1/settings/reminders-state/active'
       meta client: [:android_application, :web_application], status: :pending
       param :state, [:sleep, :active], desc: 'Reminder display state', required: true
-      def alert_state
+      def reminders_state
 
       end
 
-      api :POST, '/settings/memo-state/:state', 'Set the Memo display state'
-      description 'Set the Memo display state if user has the rights'
-      example 'curl http://<domain_url>/api/v1/settings/memo-state/active'
+      api :POST, '/settings/weather-state/:state', 'Set the weather display state'
+      description 'Set the weather display state if user has the rights'
+      example 'curl http://<domain_url>/api/v1/settings/weather-state/active'
       meta client: [:android_application, :web_application], status: :pending
-      param :state, [:sleep, :active], desc: 'Memo display state', required: true
-      def memo_state
+      param :state, [:sleep, :active], desc: 'Weather display state', required: true
+      def weather_state
 
       end
+
+      private
+        def settings_params
+          params.required(:settings).permit!(:state)
+        end
     end
   end
 end

@@ -15,12 +15,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
+  # GET /users/sign_up
   # def new
-  #   super
+  #   # super
   # end
 
-  # POST /users
+  api :POST, '/users', 'Create a new User'
+  # description ''
+  # error code: 400, desc: 'Bad request'
+  # example 'curl http://<domain_url>/api/v1/dashboard/path/from/paris/to/lyon'
+  meta client: [:android_application, :web_application], status: :pending
+  # param :from, String, desc: 'Departure city', required: true
   def create
     super do |resource|
       avatar = Avatarly.generate_avatar resource.email, size: 256

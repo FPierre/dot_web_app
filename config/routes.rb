@@ -19,10 +19,10 @@ Rails.application.routes.draw do
       end
 
       scope 'settings', controller: :settings do
+        post 'reminders-state/:state', action: :reminders_state
         post 'sarah-state/:state', action: :sarah_state
         post 'twitter-state/:state', action: :twitter_state
-        post 'alert-state/:state', action: :alert_state
-        post 'memo-state/:state', action: :memo_state
+        post 'weather-state/:state', action: :weather_state
       end
 
       resources :reminders, only: [:create]
