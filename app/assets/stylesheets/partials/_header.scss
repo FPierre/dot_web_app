@@ -4,17 +4,19 @@ nav {
 
   // TODO Passer par $navbar-height-mobile
 
-  height: 66px;
-  line-height: 66px;
+  height: 70px;
+  line-height: 70px;
   // border-bottom: 1px solid #cfd8dc; // blue-grey lighten-4
 
   a {
-    @extend .blue-grey-text, .text-darken-2;
+    @extend .blue-grey-text, .text-darken-3;
   }
 
-  .button-collapse {
-    i {
-      font-size: 2.3rem;
+  a.sidebar {
+    display: inline-block;
+    margin: {
+      top: 5px;
+      left: 20px;
     }
   }
 }
