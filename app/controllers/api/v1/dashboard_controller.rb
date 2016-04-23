@@ -5,7 +5,7 @@ module Api
       description 'Request Google API to get the car path between the city "from" and the other city "to"'
       error code: 400, desc: 'Bad request'
       example 'curl http://<domain_url>/api/v1/dashboard/path/from/paris/to/lyon'
-      meta client: [:sarah], status: :pending
+      meta clients: [:sarah], status: :pending
       param :from, String, desc: 'Departure city', required: true
       param :to, String, desc: 'Arrival city', required: true
       def path

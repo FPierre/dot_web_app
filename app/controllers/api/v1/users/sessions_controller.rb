@@ -1,9 +1,9 @@
 module Api
   module V1
     class Users::SessionsController < Devise::SessionsController
-      resource_description do
-        resource_id 'Users'
-      end
+      # resource_description do
+      #   resource_id 'Users'
+      # end
 
       # before_action :configure_sign_in_params, only: [:create]
 

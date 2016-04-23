@@ -4,7 +4,7 @@ module Api
       api :POST, '/settings/sarah-state/:state', 'Set the SARAH listening state'
       description 'Set the SARAH listening state if user has the rights'
       example 'curl http://<domain_url>/api/v1/settings/sarah-state/active'
-      meta client: [:android_application, :web_application], status: :pending
+      meta clients: [:android_application, :web_application], status: :pending
       param :state, [:sleep, :active], desc: 'Listening state', required: true
       def sarah_state
 
@@ -13,7 +13,7 @@ module Api
       api :POST, '/settings/twitter-state/:state', 'Set the Twitter daemon state'
       description 'Set the Twitter daemon state if user has the rights'
       example 'curl http://<domain_url>/api/v1/settings/twitter-state/sleep'
-      meta client: [:android_application, :web_application], status: :pending
+      meta clients: [:android_application, :web_application], status: :pending
       param :state, [:sleep, :active], desc: 'Daemon state', required: true
       def twitter_state
 
@@ -22,7 +22,7 @@ module Api
       api :POST, '/settings/reminders-state/:state', 'Set the Reminders display state'
       description 'Set the Reminders display state if user has the rights'
       example 'curl http://<domain_url>/api/v1/settings/reminders-state/active'
-      meta client: [:android_application, :web_application], status: :pending
+      meta clients: [:android_application, :web_application], status: :pending
       param :state, [:sleep, :active], desc: 'Reminder display state', required: true
       def reminders_state
 
@@ -31,7 +31,7 @@ module Api
       api :POST, '/settings/weather-state/:state', 'Set the weather display state'
       description 'Set the weather display state if user has the rights'
       example 'curl http://<domain_url>/api/v1/settings/weather-state/active'
-      meta client: [:android_application, :web_application], status: :pending
+      meta clients: [:android_application, :web_application], status: :pending
       param :state, [:sleep, :active], desc: 'Weather display state', required: true
       def weather_state
 

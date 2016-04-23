@@ -16,9 +16,9 @@ module Api
     class Users::RegistrationsController < Devise::RegistrationsController
       skip_before_action :verify_authenticity_token
 
-      resource_description do
-        resource_id 'Users'
-      end
+      # resource_description do
+      #   resource_id 'Users'
+      # end
 
       # before_action :configure_sign_up_params, only: [:create]
       # before_action :configure_account_update_params, only: [:update]

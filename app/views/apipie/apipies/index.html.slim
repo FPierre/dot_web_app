@@ -66,6 +66,21 @@ ul.breadcrumb
 
                 .row
                   .col.s12
+                    h3 Clients
+
+                .row
+                  .col.s12
+                    - if m.dig(:metadata, :clients)
+                      - m[:metadata][:clients].each do |client|
+                        - if client == :android_application
+                          = fa_icon 'android 2x'
+                        - elsif client == :web_application
+                          = fa_icon 'chrome 2x'
+                        - elsif client == :sarah
+                          = fa_icon 'microphone 2x'
+
+                .row
+                  .col.s12
                     h3 Parameters
 
                 - if m[:params].present?
