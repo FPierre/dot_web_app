@@ -16,6 +16,7 @@ ul.breadcrumb
     div = raw @doc[:info]
 
 - @doc[:resources].each do |key, api|
+  / = ap(api).html_safe
   .row
     .col.s12
       h2 = api[:name]
@@ -27,6 +28,7 @@ ul.breadcrumb
         - api[:methods].each do |m|
           - if !m[:show]
             - next
+
 
           - m[:apis].each do |a|
             li
@@ -45,13 +47,12 @@ ul.breadcrumb
                     = a[:short_description]
 
                   .col.s2.m1
-                    - if a[:deprecated]
-                      = fa_icon 'exclamation-triangle', class: 'red-text text-lighten-2'
-                    - elsif a.dig :metadata, :status == :pending
-                      = fa_icon 'comments', class: 'orange-text text-lighten-2'
-                    - elsif a.dig :metadata, :status == 'ok'
-                      = fa_icon 'check', class: 'green-text text-lighten-2'
-                    - elsif a[:metadata].blank?
+                    - if m.dig(:metadata, :status)
+                      - if m[:metadata][:status] == :pending
+                        = fa_icon 'check', class: 'green-text text-lighten-2'
+                      - elsif m[:metadata][:status] == :ok
+                        = fa_icon 'check', class: 'green-text text-lighten-2'
+                    - else
                       = fa_icon 'question'
 
               .collapsible-body
@@ -92,11 +93,6 @@ ul.breadcrumb
                                   = fa_icon 'check-circle', class: 'fa-2x green-text text-lighten-2'
                                 - else
                                   = fa_icon 'times-circle', class: 'fa-2x red-text text-lighten-2'
-
-                - if m[:metadata].present?
-                  .row
-                    .col.s12
-                      pre.prettyprint.lang-yaml = m[:metadata].to_yaml.gsub(/---\n/, "")
 
 - unless content_for(:apipie_footer) == @doc[:copyright]
   = content_for :apipie_footer, raw(@doc[:copyright])
