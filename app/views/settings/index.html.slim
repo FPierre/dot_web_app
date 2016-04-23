@@ -1,64 +1,11 @@
-/ = form_for 'user' do |f|
-/   .row
-/     .responsive-col
-/       = f.label :email
-/       = f.email_field :email, autofocus: true
-
-/   .row
-/     .responsive-col
-/       = f.label :password
-
-/       - if @minimum_password_length
-/         em  '(#{@minimum_password_length} characters minimum)'
-
-/       = f.password_field :password, autocomplete: 'off'
-
-/   .row
-/     .responsive-col
-/       = f.label :password_confirmation
-/       = f.password_field :password_confirmation, autocomplete: 'off'
-
-/   .row
-/     .responsive-col
-/       / = f.label :password_confirmation
-/       = f.check_box :password_confirmation
-
-/   .row
-/     .responsive-col
-/       .center-align
-/         = f.submit class: 'btn-large waves-effect waves-light' do
-/           i.material-icons.right send
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .fixed-action-btn style='bottom: 45px; right: 24px;'
-  a.btn.btn-floating.btn-large.waves-effect.waves-light.green.modal-trigger href='#modal1' = fa_icon 'plus'
+  a.btn-floating.btn-large.waves-effect.waves-light.green
+    = fa_icon 'plus'
 
-#modal1.modal.bottom-sheet
-  .modal-content
-    h4 Modal Header
-    p A bunch of text
-
-  .modal-footer
-    a.modal-action.modal-close.waves-effect.waves-green.btn-flat href='#!' Agree
-
-
-
-
-
-
-
+  ul
+    li
+      = link_to new_user_registration_path, class: 'btn-floating green' do
+        = fa_icon 'plus', text: 'insert_chart'
 
 ul.tabs
   li.tab
@@ -88,16 +35,6 @@ ul.tabs
                   = fa_icon 'check'
                 - else
                   = fa_icon 'question'
-
-
-    / ul
-    /   li
-    /     / a.btn-floating.green
-    /     /   = fa_icon 'check'
-    /   li
-    /     span.label.red.white-text Supprimer
-    /     a.btn-floating.red
-    /       = fa_icon 'trash'
 
 #settings
   .row

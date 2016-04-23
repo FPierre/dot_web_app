@@ -14,6 +14,8 @@ end
 module Api
   module V1
     class Users::RegistrationsController < Devise::RegistrationsController
+      skip_before_action :verify_authenticity_token
+
       resource_description do
         resource_id 'Users'
       end

@@ -14,5 +14,5 @@ nav
         li.current-user
           .center-align = image_tag current_user.avatar.url, class: 'circle'
 
-          = link_to edit_user_registration_path(current_user), class: 'btn-flat waves-effect' do
+          = link_to edit_user_registration_path, class: 'btn-flat waves-effect' do
             span = current_user.email
