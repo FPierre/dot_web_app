@@ -1,12 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
-  resource_description do
-    resource_id 'Users'
-  end
-
   # before_action :configure_sign_in_params, only: [:create]
 
-  api :GET, '/users/sign_in', 'Display the form for connect an User'
-  show false
   def new
     super
   end

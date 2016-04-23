@@ -1,13 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  resource_description do
-    resource_id 'Users'
-  end
-
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  api :GET, '/users/sign_up', 'Display the form for create an User'
-  show false
   def new
     super
   end
@@ -30,8 +24,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   end
   # end
 
-  api :GET, '/users/edit', 'Display the form for edit an User'
-  show false
   def edit
     super
   end
