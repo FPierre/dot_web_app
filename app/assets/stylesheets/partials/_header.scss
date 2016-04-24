@@ -22,16 +22,8 @@ nav {
 }
 
 .side-nav {
-  li.current-user {
-    position: absolute;
-    bottom: 65px;
-
-    .center-align {
-      line-height: 20px;
-    }
-
-    img {
-      width: 33%;
-    }
+  img {
+    width: 28%;
+    margin-top: 25px;
   }
 }
