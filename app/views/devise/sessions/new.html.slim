@@ -1,17 +1,19 @@
 = form_for(resource, as: resource_name, url: api_v1_user_session_path(resource_name, format: nil)) do |f|
   .row
-    .responsive-col
+    .responsive-col.input-field
+      = fa_icon 'envelope', class: 'prefix'
       = f.label :email
       = f.email_field :email, autofocus: true
 
   .row
-    .responsive-col
+    .responsive-col.input-field
+      = fa_icon 'key', class: 'prefix'
       = f.label :password
       = f.password_field :password, autocomplete: 'off'
 
   - if devise_mapping.rememberable?
     .row
-      .responsive-col
+      .responsive-col.input-field
         = f.check_box :remember_me
         = f.label :remember_me
 

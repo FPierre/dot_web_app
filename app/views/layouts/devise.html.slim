@@ -13,10 +13,11 @@ html
 
     / = action_cable_meta_tag
   body class="#{controller_name.deconstantize} #{controller_name.demodulize} #{action_name}"
-    / - if notice || alert
-    /   .row
-    /     .col.s12
-    /       p.notice.center-text = notice
-    /       p.alert.center-text = alert
+    - if notice || alert
+      .row
+        .col.s12
+          .center-align
+            p.notice.center-text = notice
+            p.alert.center-text = alert
 
     main = yield
