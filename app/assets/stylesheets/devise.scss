@@ -13,3 +13,10 @@
 @import 'components/*';
 @import 'partials/*';
 @import 'views/**/*';
+
+.sessions.new {
+  .fa.prefix {
+    margin-top: 15px;
+    font-size: 1.3rem;
+  }
+}
