@@ -8,6 +8,19 @@
       #zone-2.zone
         .label Zone 2
 
+- if @weather.present?
+  span = wi_icon codes[@weather.condition.code.to_s], class: 'wi-4x'
+  span = "#{@weather.condition.temp} #{@weather.units.temperature}"
+
+  - @weather.forecasts.each do |forecast|
+    / = ap(forecast).html_safe
+    / = ap(forecast.code.to_s).html_safe
+    .col.s2
+      span = forecast.day
+      span = wi_icon codes[forecast.code.to_s], class: 'wi-5x'
+      span = "#{forecast.high} #{forecast.low}"
+
+
 
 
 

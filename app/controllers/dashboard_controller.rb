@@ -5,8 +5,8 @@ class DashboardController < ApplicationController
 
   def index
     # TODO Initializer
-    # weather_client = YahooWeatherService.new
-    # @weather = weather_client.fetch
+    weather_client = YahooWeatherService.new
+    @weather = weather_client.fetch
 
     # Ancien
     # api_sarah
