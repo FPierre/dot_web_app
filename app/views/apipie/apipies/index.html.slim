@@ -47,11 +47,13 @@ ul.breadcrumb
                     = a[:short_description]
 
                   .col.s2.m1
-                    - if m.dig(:metadata, :status)
+                    - if m.dig :metadata, :status
                       - if m[:metadata][:status] == :pending
-                        = fa_icon 'check', class: 'green-text text-lighten-2'
+                        = fa_icon 'question'
                       - elsif m[:metadata][:status] == :ok
                         = fa_icon 'check', class: 'green-text text-lighten-2'
+                      - elsif m[:metadata][:status] == :ko
+                        = fa_icon 'times', class: 'red-text text-lighten-2'
                     - else
                       = fa_icon 'question'
 
@@ -70,7 +72,7 @@ ul.breadcrumb
 
                 .row
                   .col.s12
-                    - if m.dig(:metadata, :clients)
+                    - if m.dig :metadata, :clients
                       - m[:metadata][:clients].each do |client|
                         - if client == :android_application
                           = fa_icon 'android 2x'
