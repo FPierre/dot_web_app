@@ -8,8 +8,8 @@ module Api
       error code: 422, desc: 'Unprocessable entity'
       error code: 201, desc: 'Created'
       meta clients: [:android_application, :web_application], status: :pending
-      # param :title, String, desc: 'Reminder title', required: true
-      # param :content, String, desc: 'Reminder content', required: true
+      param :title, String, desc: 'Reminder title', required: true
+      param :content, String, desc: 'Reminder content', required: true
       def create
         reminder = Reminder.new reminder_params
 
