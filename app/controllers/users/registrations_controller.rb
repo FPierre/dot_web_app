@@ -6,37 +6,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # api :POST, '/users', 'Create an User'
-  # # description ''
-  # # error code: 400, desc: 'Bad request'
-  # # example 'curl http://<domain_url>/api/v1/dashboard/path/from/paris/to/lyon'
-  # meta client: [:android_application, :web_application], status: :pending
-  # # param :from, String, desc: 'Departure city', required: true
-  # def create
-  #   super do |resource|
-  #     avatar = Avatarly.generate_avatar resource.email, size: 256
-
-  #     File.open("public/images/#{resource.email.parameterize}.png", 'wb') do |f|
-  #       f.write avatar
-  #     end
-
-  #     resource.update avatar: File.new("public/images/#{resource.email.parameterize}.png")
-  #   end
-  # end
-
   def edit
     super
   end
-
-  # PUT /resource
-  # def update
-  #   super
-  # end
-
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

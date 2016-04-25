@@ -14,6 +14,8 @@ end
 module Api
   module V1
     class Users::RegistrationsController < Devise::RegistrationsController
+      # respond_to :json
+
       skip_before_action :verify_authenticity_token
 
       # resource_description do
@@ -25,15 +27,42 @@ module Api
 
       api :POST, '/users', 'Create an User'
       def create
-        super do |resource|
-          avatar = Avatarly.generate_avatar resource.email, size: 256
+        user = User.new params[:user]
 
-          File.open("public/images/#{resource.email.parameterize}.png", 'wb') do |f|
-            f.write avatar
+        respond_to do |format|
+          if user.save
+            format.html {  }
+            format.json { render json: user, status: :created }
+          else
+            format.html {  }
+            format.json { render json: user.errors, status: :unprocessable_entity }
           end
-
-          resource.update avatar: File.new("public/images/#{resource.email.parameterize}.png")
         end
+
+
+
+
+        # super
+
+        # respond_to do |format|
+        #   format.html { redirect_to root_path and return }
+        #   format.json { render json: resource and return }
+        # end
+
+        # super do |resource|
+        #   avatar = Avatarly.generate_avatar resource.email, size: 256
+
+        #   File.open("public/images/#{resource.email.parameterize}.png", 'wb') do |f|
+        #     f.write avatar
+        #   end
+
+        #   resource.update avatar: File.new("public/images/#{resource.email.parameterize}.png")
+
+        #   # respond_to do |format|
+        #   #   format.html { redirect_to root_path }
+        #   #   format.json { render json: resource }
+        #   # end
+        # end
       end
 
       api :PUT, '/users', 'Update an User'
@@ -55,8 +84,7 @@ module Api
       #   super
       # end
 
-      # protected
-
+      protected
       # If you have extra params to permit, append them to the sanitizer.
       # def configure_sign_up_params
       #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
@@ -72,10 +100,15 @@ module Api
       #   super(resource)
       # end
 
-      # The path used after sign up for inactive accounts.
-      # def after_inactive_sign_up_path_for(resource)
-      #   super(resource)
-      # end
+        # The path used after sign up for inactive accounts.
+        def after_inactive_sign_up_path_for resource
+          # super resource
+
+          # respond_to do |format|
+          #   format.html { super(resource) }
+          #   format.json { render json: resource }
+          # end
+        end
     end
   end
 end
