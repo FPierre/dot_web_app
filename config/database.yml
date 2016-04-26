@@ -1,20 +1,16 @@
 default: &default
-  adapter: mysql2
+  adapter: sqlite3
   pool: 5
   timeout: 5000
-  encoding: utf8
-  username: dot_web_app
-  password: K7Ui9b.s6^-U4fp
-  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: dot_web_app_development
+  database: db/development.sqlite3
 
 test:
   <<: *default
-  database: dot_web_app_test
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  database: dot_web_app_production
+  database: db/production.sqlite3
