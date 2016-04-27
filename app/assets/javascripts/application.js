@@ -4,7 +4,7 @@
 //= require vue
 //= require vue-resource
 //= require materialize-sprockets
-// require underscore
+//= require underscore
 //= require gmaps/google
 //
 //= require_tree .
