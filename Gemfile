@@ -5,7 +5,7 @@ ruby '2.3.0'
 
 gem 'simple_token_authentication', git: 'git://github.com/FPierre/simple_token_authentication.git', branch: 'master'
 
-# gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
+gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 gem 'awesome_print'
 gem 'coffee-rails', '~> 4.1', '>= 4.1.1'
 gem 'font-awesome-rails'

@@ -176,6 +176,7 @@ GEM
     turbolinks-source (5.0.0.beta4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    underscore-rails (1.8.3)
     warden (1.2.6)
       rack (>= 1.0)
     weather-icons-rails (0.1.1)
@@ -214,6 +215,7 @@ DEPENDENCIES
   sqlite3
   turbolinks (~> 5.x)
   tzinfo-data
+  underscore-rails (~> 1.8, >= 1.8.3)
   weather-icons-rails
   web-console (~> 3.0)
 
