@@ -1,10 +1,10 @@
 //= require jquery2
-//= require jquery_ujs
+// require jquery_ujs
 //= require turbolinks
 //= require vue
 //= require vue-resource
 //= require materialize-sprockets
-//= require underscore
+// require underscore
 //= require gmaps/google
 //
 //= require_tree .
