@@ -7,6 +7,7 @@ gem 'simple_token_authentication', git: 'git://github.com/FPierre/simple_token_a
 
 # gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 gem 'awesome_print'
+gem 'coffee-rails', '~> 4.1', '>= 4.1.1'
 gem 'font-awesome-rails'
 gem 'gmaps4rails'
 gem 'jquery-rails'
