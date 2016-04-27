@@ -1,7 +1,13 @@
 App.resize = App.cable.subscriptions.create('ResizeChannel', {
-  connected: function() {},
-  disconnected: function() {},
+  connected: function() {
+    console.log('ResizeChannel: connected');
+  },
+  disconnected: function() {
+    console.log('ResizeChannel: connected');
+  },
   received: function(data) {
+    console.log('ResizeChannel: received');
+
     console.log(data);
 
     var $zone = $('#zone-' + data['zone']);
@@ -38,6 +44,8 @@ App.resize = App.cable.subscriptions.create('ResizeChannel', {
     }
   },
   speak: function(resize) {
+    console.log('ResizeChannel: speak');
+
     return this.perform('speak', {
       resize: resize
     });
