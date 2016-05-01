@@ -1,40 +1,28 @@
 App.reminder = App.cable.subscriptions.create('ReminderChannel', {
-  connected: function() {
-    console.log('ReminderChannel: connected');
-  },
-  disconnected: function() {
-    console.log('ReminderChannel: disconnected');
-  },
-  received: function(data) {
-    console.log('ReminderChannel: received');
-
-    console.log(data);
+  connected: function () { console.log('ReminderChannel: connected') },
+  disconnected: function () { console.log('ReminderChannel: disconnected') },
+  received: function (data) {
+    console.log('ReminderChannel: received')
 
     if ($('body.dashboard.index').length && data['reminder'] !== undefined) {
       var reminder = data['reminder']
-      var toastContent = $('<div class="reminder"><h1>' + reminder['title'] + '</h1><p>' + reminder['content'] + '</p></div>');
+      var toastContent = $('<div class="reminder priority-' + reminder['priority'] + '">' +
+                             '<div>' + reminder['user'] + '</div>' +
+                              '<p>' + reminder['content'] + '</p>' +
+                              '<p>' + reminder['created_at'] + '</p>' +
+                           '</div>')
 
-      return Materialize.toast(toastContent, data['duration']);
+      return Materialize.toast(toastContent, reminder['duration'], 'rounded')
     }
   },
-  speak: function(data) {
-    console.log('ReminderChannel: speak');
-
-    console.log(data);
+  speak: function (data) {
+    console.log('ReminderChannel: speak')
 
     return this.perform('speak', {
       data: data
-    });
+    })
   }
-});
-
-
-
-
-
-
-
-
+})
 
 
 // App.reminder = App.cable.subscriptions.create('ReminderChannel', {

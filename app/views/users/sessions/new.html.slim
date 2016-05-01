@@ -1,0 +1,23 @@
+= form_tag user_session_path
+  .row
+    .responsive-col.input-field
+      = fa_icon 'envelope', class: 'prefix'
+      = label_tag :email
+      = email_field_tag :email, nil, autofocus: true
+
+  .row
+    .responsive-col.input-field
+      = fa_icon 'key', class: 'prefix'
+      = label_tag :password
+      = password_field_tag :password, nil, autocomplete: 'off'
+
+  / - if devise_mapping.rememberable?
+  /   .row
+  /     .responsive-col.input-field
+  /       = f.check_box :remember_me
+  /       = f.label :remember_me
+
+  .row
+    .responsive-col
+      .center-align
+        = submit_tag 'Connexion', class: 'btn-large waves-effect waves-light'

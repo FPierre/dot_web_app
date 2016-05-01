@@ -1,0 +1,49 @@
+= form_tag create_user_registration_path
+  .row
+    .responsive-col
+      .file-field.input-field
+        .btn
+          span File
+          input type='file'
+
+        .file-path-wrapper
+          = file_field_tag :avatar, class: 'file-path validate'
+
+  / .row
+  /   .responsive-col
+  /     = devise_error_messages!
+
+  .row
+    .responsive-col
+      = label_tag :firstname
+      = text_field_tag :firstname, nil, autofocus: true
+
+  .row
+    .responsive-col
+      = label_tag :lastname
+      = text_field_tag :lastname, nil, autofocus: true
+
+  .row
+    .responsive-col
+      = label_tag :email
+      = email_field_tag :email, nil, autofocus: true
+
+  .row
+    .responsive-col
+      = label_tag :password
+
+      / - if @minimum_password_length
+      /   em "(#{@minimum_password_length} characters minimum)"
+
+      = password_field_tag :password, nil, autocomplete: 'off'
+
+  .row
+    .responsive-col
+      = label_tag :password_confirmation
+      = password_field_tag :password_confirmation, nil, autocomplete: 'off'
+
+  .row
+    .responsive-col
+      .center-align
+        = submit_tag 'Créer', class: 'btn-large waves-effect waves-light' do
+          i.material-icons.right send

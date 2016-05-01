@@ -1,0 +1,17 @@
+default: &default
+  api_url: 'localhost'
+  api_port: 4000
+  api_ssl: false
+  api_token: 'test'
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  api_url: 'localhost'
+  api_port: 443
+  api_ssl: true
+  api_token: 'test'

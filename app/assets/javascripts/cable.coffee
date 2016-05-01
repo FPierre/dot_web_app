@@ -14,7 +14,7 @@
 # A l'air de fonctionner !
 # avec api rails s -p4000
 # et api  rails s
-App.cable = ActionCable.createConsumer('ws://localhost:4000/cable')
+App.cable = ActionCable.createConsumer('ws://192.168.0.23:4000/cable')
 
 # this.App || (this.App = {});
 

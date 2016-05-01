@@ -3,7 +3,7 @@ nav
     a.sidebar.blue-grey-text.text-lighten-2 href='#' data-activates='mobile-demo' = fa_icon 'bars 2x'
 
     ul#mobile-demo.side-nav
-      - if user_signed_in?
-        li.center-align = image_tag current_user.avatar.url, class: 'circle'
-        li = link_to 'Profil', edit_user_registration_path
-        li = link_to 'Déconnexion', api_v1_destroy_user_session_path, method: :delete
+      / - if user_signed_in?
+      /   li.center-align = image_tag current_user.avatar.url, class: 'circle'
+      /   li = link_to 'Profil', edit_user_registration_path
+      /   li = link_to 'Déconnexion', api_v1_destroy_user_session_path, method: :delete
