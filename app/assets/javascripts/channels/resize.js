@@ -1,10 +1,6 @@
 App.resize = App.cable.subscriptions.create('ResizeChannel', {
-  connected: function() {
-    console.log('ResizeChannel: connected');
-  },
-  disconnected: function() {
-    console.log('ResizeChannel: connected');
-  },
+  connected: function() { console.log('ResizeChannel: connected'); },
+  disconnected: function() { console.log('ResizeChannel: connected'); },
   received: function(data) {
     console.log('ResizeChannel: received');
 

@@ -3,9 +3,7 @@ App.path = App.cable.subscriptions.create('PathChannel', {
   disconnected: function () { console.log('PathChannel: disconnected') },
   received: function (data) {
     console.log('PathChannel: received')
-
     console.log(data)
-
 
     // Google Map
 
@@ -60,16 +58,6 @@ App.path = App.cable.subscriptions.create('PathChannel', {
       handler.bounds.extendWith(markers)
       handler.fitMapToBounds()
     })
-
-
-
-
-
-
-
-
-
-
   },
   speak: function (path) {
     console.log('PathChannel: speak')

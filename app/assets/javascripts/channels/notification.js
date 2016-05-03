@@ -4,17 +4,25 @@ App.notification = App.cable.subscriptions.create('NotificationChannel', {
   received: function (data) {
     console.log('NotificationChannel: received')
 
-    if ($('body.dashboard.index').length) {
-      var toastContent = $('<div class="tweet"><span>' + data['author'] + '</span><p>' + data['message'] + '</p></div>')
+    console.log(data)
 
-      return Materialize.toast(toastContent, data['duration'])
+    if ($('body.dashboard.index').length && data['notification'] !== undefined) {
+      var notification = data.notification
+      var toastContent = $('<div class="notification priority-' + notification.priority + '">' +
+                             '<div class="user">' + notification.user + '</div>' +
+                             '<p class="content">' + notification.content + '</p>' +
+                             '<p class="created-at">' + notification.created_at + '</p>' +
+                           '</div>')
+
+      console.log(toastContent)
+      return Materialize.toast(toastContent, 20000, 'rounded')
     }
   },
-  speak: function (notification) {
+  speak: function (data) {
     console.log('NotificationChannel: speak')
 
     return this.perform('speak', {
-      notification: notification
+      data: data
     })
   }
 })
