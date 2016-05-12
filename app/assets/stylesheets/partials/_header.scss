@@ -1,5 +1,5 @@
 nav {
-  @extend .white, .blue-grey-text, .text-darken-2;
+  // @extend .white, .blue-grey-text, .text-darken-2;
   // @extend .white, .blue-grey-text, .text-darken-2, .z-depth-0;
 
   // TODO Passer par $navbar-height-mobile
@@ -9,7 +9,7 @@ nav {
   // border-bottom: 1px solid #cfd8dc; // blue-grey lighten-4
 
   a {
-    @extend .blue-grey-text, .text-darken-3;
+    // @extend .blue-grey-text, .text-darken-3;
   }
 
   a.sidebar {
@@ -22,8 +22,15 @@ nav {
 }
 
 .side-nav {
-  img {
-    width: 28%;
-    margin-top: 25px;
+  li {
+    a {
+      @extend .blue-grey-text, .text-darken-1;
+
+      font-size: 1.3rem;
+
+      i {
+        margin-right: 20px;
+      }
+    }
   }
 }

@@ -7,54 +7,67 @@
       = link_to new_user_registration_path, class: 'btn-floating green' do
         = fa_icon 'plus', text: 'insert_chart'
 
-ul.tabs
-  li.tab
-    a href='#users' Utilisateurs
+.row
+  / .responsive-col
+  .col.s12.m8.offset-m2.l6.offset-l3
+    ul.collection.with-header
+      li.collection-header
+        h4 All Users
 
-  li.tab
-    a.active href='#settings' Comportements
-
-#users
-  .row
-    .responsive-col
       - if @users.present?
-        ul.collection
-          - @users.each do |user|
-            li.collection-item.avatar
-              = link_to edit_user_registration_path do
-                = image_tag user.avatar.url, class: 'circle'
+        - @users.each do |user|
+          / = ap(user).html_safe
 
-                span.title = user.email
-                span.subtitle
-                  - if user.admin?
-                    | Administrateur
+          li.collection-item
+            div
+              p
+                - if user['attributes']['approved']
+                  input(id='approved-user-#{user['attributes']['user-id']}' type='checkbox' checked)
+                - else
+                  input(id='approved-user-#{user['attributes']['user-id']}' type='checkbox')
 
-                / = user.created_at
+                label for='approved-user-#{user['attributes']['user-id']}'
 
-                div.secondary-content
-                  - if user.approved
-                    = fa_icon 'check'
-                  - else
-                    = fa_icon 'question'
+              .secondary-content.user-info
+                ' #{user['attributes']['firstname']} #{user['attributes']['lastname']}
+
+                - if user['attributes']['admin']
+                  | (Admin)
+
+                .user-settings
+                  a.dropdown-button href='#' data-activates='user-setting-#{user['attributes']['user-id']}' data-alignment='right' = fa_icon 'ellipsis-v'
+
+                  ul.dropdown-content id='user-setting-#{user['attributes']['user-id']}'
+                    li: a href='#!' Edit
+                    li.divider
+                    li: a href='#!' Delete
+
+
+
+    / - if @users.present?
+    /   ul.collection
+    /     - @users.each do |user|
+    /       li.collection-item.avatar
+    /         = link_to edit_user_registration_path do
+    /           = image_tag user.avatar.url, class: 'circle'
+
+    /           span.title = user.email
+    /           span.subtitle
+    /             - if user.admin?
+    /               | Administrateur
+
+    /           / = user.created_at
+
+    /           div.secondary-content
+    /             - if user.approved
+    /               = fa_icon 'check'
+    /             - else
+    /               = fa_icon 'question'
 
 #settings
   .row
-    .responsive-col
-      ul.collection.with-header
-        li.collection-header
-          h4 Général
-
-        li.collection-item
-          div
-            | Désactiver tous les affichages
-            div.secondary-content
-              .switch
-                label
-                  input type='checkbox' v-model='general.stopEverything.value'
-                  span.lever
-
-  .row
-    .responsive-col
+    / .responsive-col
+    .col.s12.m8.offset-m2.l6.offset-l3
       ul.collection.with-header
         li.collection-header
           h4 SARAH
@@ -62,14 +75,16 @@ ul.tabs
         li.collection-item
           div
             | Activer
-            div.secondary-content
+
+            .secondary-content
               .switch
                 label
                   input type='checkbox' v-model='sarah.active.value' @change='update'
                   span.lever
 
   .row
-    .responsive-col
+    / .responsive-col
+    .col.s12.m8.offset-m2.l6.offset-l3
       ul.collection.with-header
         li.collection-header
           h4 Twitter
@@ -77,14 +92,16 @@ ul.tabs
         li.collection-item
           div
             | Activer
-            div.secondary-content
+
+            .secondary-content
               .switch
                 label
                   input type='checkbox' v-model='twitter.active.value' @change='update'
                   span.lever
 
   .row
-    .responsive-col
+    / .responsive-col
+    .col.s12.m8.offset-m2.l6.offset-l3
       ul.collection.with-header
         li.collection-header
           h4 Mémos
@@ -92,20 +109,16 @@ ul.tabs
         li.collection-item
           div
             | Afficher
-            div.secondary-content
+
+            .secondary-content
               .switch
                 label
                   input type='checkbox' v-model='reminders.active.value' @change='update'
                   span.lever
 
-        li.collection-item
-          div
-            | Durée d'affichage
-            p.range-field
-              input type='range' min='10' max='60'
-
   .row
-    .responsive-col
+    / .responsive-col
+    .col.s12.m8.offset-m2.l6.offset-l3
       ul.collection.with-header
         li.collection-header
           h4 Météo
@@ -113,7 +126,8 @@ ul.tabs
         li.collection-item
           div
             | Activer
-            div.secondary-content
+
+            .secondary-content
               .switch
                 label
                   input type='checkbox' v-model='weather.active.value' @change='update'
@@ -122,7 +136,8 @@ ul.tabs
         li.collection-item
           div
             | Jour courant uniquement
-            div.secondary-content
+
+            .secondary-content
               .switch
                 label
                   input type='checkbox' v-model='weather.currentDayOnly.value' @change='update'

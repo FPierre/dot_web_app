@@ -9,5 +9,7 @@
 
 # api: rails s -p4000
 # app:  rails s
-@App ||= {}
-App.cable = ActionCable.createConsumer('ws://localhost:4000/cable')
+
+if $('body.dashboard.index').length
+  @App ||= {}
+  App.cable = ActionCable.createConsumer('ws://localhost:4000/cable')
