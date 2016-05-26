@@ -1,17 +1,16 @@
 # https://github.com/plataformatec/devise/wiki/How-To:-Require-admin-to-activate-account-before-sign_in
 Rails.application.routes.draw do
-  # Must be above devise_for :users method
-  # https://github.com/plataformatec/devise/wiki/How-To:-Change-Default-Sign_up---Registration-Path-with-Custom-Path
   scope 'users' do
-    post 'create', to: 'users/registrations#create', as: :user_registration
-    get 'edit', to: 'users/registrations#edit', as: :edit_user_registration
+    get 'sign_in', to: 'users/sessions#new'
     post 'sign_in', to: 'users/sessions#create', as: :user_session
+
+    get 'sign_up', to: 'users/registrations#new'
+    post 'sign_up', to: 'users/registrations#create', as: :user_registration
   end
 
-  get 'sign_up', to: 'users/registrations#new', as: :new_user_registration
-  get 'sign_in', to: 'users/sessions#new', as: :new_user_session
-
-  get 'settings', to: 'settings#index'
+  get :settings, to: 'settings#show'
+  resources :settings, only: :update
+  resources :reminders, only: [:new, :create]
 
   root 'dashboard#index'
 end

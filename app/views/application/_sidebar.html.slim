@@ -1,0 +1,49 @@
+nav
+  .nav-wrapper
+    a.sidebar href='#' data-activates='sidebar-nav'
+      i.material-icons menu
+
+    ul#sidebar-nav.side-nav.fixed
+      / = ap(@current_user).html_safe
+
+      - if @current_user.present?
+        .current-user
+          .row
+            .col.s6.offset-s3
+              - if @current_user[:attributes][:avatar].present?
+                img.circle.responsive-img src='http://localhost:4000/images/#{@current_user[:attributes][:avatar]}'
+
+          .row
+            .col.s12
+              span #{@current_user[:attributes][:firstname]} #{@current_user[:attributes][:lastname]}
+
+          .row
+            .col.s12
+              span = @current_user[:attributes][:email]
+
+      li
+        a href='/users/index'
+          .row
+            .col.s3
+              i.material-icons people
+
+            .col.s7
+              | Utilisateurs
+
+      li
+        a href='/settings/index'
+          .row
+            .col.s3
+              i.material-icons settings
+
+            .col.s7
+              | Options
+
+      li
+        a href='/reminders/new'
+          .row
+            .col.s3
+              i.material-icons notifications
+
+            .col.s7
+              | Mémos

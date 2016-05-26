@@ -26,6 +26,7 @@ class DotApiConnector
   else
     options.deep_symbolize_keys!
 
+    # Only one supported option
     @user_token = options[:user_token]
   end
 
@@ -48,26 +49,9 @@ class DotApiConnector
     process{ resource.post(route_for('sign_in'), attributes.to_json, headers) }
   end
 
-  # def signout
-  #   process{ resource.post(route_for('signout'), {}.to_json, headers ) }
-  # end
-
-  # def verify_authentication
-  #   process{ resource.get(route_for('verify_authentication'), headers ) }
-  # end
-
-  # # EXTERNAL USER
-  # def get_external_user
-  #   process{ resource.get(route_for('external_user'), headers) }
-  # end
-
-  # def update_external_user attributes = {}
-  #   process{ resource.patch(route_for('external_user'), attributes.to_json, headers) }
-  # end
-
-  # def destroy_external_user
-  #   process{ resource.delete(route_for('external_user'), headers) }
-  # end
+  def verify_authentication
+    process{ resource.get(route_for('verify_authentication'), headers) }
+  end
 
   # Reminder
 
@@ -77,91 +61,13 @@ class DotApiConnector
 
   # Settings
 
+  def get_setting setting_id
+    process{ resource.get(route_for("settings/#{setting_id}"), headers) }
+  end
+
   def update_setting attributes = {}
     process{ resource.patch(route_for('settings'), attributes.to_json, headers) }
   end
-
-  # # COMPTE
-  # def get_comptes options = {}
-  #   process{ resource.get(route_for('comptes', options), headers) }
-  # end
-
-  # def get_compte compte_id
-  #   process{ resource.get(route_for("comptes/#{compte_id}"), headers) }
-  # end
-
-  # def update_compte compte_id, attributes = {}
-  #   process{ resource.patch(route_for("comptes/#{compte_id}"), attributes.to_json, headers) }
-  # end
-
-  # # TRANSMISSION
-  # def get_transmissions_for_compte compte_id, options = {}
-  #   process{ resource.get(route_for("comptes/#{compte_id}/transmissions", options), headers) }
-  # end
-
-  # def get_transmission_for_compte compte_id, transmission_id
-  #   process{ resource.get(route_for("comptes/#{compte_id}/transmissions/#{transmission_id}"), headers) }
-  # end
-
-  # def update_transmission_for_compte compte_id, transmission_id, attributes = {}
-  #   process{ resource.patch(route_for("comptes/#{compte_id}/transmissions/#{transmission_id}"), attributes.to_json, headers) }
-  # end
-
-  # def get_transmissions_for_piste piste_id, options = {}
-  #   process{ resource.get(route_for("pistes/#{piste_id}/transmissions", options), headers) }
-  # end
-
-  # def update_transmission_for_piste piste_id, transmission_id, attributes = {}
-  #   process{ resource.patch(route_for("pistes/#{piste_id}/transmissions/#{transmission_id}"), attributes.to_json, headers) }
-  # end
-
-  # # OPPORTUNITE PAIEMENTS (Factures)
-  # def get_opportune_paiements compte_id, options = {}
-  #   process{ resource.get(route_for("comptes/#{compte_id}/opportunite_paiements", options), headers) }
-  # end
-
-  # def get_opportune_paiement compte_id, opportunite_paiement_id
-  #   process{ resource.get(route_for("comptes/#{compte_id}/opportunite_paiements/#{opportunite_paiement_id}"), headers) }
-  # end
-
-  # # PISTE
-  # def get_pistes options = {}
-  #   process{ resource.get(route_for('pistes', options), headers) }
-  # end
-
-  # def get_piste piste_id
-  #   process{ resource.get(route_for("pistes/#{piste_id}"), headers) }
-  # end
-
-  # def update_piste piste_id, attributes = {}
-  #   process{ resource.patch(route_for("pistes/#{piste_id}"), attributes.to_json, headers) }
-  # end
-
-  # def create_piste attributes = {}
-  #   process{ resource.post(route_for('pistes'), attributes.to_json, headers) }
-  # end
-
-  # # QUALIFICATION
-  # def update_qualification piste_id, attributes = {}
-  #   process{ resource.patch(route_for("pistes/#{piste_id}/qualification"), attributes.to_json, headers) }
-  # end
-
-  # def create_qualification piste_id, attributes = {}
-  #   process{ resource.post(route_for("pistes/#{piste_id}/qualification"), attributes.to_json, headers) }
-  # end
-
-  # def destroy_qualification piste_id
-  #   process{ resource.delete(route_for("pistes/#{piste_id}/qualification"), headers) }
-  # end
-
-  # # COMMENT
-  # def get_comments compte_id, options = {}
-  #   process{ resource.get(route_for("comptes/#{compte_id}/comments", options), headers) }
-  # end
-
-  # def get_comment compte_id, comment_id
-  #   process{ resource.get(route_for("comptes/#{compte_id}/comments/#{comment_id}"), headers) }
-  # end
 
   private
     API_VERSION = 'v1'
@@ -170,19 +76,16 @@ class DotApiConnector
       @data, @meta = [nil, nil]
 
       response = yield
-    rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH, Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError => e # API unreachable
+    rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH, Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError => e
       raise DotApiConnector::Error.new 'API is unreachable'
     else
       case response
       when Net::HTTPSuccess
         begin
           result = JSON.parse(response.body).with_indifferent_access
-# ap result
 
           @data = result&.dig :data
-          # @data = result&.dig(:data)&.with_indifferent_access
           @meta = result&.dig :meta
-          # @meta = result&.dig(:meta)&.with_indifferent_access
 
           self
         # JSON error
@@ -203,7 +106,7 @@ class DotApiConnector
     end
 
     def headers params = {}
-      params_header = { token: @api_token, user_token: @user_token }.merge(params).map{ |k, v| "#{k}=#{v}" }.join(';')
+      params_header = { token: @api_token, user_token: @user_token }.merge(params).map{ |k, v| "#{k}=#{v}" }.join ';'
 
       params.merge('Authorization' => "Token #{params_header}",
                    'Content-Type' => 'application/json',
@@ -213,7 +116,7 @@ class DotApiConnector
     def resource
       http = Net::HTTP.new @api_url, @api_port
 
-      http.use_ssl     = @api_ssl
+      http.use_ssl = @api_ssl
       http.verify_mode = @api_ssl_verification if @api_ssl == true
 
       http

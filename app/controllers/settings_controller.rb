@@ -1,13 +1,11 @@
 class SettingsController < ApplicationController
-  # before_action :authenticate_user!
-  # before_filter do
-  #   redirect_to :new_user_session_path unless current_user && current_user.admin?
-  # end
+  before_action :authenticate
+  before_action -> { @dot_api_connector = DotApiConnector.new }
+  before_action -> { @current_user = session[:current_user].with_indifferent_access if session[:current_user] }
 
-  def index
-    dot_api_connector = DotApiConnector.new
-
-    @users = dot_api_connector.get_users.data
+  def show
+    @users = @dot_api_connector.get_users.data
+    @setting = @dot_api_connector.get_setting(1).data
 
     # if response['attributes']['authentication-token'].present?
       # Override session if already set (could be deprecated one)
@@ -15,17 +13,12 @@ class SettingsController < ApplicationController
 
       # redirect_to root_path and return
     # end
-  # In case API responds with HTTP code 200 but without 'user_token' field (shouldn't append)
-  # redirect_to external_users_ui.sign_in_path(redirect_url: params[:redirect_url]), alert: 'Mauvais identifiants.' and return
   rescue DotApiConnector::Error => e
-    ap e.message
-    # redirect_to external_users_ui.sign_in_path(redirect_url: params[:redirect_url]), alert: 'Mauvais identifiants.' and return
+    redirect_to root_path
   end
 
   def update
-    dot_api_connector = DotApiConnector.new
-
-    setting = dot_api_connector.update_setting(setting_param).data
+    setting = @dot_api_connector.update_setting(setting_param).data
   rescue DotApiConnector::Error => e
   else
   end

@@ -1,29 +1,33 @@
 module Users
   class SessionsController < ApplicationController
+    layout 'user'
+
+    before_action -> { @dot_api_connector = DotApiConnector.new }
+
     def new
     end
 
     def create
-      dot_api_connector = DotApiConnector.new
+      ap 'Users::SessionsController#create'
 
-      response = dot_api_connector.create_user_session(user_params).data
+      if params[:email].present? && params[:password].present?
+        user = @dot_api_connector.create_user_session(user_params).data
 
-      if response['attributes']['authentication-token'].present?
-        # Override session if already set (could be deprecated one)
-        # session[:authentication_token] = response['attributes']['authentication-token']
+        if user.present?
+          session[:current_user] = user
 
-        redirect_to root_path and return
+          redirect_to settings_path and return
+        else
+          redirect_to root_path and return
+        end
       end
-
-      # In case API responds with HTTP code 200 but without 'user_token' field (shouldn't append)
-      # redirect_to external_users_ui.sign_in_path(redirect_url: params[:redirect_url]), alert: 'Mauvais identifiants.' and return
     rescue DotApiConnector::Error => e
-      # redirect_to external_users_ui.sign_in_path(redirect_url: params[:redirect_url]), alert: 'Mauvais identifiants.' and return
+      redirect_to root_path and return
     end
 
     private
       def user_params
-        params.permit(:email, :password)
+        params.permit :email, :password
       end
   end
 end

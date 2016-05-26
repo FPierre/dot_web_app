@@ -1,6 +1,12 @@
 body.settings.index {
   @extend .blue-grey, .lighten-5;
 
+  .absolute-action-btn {
+    @extend .fixed-action-btn;
+
+    position: absolute;
+  }
+
   main {
     .collection {
       @extend .z-depth-1;
@@ -8,66 +14,82 @@ body.settings.index {
       border: none;
 
       &.with-header {
-        .collection-header {
-          padding-left: 20px;
+//         .collection-header {
+//           padding-left: 20px;
 
           h4 {
-            margin: {
-              top: 10px;
-              bottom: 10px;
-            };
+//             margin: {
+//               top: 10px;
+//               bottom: 10px;
+//             };
             font: {
-              weight: bold;
+//               weight: bold;
               size: 1.5rem;
             };
-            color: $primary-color;
-          }
+//             color: $primary-color;
+//           }
         }
       }
 
       .collection-item {
-        padding-left: 20px;
+//         padding-left: 20px;
 
-        & > div {
-          margin: {
-            top: 10px;
-            bottom: 10px;
-          };
-          font-size: 1.4rem;
-
-          // Checkbox
-          p {
-            display: inline-block;
-            margin: {
-              top: 0;
-              bottom: 0;
-            }
-
-            label {
-              padding: 0;
-            }
-          }
-
-          .secondary-content.user-info {
-            width: 91%;
-            line-height: 1.3;
-            color: $primary-color;
-
-            .user-settings {
-              @extend .right;
-
-              width: 20px;
-            }
-
-            .fa {
-              @extend .right;
-
-              margin-top: 6px;
-              color: $primary-color;
-            }
-          }
+        // Override default .waves-effect display
+        &.waves-effect {
+          display: block;
         }
+
+        &.pressed {
+          @extend .grey, .lighten-3;
+        }
+
+//         & > div {
+//           margin: {
+//             top: 10px;
+//             bottom: 10px;
+//           };
+//           font-size: 1.4rem;
+
+//           // Checkbox
+//           p {
+//             display: inline-block;
+//             margin: {
+//               top: 0;
+//               bottom: 0;
+//             }
+
+//             label {
+//               padding: 0;
+//             }
+//           }
+
+//           .secondary-content.user-info {
+//             width: 91%;
+//             line-height: 1.3;
+//             color: $primary-color;
+
+//             .user-settings {
+//               @extend .right;
+
+//               width: 20px;
+//             }
+
+//             .fa {
+//               @extend .right;
+
+//               margin-top: 6px;
+//               color: $primary-color;
+//             }
+//           }
+//         }
       }
     }
+  }
+}
+
+.modal-content {
+  padding: {
+    top: 10px !important;
+    bottom: 0 !important;
   }
 }
