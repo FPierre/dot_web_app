@@ -10,6 +10,7 @@
 # api: rails s -p4000
 # app:  rails s
 
-if $('body.dashboard.index').length
-  @App ||= {}
-  App.cable = ActionCable.createConsumer('ws://localhost:4000/cable')
+$(document).on 'ready', ->
+  if $('body.dashboard.index').length
+    @App ||= {}
+    @App.cable = ActionCable.createConsumer('ws://localhost:4000/cable')

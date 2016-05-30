@@ -1,6 +1,6 @@
 //= require jquery2
 // require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require underscore
 //= require materialize-sprockets
 //= require hammer.js.js
@@ -13,6 +13,6 @@
 //
 //= require_tree .
 
-$(document).on('ready page:load', function() {
+$(document).on('ready page:load', function () {
 
 });
