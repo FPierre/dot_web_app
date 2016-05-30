@@ -55,6 +55,10 @@ class DotApiConnector
 
   # Reminder
 
+  def get_reminders options = {}
+    process{ resource.get(route_for('reminders', options), headers) }
+  end
+
   def create_reminder attributes = {}
     process{ resource.patch(route_for('reminders'), attributes.to_json, headers) }
   end

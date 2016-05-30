@@ -1,0 +1,14 @@
+.modal {
+  .modal-content {
+    padding: {
+      top: 10px !important;
+      bottom: 0 !important;
+    }
+  }
+
+  .modal-footer {
+    .modal-action.modal-close {
+      margin-top: 0;
+    }
+  }
+}

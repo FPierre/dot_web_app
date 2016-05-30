@@ -34,21 +34,9 @@ Vue.component('user-show', {
     }
   },
   methods: {
-    changeCurrentView (view) {
-      // this.$dispatch('change-current-view', view)
-      // this.$dispatch('display-user-edit', view)
-
-      // Fix trouble with the labels overlapping prefilled content
-      // http://materializecss.com/forms.html
-      Materialize.updateTextFields()
-      this.displayUserEdit = true
-    },
     tapUser: function (user) {
-      // console.log(user)
-
       // To user-index
       this.$dispatch('user-tapped', user)
-      // this.$set('user.pressed', true)
     },
     pressUser: function (userId) {
       if (this.$get('user.pressed') === true) {

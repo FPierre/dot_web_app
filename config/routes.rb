@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post 'sign_up', to: 'users/registrations#create', as: :user_registration
   end
 
+  # :id is not required
   get :settings, to: 'settings#show'
   resources :settings, only: :update
   resources :reminders, only: [:new, :create]

@@ -21,8 +21,6 @@ gem 'sqlite3'
 gem 'turbolinks', '~> 5.x'
 gem 'weather-icons-rails'
 
-# gem 'hammerjs-rails'
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-hammer.js', '2.0.6'
   gem 'rails-assets-vue'

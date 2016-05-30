@@ -1,31 +1,27 @@
-.hide-on-small-only
-  .absolute-action-btn style='top: 27px; right: 120px;'
-    a.btn-floating.btn-large.waves-effect.waves-light.primary-color.modal-trigger href='#modal1'
-      i.material-icons add
-
-.hide-on-med-and-up
-  .fixed-action-btn style='bottom: 30px; right: 30px;'
-    a.btn-floating.btn-large.waves-effect.waves-light.primary-color.modal-trigger href='#modal1'
-      i.material-icons add
+.absolute-action-btn
+  / a.modal-trigger href='#'
+  a href='#' @click.prevent='openModal'
+    i.material-icons add
 
 #modal1.modal.bottom-sheet
   .modal-content
     / h4 Ajouter un utilisateur
 
-    user-new
+    / user-new
+    component :is='currentModal' :user='user'
 
   .modal-footer
     a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='createUser' Créer
 
-#modal2.modal.bottom-sheet
-  .modal-content
-    / h4 Modifier un utilisateur
+/ #modal2.modal.bottom-sheet
+/   .modal-content
+/     / h4 Modifier un utilisateur
 
-    user-edit :user='tappedUser' v-if='tappedUser'
+/     user-edit :user='tappedUser' v-if='tappedUser'
 
-  .modal-footer
-    a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='updateUser' Sauvegarder
+/   .modal-footer
+/     a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='updateUser' Sauvegarder
 
 .row
   .responsive-col
-    component :is='currentView' :users='users' :setting='setting'
+    component :is='currentView' :users='users' :setting='setting' :reminders='reminders'

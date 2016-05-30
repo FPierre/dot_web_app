@@ -9,4 +9,7 @@ html
     = javascript_include_tag 'user', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body class="#{controller_name.deconstantize} #{controller_name.demodulize} #{action_name}"
+    - if flash[:notice]
+      p = flash[:notice]
+
     main = yield

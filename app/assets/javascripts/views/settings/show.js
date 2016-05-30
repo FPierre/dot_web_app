@@ -1,30 +1,19 @@
 $(document).on('ready page:load', function () {
-  if ($('body.settings.index').length) {
+  if ($('body.settings.show').length) {
+    $('.sidebar').sideNav({ menuWidth: 300 })
 
     $('.modal-trigger').leanModal()
 
-    // Suppression de l'ombre sur le nav si tab juste en dessous
+    $('.datepicker').pickadate()
 
-    // var $nav = $('nav');
-    // var $tabs = $('main .tabs');
-
-    // if ($nav.length && $tabs.length) {
-    //   $tabs.removeClass('z-depth-1')
-    //        .css('box-shadow', '0 2px 3px 0 rgba(0, 0, 0, 0.21), 0 0 0 0 rgba(0, 0, 0, 0)');
-    // }
-
-    // Sidebar
-
-    $('.sidebar').sideNav({
-      menuWidth: 300
-    })
+    $('select').material_select()
 
     Vue.config.debug = true
 
-    Vue.http.options.root = 'http://localhost:4000/api/v1'
+    Vue.http.options.root = 'http://localhost:4000'
 
     new Vue({
-      el: '.settings.index',
+      el: '.settings.show',
       props: {
         users: {
           coerce: function (users) {
@@ -70,13 +59,56 @@ $(document).on('ready page:load', function () {
 
             return setting
           }
+        },
+        reminders: {
+          coerce: function (reminders) {
+            for (var index in reminders) {
+              if (reminders.hasOwnProperty(index)) {
+                var user = reminders[index]
+                var props = {}
+
+                if (user.attributes === null) {
+                  continue
+                }
+
+                for (var key in user.attributes) {
+                  if (user.attributes.hasOwnProperty(key)) {
+                    var value = user.attributes[key]
+
+                    props[key.toCamelCase()] = value
+                  }
+                }
+
+                user.attributes = props
+              }
+            }
+
+            return reminders
+          }
         }
       },
       data: {
-        currentView: 'users-index',
+        // currentView: 'users-index',
+        currentView: 'reminders-index',
+        currentModal: null,
         tappedUser: null
       },
       methods: {
+        changeCurrentView: function (view) {
+          this.currentView = view
+        },
+        changeCurrentModal: function (modal) {
+          this.currentModal = modal
+        },
+        openModal: function () {
+          switch (this.currentView) {
+            case 'reminders-index':
+              this.currentModal = 'reminder-new'
+              break
+          }
+
+          $('#modal1').openModal()
+        },
         createUser: function () {
           // To user-new
           this.$broadcast('create-user')
@@ -100,7 +132,8 @@ $(document).on('ready page:load', function () {
         'user-tapped': function (user) {
           // console.log(user)
           this.tappedUser = user
-          $('#modal2').openModal()
+          this.changeCurrentModal = 'user-edit'
+          $('#modal1').openModal()
         }
       }
     })

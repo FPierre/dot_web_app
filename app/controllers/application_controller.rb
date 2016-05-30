@@ -22,10 +22,10 @@ class ApplicationController < ActionController::Base
     end
 
     def render_unauthorized
-      redirect_to root_path and return
+      redirect_to sign_in_path, notice: 'Non autorisé' and return
     end
 
     def render_forbidden
-      redirect_to root_path and return
+      redirect_to sign_in_path, notice: 'Droits administrateur requis' and return
     end
 end

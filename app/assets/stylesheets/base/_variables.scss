@@ -1,7 +1,7 @@
 /*** Colors ***/
 $primary-color: #17253e !default;
-$primary-color-light: lighten($primary-color, 15%) !default;
-$primary-color-dark: darken($primary-color, 15%) !default;
+$primary-color-light: lighten($primary-color, 12%) !default;
+$primary-color-dark: darken($primary-color, 12%) !default;
 
 $secondary-color: #e73777 !default;
 $success-color: color("green", "base") !default;

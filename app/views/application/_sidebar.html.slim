@@ -6,7 +6,7 @@ nav
     ul#sidebar-nav.side-nav.fixed
       / = ap(@current_user).html_safe
 
-      - if @current_user.present?
+      - if @current_user
         .current-user
           .row
             .col.s6.offset-s3
@@ -22,7 +22,7 @@ nav
               span = @current_user[:attributes][:email]
 
       li
-        a href='/users/index'
+        a href='#' @click.prevent="changeCurrentView('users-index')"
           .row
             .col.s3
               i.material-icons people
@@ -31,7 +31,7 @@ nav
               | Utilisateurs
 
       li
-        a href='/settings/index'
+        a href='#' @click.prevent="changeCurrentView('setting-show')"
           .row
             .col.s3
               i.material-icons settings
@@ -40,7 +40,7 @@ nav
               | Options
 
       li
-        a href='/reminders/new'
+        a href='#' @click.prevent="changeCurrentView('reminders-index')"
           .row
             .col.s3
               i.material-icons notifications

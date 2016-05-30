@@ -1,0 +1,55 @@
+body.settings.show {
+  @extend .blue-grey, .lighten-5;
+
+  .absolute-action-btn {
+    @extend .fixed-action-btn;
+
+    @media #{$small-and-down} {
+      // position: fixed through .fixed-action-btn
+      right: 30px;
+      bottom: 30px;
+    }
+    @media #{$medium-and-up} {
+      position: absolute;
+      top: 27px;
+      right: 120px;
+    }
+
+    a {
+      @extend .btn-floating, .btn-large, .waves-effect, .waves-light;
+
+      color: $primary-color;
+    }
+  }
+
+  main {
+    .collection {
+      @extend .z-depth-1;
+
+      border: none;
+
+      &.with-header {
+        h4 {
+          font-size: 1.5rem;
+        }
+      }
+
+      .collection-header {
+        button {
+          margin-top: 10px;
+        }
+      }
+
+      .collection-item {
+        // Override default .waves-effect display
+        &.waves-effect {
+          display: block;
+        }
+
+        &.pressed {
+          @extend .grey, .lighten-3;
+        }
+      }
+    }
+  }
+}

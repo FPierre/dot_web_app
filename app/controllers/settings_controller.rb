@@ -4,8 +4,9 @@ class SettingsController < ApplicationController
   before_action -> { @current_user = session[:current_user].with_indifferent_access if session[:current_user] }
 
   def show
-    @users = @dot_api_connector.get_users.data
-    @setting = @dot_api_connector.get_setting(1).data
+    @users     = @dot_api_connector.get_users.data
+    @setting   = @dot_api_connector.get_setting(1).data
+    @reminders = @dot_api_connector.get_reminders.data
 
     # if response['attributes']['authentication-token'].present?
       # Override session if already set (could be deprecated one)
