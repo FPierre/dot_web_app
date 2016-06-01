@@ -1,26 +1,32 @@
-.content
-  .row_c
-    .col_c.half
-      #zone-1.zone
-        .label Zone 1
+.zones
+  #zone-1.zone.half
+    span Zone 1
 
-    .col_c.half
-      #zone-2.zone
-        .label Zone 2
+  #zone-2.zone.half
+    span Zone 2
 
-- if @weather.present?
-  span = wi_icon codes[@weather.condition.code.to_s], class: 'wi-4x'
-  span = "#{@weather.condition.temp} #{@weather.units.temperature}"
+.info
+  .room_occupied
+    span Libre
 
-  - @weather.forecasts.each do |forecast|
-    / = ap(forecast).html_safe
-    / = ap(forecast.code.to_s).html_safe
-    .col.s2
-      span = forecast.day
-      span = wi_icon codes[forecast.code.to_s], class: 'wi-5x'
-      span = "#{forecast.high} #{forecast.low}"
+  .screen_guest_enabled
+    span Désactivé
 
+  .weather
+    span weather
 
+  - if @weather
+    .weather
+      span = wi_icon codes[@weather.condition.code.to_s], class: 'wi-4x'
+      span = "#{@weather.condition.temp} #{@weather.units.temperature}"
+
+      - @weather.forecasts.each do |forecast|
+        / = ap(forecast).html_safe
+        / = ap(forecast.code.to_s).html_safe
+        .col.s2
+          span = forecast.day
+          span = wi_icon codes[forecast.code.to_s], class: 'wi-5x'
+          span = "#{forecast.high} #{forecast.low}"
 
 
 

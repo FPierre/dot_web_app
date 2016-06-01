@@ -1,5 +1,5 @@
 $(document).on('ready page:load', function() {
-  if ($('body.dashboard.index').length) {
+  if ($('html.screen.team').length) {
 
     // Hauteur des zones
 

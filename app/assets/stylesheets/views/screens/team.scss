@@ -1,0 +1,91 @@
+html.screens.team {
+  height: 100%;
+
+  body {
+    height: 100%;
+
+    main {
+      height: 100%;
+
+      .zones {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-items: stretch;
+        height: calc(100% - 120px);
+        padding: 5px;
+
+        .zone {
+          @extend .valign-wrapper, .z-depth-1;
+
+          -webkit-transition: all 7s ease;
+             -moz-transition: all 7s ease;
+              -ms-transition: all 7s ease;
+               -o-transition: all 7s ease;
+                  transition: all 7s ease;
+
+          &.full {
+            display: flex;
+            width: 98.8%;
+          }
+
+          &.half {
+            display: flex;
+            width: 49.4%;
+          }
+
+          &.hidden {
+            // display: none;
+            width: 0%;
+            // opacity: 0;
+          }
+
+          span {
+            @extend .valign, .blue-grey-text, .text-lighten-3;
+
+            margin: auto;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        align-content: stretch;
+        height: 120px;
+        padding: 15px;
+
+        .room_occupied, .screen_guest_enabled {
+          @extend .valign-wrapper, .green, .lighten-3, .z-depth-1;
+
+          -webkit-flex: 1 0 0;
+          flex: 1 0 0;
+          margin-right: 15px;
+
+          &.occupied, &.enabled {
+            @extend .red;
+          }
+        }
+
+        .weather {
+          @extend .valign-wrapper, .blue-grey, .lighten-2, .z-depth-1;
+
+          -webkit-flex: 5 0 0;
+          flex: 5 0 0;
+        }
+
+        span {
+          @extend .valign;
+
+          margin: auto;
+          font-size: 1.3rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

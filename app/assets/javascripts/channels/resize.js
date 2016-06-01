@@ -1,53 +1,51 @@
 $(document).on('ready', function () {
-  if ($('body.dashboard.index').length) {
+  if ($('html.screens.team').length) {
     this.App.resize = this.App.cable.subscriptions.create('ResizeChannel', {
-      connected: function() { console.log('ResizeChannel: connected'); },
-      disconnected: function() { console.log('ResizeChannel: connected'); },
+      connected: function() { console.log('ResizeChannel: connected') },
+      disconnected: function() { console.log('ResizeChannel: connected') },
       received: function(data) {
-        console.log('ResizeChannel: received');
+        console.log('ResizeChannel: received')
+        // console.log(data)
 
-        console.log(data);
+        var $currentZone = $('#zone-' + data['zone'])
 
-        var $zone = $('#zone-' + data['zone']);
-
-        if ($zone.length) {
-          var $otherZone = $('#zone-2');
-
-          // console.log('zone trouvée');
+        if ($currentZone.length) {
+          var $otherZone = $('#zone-' + getOtherZone(data['zone']))
 
           if (data['size'] == 'full') {
-            // console.log('half to full');
+            console.log('half to full')
 
-            $zone.parent('.col_c').addClass('full');
-            $zone.parent('.col_c').removeClass('half');
+            $currentZone.addClass('full').removeClass('half').removeClass('hidden')
+            $otherZone.addClass('hidden').removeClass('half').removeClass('full')
 
-            $otherZone.parent('.col_c').addClass('hidden');
-            $otherZone.parent('.col_c').removeClass('half');
-            // $otherZone.parent('.col').hide();
-
-            google.maps.event.trigger(handler.getMap(), 'resize');
+            // google.maps.event.trigger(handler.getMap(), 'resize')
           }
           else if (data['size'] == 'half') {
-            // console.log('full to half');
+            console.log('full to half')
 
-            $zone.parent('.col_c').addClass('half');
-            $zone.parent('.col_c').removeClass('full');
+            $currentZone.addClass('half').removeClass('full').removeClass('hidden')
+            $otherZone.addClass('half').removeClass('hidden').removeClass('full')
 
-            $otherZone.parent('.col_c').addClass('half');
-            $otherZone.parent('.col_c').removeClass('hidden');
-            // $otherZone.parent('.col').show();
-
-            google.maps.event.trigger(handler.getMap(), 'resize');
+            // google.maps.event.trigger(handler.getMap(), 'resize')
           }
         }
       },
       speak: function(resize) {
-        console.log('ResizeChannel: speak');
+        console.log('ResizeChannel: speak')
 
         return this.perform('speak', {
           resize: resize
-        });
+        })
       }
-    });
+    })
   }
 })
+
+function getOtherZone (currentZone) {
+  if (currentZone == 1) {
+    return 2
+  }
+  else {
+    return 1
+  }
+}
