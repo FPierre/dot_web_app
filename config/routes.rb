@@ -8,12 +8,18 @@ Rails.application.routes.draw do
     post 'sign_up', to: 'users/registrations#create', as: :user_registration
   end
 
+  namespace :screen do
+    get 'team', action: 'team'
+    get 'news', action: 'news'
+    get 'guest', action: 'guest'
+  end
+
   # :id is not required
   get :settings, to: 'settings#show'
   resources :settings, only: :update
   resources :reminders, only: [:new, :create]
 
-  root 'dashboard#index'
+  root 'screen#team'
 end
 
 # OK        new_user_session GET     /users/sign_in(.:format)       devise/sessions#new

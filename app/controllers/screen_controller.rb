@@ -1,9 +1,9 @@
 # require 'tweetstream'
 
-class DashboardController < ApplicationController
+class ScreenController < ApplicationController
   layout 'screen'
 
-  def index
+  def team
     # TODO Initializer
     # weather_client = YahooWeatherService.new
     # @weather = weather_client.fetch
@@ -79,6 +79,14 @@ class DashboardController < ApplicationController
     # end
   end
 
+  def news
+
+  end
+
+  def guest
+
+  end
+
   # api :GET, '/resize/zone/:zone/size/:size', 'Resize the zone'
   # description 'Get a document if user has the rights'
   # param :zone, [:one, :two], desc: 'Zone ID', required: true
@@ -87,12 +95,6 @@ class DashboardController < ApplicationController
   #   if params[:zone].present? && params[:size].present?
   #     ActionCable.server.broadcast 'resize_channel', zone: params[:zone], size: params[:size]
   #   end
-  # end
-
-  # def delay
-  #   ActionCable.server.broadcast 'notification_channel', minutes: params[:minutes]
-
-  #   head :ok
   # end
 
   # api :GET, '/routes/from/:from/to/:to', 'Display the route in zone one'
