@@ -4,8 +4,6 @@
  *= require_self
  */
 
-// $tabs-underline-color: #283593;
-
 @import 'font-awesome';
 @import 'base/fonts';
 // @import 'base/custom';
@@ -18,7 +16,7 @@
 // @import 'partials/*';
 @import 'views/**/*';
 
-body {
+html {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
