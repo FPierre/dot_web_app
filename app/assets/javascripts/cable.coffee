@@ -7,8 +7,8 @@
 //= require_self
 //= require_tree ./channels
 
-# api: rails s -p4000
-# app: rails s
+# api: rails s -p3000
+# app: rails s -p3001
 
 $(document).on 'ready', ->
   if $('html.screens.team').length
