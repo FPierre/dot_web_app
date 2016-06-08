@@ -10,7 +10,3 @@
 //= require vuejs/mixins/crud_mixin
 //
 //= require_tree .
-
-$(document).on('ready page:load', function () {
-
-});
