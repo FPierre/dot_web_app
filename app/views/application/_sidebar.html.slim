@@ -3,7 +3,7 @@ nav
     a.sidebar href='#' data-activates='sidebar-nav'
       i.material-icons menu
 
-    ul#sidebar-nav.side-nav.fixed
+    div#sidebar-nav.side-nav.fixed
       / = ap(@current_user).html_safe
 
       - if @current_user
@@ -21,29 +21,42 @@ nav
             .col.s12
               span = @current_user[:attributes][:email]
 
-      li
-        a href='#' @click.prevent="changeCurrentView('users-index')"
-          .row
-            .col.s3
-              i.material-icons people
+      ul
+        li
+          a href='#' @click.prevent="changeCurrentView('users-index')"
+            .row
+              .col.s3
+                i.material-icons people
 
-            .col.s7
-              | Utilisateurs
+              .col.s7
+                | Utilisateurs
 
-      li
-        a href='#' @click.prevent="changeCurrentView('setting-show')"
-          .row
-            .col.s3
-              i.material-icons settings
+        li
+          a href='#' @click.prevent="changeCurrentView('raspberries-index')"
+            .row
+              .col.s3
+                i.material-icons personal_video
 
-            .col.s7
-              | Options
+              .col.s7
+                | Raspberry
 
-      li
-        a href='#' @click.prevent="changeCurrentView('reminders-index')"
-          .row
-            .col.s3
-              i.material-icons notifications
+        li
+          a href='#' @click.prevent="changeCurrentView('reminders-index')"
+            .row
+              .col.s3
+                i.material-icons notifications
 
-            .col.s7
-              | Mémos
+              .col.s7
+                | Mémos
+
+        li
+          a href='#' @click.prevent="changeCurrentView('setting-show')"
+            .row
+              .col.s3
+                i.material-icons settings
+
+              .col.s7
+                | Options
+
+      - if @current_user
+        a.btn-flat.waves-effect.waves-dark Déconnexion

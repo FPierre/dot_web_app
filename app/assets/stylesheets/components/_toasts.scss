@@ -9,6 +9,7 @@
     }
 
     &.priority-3 {
+      @extend .red, .darken-2;
 
     }
 

@@ -1,4 +1,4 @@
-#sidebar-nav {
+.side-nav {
   .row {
     margin-bottom: 0;
   }
@@ -12,14 +12,14 @@
     line-height: 50px;
 
     span {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
   }
 
-  a {
-    padding: {
-      right: 5px;
-      left: 5px;
+  li {
+    a {
+      color: red;
+      font-size: 1.2rem;
     }
   }
 }

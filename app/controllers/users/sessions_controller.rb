@@ -13,15 +13,17 @@ module Users
       if params[:email].present? && params[:password].present?
         user = @dot_api_connector.create_user_session(user_params).data
 
-        if user.present?
+        if user
           session[:current_user] = user
 
           redirect_to settings_path and return
-        else
-          redirect_to root_path and return
+        # else
+        #   ap 'else'
+        #   redirect_to root_path and return
         end
       end
     rescue DotApiConnector::Error => e
+      ap 'rescue'
       redirect_to root_path and return
     end
 

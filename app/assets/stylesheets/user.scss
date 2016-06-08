@@ -2,7 +2,6 @@
  *= require_self
  */
 
-@import 'font-awesome';
 @import 'base/fonts';
 // @import 'base/custom';
 @import 'materialize/components/color';
@@ -14,9 +13,24 @@
 @import 'partials/*';
 @import 'views/**/*';
 
-.sessions.new {
-  .fa.prefix {
-    margin-top: 15px;
-    font-size: 1.3rem;
+html {
+  &.sessions.new, &.registrations.new {
+    @extend .blue-grey, .lighten-5;
+
+    height: 100%;
+
+    body {
+      height: 100%;
+
+      main {
+        @extend .valign-wrapper;
+
+        height: 100%;
+
+        form {
+          @extend .valign;
+        }
+      }
+    }
   }
 }

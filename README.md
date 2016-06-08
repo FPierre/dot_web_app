@@ -25,3 +25,22 @@
 * Created by Android application or Web application by anyone
 * Granted by Administrator by Web application
 * Gives access to Android application
+
+
+    # Ancien
+    # api_sarah
+    # Gmail : Sarah Paris, api.test.sarah@gmail.com, SarahParisAPI
+    # Twitter : SarahParisTest, api.test.sarah@gmail.com, TwSarahParisAPIitter
+
+    # Nouveau
+    #
+    # Gmail
+    # Sarah Dot
+    # projet.dot@gmail.com
+    # .dot.project2016
+    # +33651043417
+    #
+    # Twitter
+    # dot_project_16
+    # projet.dot@gmail.com
+    # 2016_dot_pftasanj

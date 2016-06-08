@@ -35,16 +35,16 @@ Vue.component('user-show', {
   },
   methods: {
     tapUser: function (user) {
-      // To user-index
+      // To Vue
       this.$dispatch('user-tapped', user)
     },
     pressUser: function (userId) {
       if (this.$get('user.pressed') === true) {
-        // To user-index
+        // To users-index
         this.$dispatch('user-unpressed', userId)
         this.$set('user.pressed', false)
       } else {
-        // To user-index
+        // To users-index
         this.$dispatch('user-pressed', userId)
         this.$set('user.pressed', true)
       }

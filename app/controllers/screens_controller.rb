@@ -4,8 +4,7 @@ class ScreensController < ApplicationController
   layout 'screen'
 
   def team
-    weather_client = YahooWeatherService.new
-    @weather = weather_client.fetch
+
   end
 
   def news

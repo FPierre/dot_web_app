@@ -34,19 +34,6 @@ Vue.component('user-edit', {
   },
   methods: {
     update: function (event) {
-      // var expression = event.target.__v_model.expression
-      // var fieldName = this.getFieldModel(expression)
-
-      // if (event.target.type == 'checkbox') {
-      //   var value = event.target.checked
-      // }
-      // else {
-      //   var value = event.target.value
-      // }
-
-      // var params = {}
-      // params[fieldName] = value
-
       this.user.__v_resource.update({ id: this.user.id }, this.user).then(function (response) {
         console.log(response.data)
         // To index

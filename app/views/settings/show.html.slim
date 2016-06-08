@@ -7,21 +7,11 @@
   .modal-content
     / h4 Ajouter un utilisateur
 
-    / user-new
-    component :is='currentModal' :user='user'
+    component :is='currentModal' :user='tappedUser' :raspberry='tappedRaspberry'
 
   .modal-footer
-    a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='createUser' Créer
-
-/ #modal2.modal.bottom-sheet
-/   .modal-content
-/     / h4 Modifier un utilisateur
-
-/     user-edit :user='tappedUser' v-if='tappedUser'
-
-/   .modal-footer
-/     a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='updateUser' Sauvegarder
+    a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='submitModal()' Créer
 
 .row
   .responsive-col
-    component :is='currentView' :users='users' :setting='setting' :reminders='reminders'
+    component :is='currentView' :users='users' :setting='setting' :reminders='reminders' :raspberries='raspberries'

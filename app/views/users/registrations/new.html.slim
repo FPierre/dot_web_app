@@ -1,34 +1,28 @@
-= form_tag user_registration_path
-  .row
-    .responsive-col
-      = label_tag :firstname
-      = text_field_tag :firstname, nil, autofocus: true
+.row
+  .responsive-col
+    = form_tag user_registration_path
+      .card
+        .card-content
+          = label_tag :firstname
+          = text_field_tag :firstname, nil, autofocus: true
 
-  .row
-    .responsive-col
-      = label_tag :lastname
-      = text_field_tag :lastname, nil
+          = label_tag :lastname
+          = text_field_tag :lastname, nil
 
-  .row
-    .responsive-col
-      = label_tag :email
-      = email_field_tag :email, nil
+          = label_tag :email
+          = email_field_tag :email, nil
 
-  .row
-    .responsive-col
-      = label_tag :password
+          = label_tag :password
 
-      / - if @minimum_password_length
-      /   em "(#{@minimum_password_length} characters minimum)"
+          / - if @minimum_password_length
+          /   em "(#{@minimum_password_length} characters minimum)"
 
-      = password_field_tag :password, nil, autocomplete: 'off'
+          = password_field_tag :password, nil, autocomplete: 'off'
 
-  .row
-    .responsive-col
-      = label_tag :password_confirmation
-      = password_field_tag :password_confirmation, nil, autocomplete: 'off'
+          = label_tag :password_confirmation
+          = password_field_tag :password_confirmation, nil, autocomplete: 'off'
 
-  .row
-    .responsive-col
-      .center-align
-        = submit_tag 'Valider', class: 'btn-large waves-effect waves-light'
+          = link_to 'Connexion', sign_in_path, class: 'btn-flat waves-effect waves-black'
+
+          .center-align
+            = submit_tag 'Enregistrer', class: 'btn-large waves-effect waves-light'

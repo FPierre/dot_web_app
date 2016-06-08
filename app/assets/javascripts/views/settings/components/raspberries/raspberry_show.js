@@ -25,16 +25,16 @@ Vue.component('raspberry-show', {
   },
   methods: {
     tapRaspberry: function (raspberry) {
-      // To raspberry-index
+      // To raspberries-index
       this.$dispatch('raspberry-tapped', raspberry)
     },
     pressUser: function (raspberryId) {
       if (this.$get('raspberry.pressed') === true) {
-        // To raspberry-index
+        // To raspberries-index
         this.$dispatch('raspberry-unpressed', raspberryId)
         this.$set('raspberry.pressed', false)
       } else {
-        // To raspberry-index
+        // To raspberries-index
         this.$dispatch('raspberry-pressed', raspberryId)
         this.$set('raspberry.pressed', true)
       }

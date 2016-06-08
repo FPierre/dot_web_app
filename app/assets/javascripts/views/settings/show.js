@@ -85,13 +85,40 @@ $(document).on('ready page:load', function () {
 
             return reminders
           }
+        },
+        raspberries: {
+          coerce: function (raspberries) {
+            for (var index in raspberries) {
+              if (raspberries.hasOwnProperty(index)) {
+                var raspberry = raspberries[index]
+                var props = {}
+
+                if (raspberry.attributes === null) {
+                  continue
+                }
+
+                for (var key in raspberry.attributes) {
+                  if (raspberry.attributes.hasOwnProperty(key)) {
+                    var value = raspberry.attributes[key]
+
+                    props[key.toCamelCase()] = value
+                  }
+                }
+
+                raspberry.attributes = props
+              }
+            }
+
+            return raspberries
+          }
         }
       },
       data: {
         // currentView: 'users-index',
         currentView: 'reminders-index',
         currentModal: null,
-        tappedUser: null
+        tappedUser: null,
+        tappedRaspberry: null
       },
       methods: {
         changeCurrentView: function (view) {
@@ -109,7 +136,7 @@ $(document).on('ready page:load', function () {
 
           $('#modal1').openModal()
         },
-        createUser: function () {
+        submitModal: function () {
           // To user-new
           this.$broadcast('create-user')
         },
@@ -132,7 +159,14 @@ $(document).on('ready page:load', function () {
         'user-tapped': function (user) {
           // console.log(user)
           this.tappedUser = user
-          this.changeCurrentModal = 'user-edit'
+          this.currentModal = 'user-edit'
+          $('#modal1').openModal()
+        },
+        // From raspberry-show
+        'raspberry-tapped': function (raspberry) {
+          // console.log(raspberry)
+          this.tappedUser = raspberry
+          this.currentModal = 'raspberry-edit'
           $('#modal1').openModal()
         }
       }

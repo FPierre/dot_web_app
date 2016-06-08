@@ -1,14 +1,13 @@
 doctype html
-html
+html class="#{controller_name.deconstantize} #{controller_name.demodulize} #{action_name}"
   head
     title DotWebApp
 
     meta name='viewport' content='width=device-width, initial-scale=1.0'
 
-    = stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'user', 'data-turbolinks-track' => true
-    = csrf_meta_tags
-  body class="#{controller_name.deconstantize} #{controller_name.demodulize} #{action_name}"
+    = stylesheet_link_tag 'user', media: 'all'
+    = javascript_include_tag 'user'
+  body
     - if flash[:notice]
       p = flash[:notice]
 
