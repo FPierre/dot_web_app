@@ -8,9 +8,9 @@
 //= require_tree ./channels
 
 # api: rails s -p4000
-# app:  rails s
+# app: rails s
 
 $(document).on 'ready', ->
   if $('html.screens.team').length
     @App ||= {}
-    @App.cable = ActionCable.createConsumer('ws://localhost:4000/cable')
+    @App.cable = ActionCable.createConsumer('ws://localhost:3000/cable')
