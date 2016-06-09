@@ -13,4 +13,4 @@
 $(document).on 'ready', ->
   if $('html.screens.team').length
     @App ||= {}
-    @App.cable = ActionCable.createConsumer('ws://localhost:3000/cable')
+    @App.cable = ActionCable.createConsumer()
