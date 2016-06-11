@@ -10,6 +10,8 @@ class DotApiConnector
   attr_accessor :data, :meta
 
   def initialize options = {}
+    # ap 'DotApiConnector#initialize'
+    # ap options
     config = Rails.application.config_for(:dot_api).deep_symbolize_keys!
 
     @api_port = config[:api_port]
@@ -21,10 +23,14 @@ class DotApiConnector
   rescue NoMethodError => e
     raise Error.new "Please add 'api_url', 'api_port' and 'api_ssl' keys into your configuration"
   else
-    options.deep_symbolize_keys
+    if options
+      options.deep_symbolize_keys
 
-    @user_email = options[:user_email]
-    @user_token = options[:user_token]
+      @user_email = options[:email]
+      @user_token = options[:token]
+
+      ap @user_email
+    end
   end
 
   # User
@@ -106,6 +112,8 @@ class DotApiConnector
       begin
         result = JSON.parse(response.body).with_indifferent_access
 
+        # ap result
+
         @data = result&.dig :data
         @meta = result&.dig :meta
 
@@ -114,9 +122,6 @@ class DotApiConnector
         raise Error.new e.message
       end
     else
-      ap 'response.body'
-      ap JSON.parse(response.body)
-
       raise Error.new(response.code == 401)
 
       result = (JSON.parse(response.body) rescue {})
@@ -131,6 +136,8 @@ class DotApiConnector
     def route_for path, options = {}
       route = %Q(/api/#{API_VERSION}/#{path.to_s})
       options = { user_email: @user_email, user_token: @user_token }.merge(options)
+
+      # ap @user_email
 
       "#{route}?#{URI.encode_www_form(options)}"
     end

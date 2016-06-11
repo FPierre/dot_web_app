@@ -1,12 +1,9 @@
 class SettingsController < ApplicationController
   before_action :authenticate
-  before_action -> { @current_user = session[:current_user].with_indifferent_access if session[:current_user] }
-  before_action -> { @dot_api_connector = DotApiConnector.new }
+  before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
   def show
     ap 'SettingsController#show'
-
-    params = { email: @current_user[:attributes][:email], token: @current_user[:attributes][:token] }
 
     @users       = @dot_api_connector.get_users(params).data
     @setting     = @dot_api_connector.get_setting(params).data

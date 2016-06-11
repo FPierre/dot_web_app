@@ -39,16 +39,21 @@ Vue.component('users-index', {
       if (this.pressedUsersIds.length > 0) {
         for (var i = 0; i < this.pressedUsersIds.length; i++) {
           this.$http({ url: 'users/' + this.pressedUsersIds[i], method: 'DELETE' }).then(function (response) {
-            // this.pressedUsersIds = this.pressedUsersIds.filter(function (currentUserId) {
-            //   return currentUserId != userId
-            // })
+            // console.log(response)
+            // console.log(response.data.id)
+
+            this.users = this.users.filter(function (currentUser) {
+              return currentUser.id != response.data.id
+            })
+
+            this.pressedUsersIds = this.pressedUsersIds.filter(function (currentUserId) {
+              return currentUserId != response.data.id
+            })
           }, function (response) {
             console.log('catch')
             console.log(response)
           })
         }
-
-        // this.pressedUsersIds = []
       }
     }
   },
