@@ -73,6 +73,13 @@ class DotApiConnector
     process { resource.get(route_for('reminders', options), headers) }
   end
 
+  def create_reminder attributes = {}
+    process { resource.post(route_for('reminders'), attributes.to_json, headers) }
+  end
+
+  def destroy_reminder reminder_id
+    process { resource.delete(route_for("reminders/#{reminder_id}"), headers) }
+  end
 
 
 

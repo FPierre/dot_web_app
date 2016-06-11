@@ -1,0 +1,10 @@
+.card {
+  // Override default .waves-effect display
+  &.waves-effect {
+    display: block;
+  }
+
+  &.pressed {
+    @extend .grey, .lighten-3;
+  }
+}

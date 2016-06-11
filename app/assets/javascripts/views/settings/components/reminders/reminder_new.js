@@ -7,7 +7,7 @@ Vue.component('reminder-new', {
         <label for="reminder-new-title">Titre</label>\
       </div>\
       <div class="input-field col s12 m4">\
-        <input id="reminder-new-display-at" type="date" class="datepicker" v-model="reminder.displayAt">\
+        <input id="reminder-new-display-at" type="date" class="datepicker" v-model="reminder.displayedAt">\
         <label for="reminder-new-display-at" class="active">Date d\'affichage</label>\
       </div>\
       <div class="input-field col s12 m4">\
@@ -22,7 +22,7 @@ Vue.component('reminder-new', {
     </div>\
     <div class="row">\
       <div class="input-field col s12">\
-        <textarea id="reminder-new-content" class="materialize-textarea"></textarea>\
+        <textarea id="reminder-new-content" class="materialize-textarea" v-model="reminder.content"></textarea>\
         <label for="reminder-new-content">Contenu</label>\
       </div>\
     </div>\
@@ -31,8 +31,8 @@ Vue.component('reminder-new', {
     return {
       reminder: {
         __v_resource: this.$resource('reminders{/id}'),
-        content: null,
-        displayAt: null,
+        content: "Content", // null,
+        displayedAt: null,
         duration: 1,
         priority: 3,
         title: null
@@ -48,6 +48,11 @@ Vue.component('reminder-new', {
       }, function (response) {
 
       })
+    }
+  },
+  events: {
+    'create-reminder': function () {
+      this.create()
     }
   }
 })

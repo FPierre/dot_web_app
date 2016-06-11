@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get :settings, to: 'settings#show'
 
   resources :raspberries, only: [:create, :destroy]
-  resources :reminders, only: [:new, :create]
+  resources :reminders, only: [:create, :destroy]
   resources :settings, only: :update
   resources :users, only: [:create, :destroy]
 
