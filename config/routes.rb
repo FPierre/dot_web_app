@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     get 'sign_up', to: 'users/registrations#new'
     post 'sign_up', to: 'users/registrations#create', as: :user_registration
+
   end
 
   namespace :screens do
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   # :id is not required
   get :settings, to: 'settings#show'
 
+  resources :users, only: [:create, :destroy]
   resources :settings, only: :update
   resources :reminders, only: [:new, :create]
 

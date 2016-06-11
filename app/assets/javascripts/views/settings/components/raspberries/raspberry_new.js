@@ -27,10 +27,10 @@ Vue.component('raspberry-new', {
     }
   },
   methods: {
-    create: function (event) {
+    create: function () {
       this.raspberry.__v_resource.save(this.raspberry).then(function (response) {
         console.log(response.data)
-        // To index
+        // To vm
         this.$dispatch('raspberry-created', response.data)
       }, function (response) {
 

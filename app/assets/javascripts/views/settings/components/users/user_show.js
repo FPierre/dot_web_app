@@ -20,7 +20,7 @@ Vue.component('user-show', {
     }
   },
   ready: function () {
-   this.user.__v_resource = this.$resource('users/{id}')
+    this.user.__v_resource = this.$resource('users/{id}')
   },
   computed: {
     fullName: function () {

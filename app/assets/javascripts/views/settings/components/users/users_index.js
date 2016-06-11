@@ -7,7 +7,7 @@ Vue.component('users-index', {
           <h4>{{ pressedUsersIdsTitle }}</h4>\
         </div>\
         <div class="col s7">\
-          <button class="btn-flat waves-effect right">Supprimer</button>\
+          <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
           <button class="btn-flat waves-effect right">Approuver</button>\
         </div>\
       </div>\
@@ -34,6 +34,24 @@ Vue.component('users-index', {
       return this.pressedUsersIds.length + ' utilisateur' + plural + ' sélectionné' + plural
     }
   },
+  methods: {
+    delete: function () {
+      if (this.pressedUsersIds.length > 0) {
+        for (var i = 0; i < this.pressedUsersIds.length; i++) {
+          this.$http({ url: 'users/' + this.pressedUsersIds[i], method: 'DELETE' }).then(function (response) {
+            // this.pressedUsersIds = this.pressedUsersIds.filter(function (currentUserId) {
+            //   return currentUserId != userId
+            // })
+          }, function (response) {
+            console.log('catch')
+            console.log(response)
+          })
+        }
+
+        // this.pressedUsersIds = []
+      }
+    }
+  },
   events: {
     // From user-show
     'user-pressed': function (userId) {
@@ -48,7 +66,7 @@ Vue.component('users-index', {
     'display-user-edit': function (user) {
       this.userToEdit = user
     },
-    // From user-new > index
+    // From from user-new trough vm
     'user-created': function (user) {
       this.users.push(user)
     }

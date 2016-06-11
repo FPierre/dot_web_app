@@ -1,5 +1,4 @@
 .absolute-action-btn
-  / a.modal-trigger href='#'
   a href='#' @click.prevent='openModal'
     i.material-icons add
 
@@ -10,7 +9,7 @@
     component :is='currentModal' :user='tappedUser' :raspberry='tappedRaspberry'
 
   .modal-footer
-    a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='submitModal()' Créer
+    a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='submitModal' Valider
 
 .row
   .responsive-col

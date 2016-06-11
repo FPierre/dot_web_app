@@ -10,7 +10,7 @@ $(document).on('ready page:load', function () {
 
     Vue.config.debug = true
 
-    Vue.http.options.root = 'http://localhost:4000'
+    Vue.http.options.root = 'http://localhost:3001'
 
     new Vue({
       el: '.settings.show',
@@ -115,7 +115,7 @@ $(document).on('ready page:load', function () {
       },
       data: {
         // currentView: 'users-index',
-        currentView: 'reminders-index',
+        currentView: 'users-index',
         currentModal: null,
         tappedUser: null,
         tappedRaspberry: null
@@ -128,7 +128,16 @@ $(document).on('ready page:load', function () {
           this.currentModal = modal
         },
         openModal: function () {
+          this.tappedUser = null
+          this.tappedRaspberry = null
+
           switch (this.currentView) {
+            case 'users-index':
+              this.currentModal = 'user-new'
+              break
+            case 'raspberries-index':
+              this.currentModal = 'raspberry-new'
+              break
             case 'reminders-index':
               this.currentModal = 'reminder-new'
               break
@@ -137,8 +146,20 @@ $(document).on('ready page:load', function () {
           $('#modal1').openModal()
         },
         submitModal: function () {
-          // To user-new
-          this.$broadcast('create-user')
+          switch (this.currentModal) {
+            case 'user-new':
+              // To user-new
+              this.$broadcast('create-user')
+              break
+            case 'raspberry-new':
+              // To raspberry-new
+              this.$broadcast('create-raspberry')
+              break
+            case 'reminder-new':
+              // To reminder-new
+              this.$broadcast('create-reminder')
+              break
+          }
         },
         updateUser: function () {
           // To user-edit
@@ -152,19 +173,29 @@ $(document).on('ready page:load', function () {
         },
         // From user-new
         'user-created': function (user) {
+          console.log('user-created')
+          console.log(user)
           // To users-index
           this.$broadcast('user-created', user)
         },
+        // From raspberry-new
+        'raspberry-created': function (raspberry) {
+          // To raspberries-index
+          this.$broadcast('raspberry-created', raspberry)
+        },
+        // From reminder-new
+        'reminder-created': function (reminder) {
+          // To reminders-index
+          this.$broadcast('reminder-created', reminder)
+        },
         // From user-show
         'user-tapped': function (user) {
-          // console.log(user)
           this.tappedUser = user
           this.currentModal = 'user-edit'
           $('#modal1').openModal()
         },
         // From raspberry-show
         'raspberry-tapped': function (raspberry) {
-          // console.log(raspberry)
           this.tappedUser = raspberry
           this.currentModal = 'raspberry-edit'
           $('#modal1').openModal()
@@ -192,13 +223,18 @@ Vue.http.interceptors.push({
       request.data = props
     }
 
+    var $csrfParam = $('head meta[name=csrf-param]')
+    var $csrfToken = $('head meta[name=csrf-token]')
+
+    if ($csrfParam.length && $csrfParam.attr('content') && $csrfToken.length && $csrfToken.attr('content')) {
+      request['params'][$csrfParam.attr('content')] = $csrfToken.attr('content')
+    }
+
     return request
   },
   response: function (response) {
-    // console.log(response)
-
-    var data = response.data.data
-    var props = {}
+    var data = response.data
+    var props = { attributes: {} }
 
     if (data !== null && data.attributes !== null) {
       for (var key in data.attributes) {
@@ -210,7 +246,9 @@ Vue.http.interceptors.push({
       }
     }
 
-    return props
+    response.data.attributes = props
+
+    return response
   }
 })
 

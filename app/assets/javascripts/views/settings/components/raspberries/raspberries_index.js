@@ -47,7 +47,7 @@ Vue.component('raspberries-index', {
     'display-raspberry-edit': function (raspberry) {
       this.raspberryToEdit = raspberry
     },
-    // From raspberry-new > index
+    // From from raspberry-new trough vm
     'raspberry-created': function (raspberry) {
       this.raspberries.push(raspberry)
     }

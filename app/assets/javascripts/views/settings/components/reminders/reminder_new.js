@@ -40,10 +40,10 @@ Vue.component('reminder-new', {
     }
   },
   methods: {
-    create: function (event) {
+    create: function () {
       this.reminder.__v_resource.save(this.reminder).then(function (response) {
         console.log(response.data)
-        // To index
+        // To vm
         this.$dispatch('reminder-created', response.data)
       }, function (response) {
 
