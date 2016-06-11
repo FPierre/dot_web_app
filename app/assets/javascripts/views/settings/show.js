@@ -119,6 +119,11 @@ $(document).on('ready page:load', function () {
         tappedUser: null,
         tappedRaspberry: null
       },
+      computed: {
+        hideCreateButton: function () {
+          return this.currentView == 'setting-show'
+        }
+      },
       methods: {
         changeCurrentView: function (view) {
           this.currentView = view
