@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   # :id is not required
   get :settings, to: 'settings#show'
 
-  resources :users, only: [:create, :destroy]
-  resources :settings, only: :update
+  resources :raspberries, only: [:create, :destroy]
   resources :reminders, only: [:new, :create]
+  resources :settings, only: :update
+  resources :users, only: [:create, :destroy]
 
   root 'screens#team'
 end

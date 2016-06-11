@@ -59,6 +59,14 @@ class DotApiConnector
     process { resource.get(route_for('raspberries', options), headers) }
   end
 
+  def create_raspberry attributes = {}
+    process { resource.post(route_for('raspberries'), attributes.to_json, headers) }
+  end
+
+  def destroy_raspberry raspberry_id
+    process { resource.delete(route_for("raspberries/#{raspberry_id}"), headers) }
+  end
+
   # Reminder
 
   def get_reminders options = {}

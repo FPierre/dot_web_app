@@ -48,7 +48,7 @@ bind 'unix:///var/www/dot_web_app/tmp/sockets/puma.sock'
 
 pidfile 'tmp/pids/puma.pid'
 state_path 'tmp/pids/puma.state'
-stdout_redirect 'log/puma.stdout.log', 'log/puma.stderr.log', true
+# stdout_redirect 'log/puma.stdout.log', 'log/puma.stderr.log', true
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
