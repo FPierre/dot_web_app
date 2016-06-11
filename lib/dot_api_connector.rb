@@ -89,6 +89,12 @@ class DotApiConnector
     process { resource.delete(route_for("reminders/#{reminder_id}"), headers) }
   end
 
+  # Voice command
+
+  def get_voice_commands options = {}
+    process { resource.get(route_for('voice_commands', options), headers) }
+  end
+
   def process
     @data, @meta = [nil, nil]
 

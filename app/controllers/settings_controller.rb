@@ -5,10 +5,11 @@ class SettingsController < ApplicationController
   def show
     ap 'SettingsController#show'
 
-    @users       = @dot_api_connector.get_users(params).data
-    @setting     = @dot_api_connector.get_setting(params).data
-    @reminders   = @dot_api_connector.get_reminders(params).data
-    @raspberries = @dot_api_connector.get_raspberries(params).data
+    @raspberries    = @dot_api_connector.get_raspberries(params).data
+    @reminders      = @dot_api_connector.get_reminders(params).data
+    @setting        = @dot_api_connector.get_setting(params).data
+    @users          = @dot_api_connector.get_users(params).data
+    @voice_commands = @dot_api_connector.get_voice_commands(params).data
   rescue DotApiConnector::Error => e
     ap e.message
     redirect_to root_path

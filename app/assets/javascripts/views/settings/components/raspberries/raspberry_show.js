@@ -1,19 +1,14 @@
 Vue.component('raspberry-show', {
   props: ['raspberry'],
   template: '<li class="collection-item waves-effect" :class="{ \'pressed\': raspberry.pressed }" v-touch:tap="tapRaspberry(raspberry)" v-touch:press="pressRaspberry(raspberry.id)">\
-    <div v-show="!displayRaspberryEdit">\
-      <span class="title">{{ raspberry.attributes.name }}</span>\
-      <p>\
-        {{ raspberry.attributes.createdAt }}\
-        <br>\
-        Adresse IP : {{ raspberry.attributes.ipAddress }}\
-        <br>\
-        Adresse MAC : {{ raspberry.attributes.macAddress }}\
-      </p>\
-    </div>\
-    <div class="blue-grey lighten-5" v-show="displayRaspberryEdit">\
-      <raspberry-edit :raspberry="raspberry"></raspberry-edit>\
-    </div>\
+    <span class="title">{{ raspberry.attributes.name }}</span>\
+    <p>\
+      {{ raspberry.attributes.createdAt }}\
+      <br>\
+      Adresse IP : {{ raspberry.attributes.ipAddress }}\
+      <br>\
+      Adresse MAC : {{ raspberry.attributes.macAddress }}\
+    </p>\
   </li>',
   data: function () {
     return {

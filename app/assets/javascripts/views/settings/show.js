@@ -111,6 +111,32 @@ $(document).on('ready page:load', function () {
 
             return raspberries
           }
+        },
+        voiceCommands: {
+          coerce: function (voiceCommands) {
+            for (var index in voiceCommands) {
+              if (voiceCommands.hasOwnProperty(index)) {
+                var voiceCommand = voiceCommands[index]
+                var props = {}
+
+                if (voiceCommand.attributes === null) {
+                  continue
+                }
+
+                for (var key in voiceCommand.attributes) {
+                  if (voiceCommand.attributes.hasOwnProperty(key)) {
+                    var value = voiceCommand.attributes[key]
+
+                    props[key.toCamelCase()] = value
+                  }
+                }
+
+                voiceCommand.attributes = props
+              }
+            }
+
+            return voiceCommands
+          }
         }
       },
       data: {
@@ -121,7 +147,7 @@ $(document).on('ready page:load', function () {
       },
       computed: {
         hideCreateButton: function () {
-          return this.currentView == 'setting-show'
+          return this.currentView == 'setting-show' || this.currentView == 'voice-commands-index'
         }
       },
       methods: {

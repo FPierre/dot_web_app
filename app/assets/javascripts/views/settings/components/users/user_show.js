@@ -1,15 +1,13 @@
 Vue.component('user-show', {
   props: ['user'],
   template: '<li class="collection-item avatar waves-effect" :class="{ \'pressed\': user.pressed }" v-touch:tap="tapUser(user)" v-touch:press="pressUser(user.id)">\
-    <div v-show="!displayUserEdit">\
-      <img src="http://placehold.it/50x50" alt="" class="circle">\
-      <span class="title">{{ fullName }} {{ displayAdmin }}</span>\
-      <p>\
-        {{ user.attributes.createdAt }}\
-        <br>\
-        {{ displayApproved }}\
-      </p>\
-    </div>\
+    <img src="http://placehold.it/50x50" alt="" class="circle">\
+    <span class="title">{{ fullName }} {{ displayAdmin }}</span>\
+    <p>\
+      {{ user.attributes.createdAt }}\
+      <br>\
+      {{ displayApproved }}\
+    </p>\
   </li>',
   ready: function () {
     this.user.__v_resource = this.$resource('users/{id}')

@@ -81,6 +81,25 @@ nav
 
         li
           .hide-on-small-only
+            a href='#' @click.stop="changeCurrentView('voice-commands-index')"
+              .row
+                .col.s3
+                  i.material-icons record_voice_over
+
+                .col.s7
+                  | Commandes vocales
+
+          .hide-on-large-only
+            a href='#' @click.prevent="changeCurrentView('voice-commands-index')"
+              .row
+                .col.s3
+                  i.material-icons record_voice_over
+
+                .col.s7
+                  | Commandes vocales
+
+        li
+          .hide-on-small-only
             a href='#' @click.stop="changeCurrentView('setting-show')"
               .row
                 .col.s3
