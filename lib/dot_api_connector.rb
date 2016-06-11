@@ -89,40 +89,6 @@ class DotApiConnector
     process { resource.delete(route_for("reminders/#{reminder_id}"), headers) }
   end
 
-
-
-  def ping
-    process { resource.get(route_for('ping'), headers) }
-  end
-
-  # def get_comptes options = {}
-  #   process { resource.get(route_for('comptes', options), headers) }
-  # end
-
-  def get_compte compte_id
-    process { resource.get(route_for("comptes/#{compte_id}"), headers) }
-  end
-
-  def signin attributes = {}
-    process { resource.post(route_for('signin'), {}.to_json, headers(attributes)) }
-  end
-
-  # def create_transmission_for_piste piste_id, attributes = {}
-  #   process { resource.post(route_for("pistes/#{piste_id}/transmissions"), attributes.to_json, headers) }
-  # end
-
-  def update_external_user attributes = {}
-    process { resource.patch(route_for('external_user'), attributes.to_json, headers) }
-  end
-
-  def update_compte compte_id, attributes = {}
-    process { resource.patch(route_for("comptes/#{compte_id}"), attributes.to_json, headers) }
-  end
-
-  # def destroy_external_user
-  #   process { resource.delete(route_for('external_user'), headers) }
-  # end
-
   def process
     @data, @meta = [nil, nil]
 

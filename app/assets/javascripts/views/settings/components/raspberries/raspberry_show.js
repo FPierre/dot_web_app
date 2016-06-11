@@ -1,6 +1,6 @@
 Vue.component('raspberry-show', {
   props: ['raspberry'],
-  template: '<li class="collection-item waves-effect" :class="{ \'pressed\': raspberry.pressed }" v-touch:tap="tapRaspberry(raspberry)" v-touch:press="pressUser(raspberry.id)">\
+  template: '<li class="collection-item waves-effect" :class="{ \'pressed\': raspberry.pressed }" v-touch:tap="tapRaspberry(raspberry)" v-touch:press="pressRaspberry(raspberry.id)">\
     <div v-show="!displayRaspberryEdit">\
       <span class="title">{{ raspberry.attributes.name }}</span>\
       <p>\
@@ -25,10 +25,11 @@ Vue.component('raspberry-show', {
   },
   methods: {
     tapRaspberry: function (raspberry) {
-      // To raspberries-index
+      console.log('tapRaspberry')
+      // To vm
       this.$dispatch('raspberry-tapped', raspberry)
     },
-    pressUser: function (raspberryId) {
+    pressRaspberry: function (raspberryId) {
       if (this.$get('raspberry.pressed') === true) {
         // To raspberries-index
         this.$dispatch('raspberry-unpressed', raspberryId)

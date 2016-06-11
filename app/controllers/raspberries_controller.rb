@@ -30,7 +30,7 @@ class RaspberriesController < ApplicationController
   end
 
   private
-    def rapsberry_params
+    def raspberry_params
       params.permit :ip_address, :mac_address, :name
     end
 end

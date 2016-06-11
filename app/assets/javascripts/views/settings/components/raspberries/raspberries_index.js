@@ -22,8 +22,7 @@ Vue.component('raspberries-index', {
   </ul>',
   data: function () {
     return {
-      pressedRaspberriesIds: [],
-      raspberryToEdit: null
+      pressedRaspberriesIds: []
     }
   },
   computed: {
@@ -63,12 +62,9 @@ Vue.component('raspberries-index', {
     },
     // From raspberry-show
     'raspberry-unpressed': function (raspberryId) {
-      this.pressedRaspberriesIds = this.pressedRaspberriesIds.filter(function (currentUserId) {
-        return currentUserId != raspberryId
+      this.pressedRaspberriesIds = this.pressedRaspberriesIds.filter(function (currentRaspberryId) {
+        return currenRaspberryrId != raspberryId
       })
-    },
-    'display-raspberry-edit': function (raspberry) {
-      this.raspberryToEdit = raspberry
     },
     // From from raspberry-new trough vm
     'raspberry-created': function (raspberry) {

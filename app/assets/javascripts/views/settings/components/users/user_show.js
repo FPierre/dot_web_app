@@ -28,7 +28,7 @@ Vue.component('user-show', {
   methods: {
     tapUser: function (user) {
       console.log('tapUser')
-      // To Vue
+      // To vm
       this.$dispatch('user-tapped', user)
     },
     pressUser: function (userId) {

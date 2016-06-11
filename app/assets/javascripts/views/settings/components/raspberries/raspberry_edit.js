@@ -24,23 +24,10 @@ Vue.component('raspberry-edit', {
   },
   methods: {
     update: function (event) {
-      // var expression = event.target.__v_model.expression
-      // var fieldName = this.getFieldModel(expression)
-
-      // if (event.target.type == 'checkbox') {
-      //   var value = event.target.checked
-      // }
-      // else {
-      //   var value = event.target.value
-      // }
-
-      // var params = {}
-      // params[fieldName] = value
-
-      this.raspberry.__v_resource.update({ id: this.raspberry.id }, this.raspberry).then(function (response) {
-        console.log(response.data)
-        // To index
-        this.$dispatch('raspberry-updated', response.data)
+      this.raspberry.__v_resource.update({ id: this.raspberry.id }, this.raspberry.attributes).then(function (response) {
+        // console.log(response.data)
+        // To raspberries-index
+        // A utiliser ? this.$dispatch('raspberry-updated', response.data)
       }, function (response) {
 
       })

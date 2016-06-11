@@ -200,7 +200,8 @@ $(document).on('ready page:load', function () {
         },
         // From raspberry-show
         'raspberry-tapped': function (raspberry) {
-          this.tappedUser = raspberry
+          console.log('raspberry-tapped')
+          this.tappedRaspberry = raspberry
           this.currentModal = 'raspberry-edit'
           $('#modal1').openModal()
         }
