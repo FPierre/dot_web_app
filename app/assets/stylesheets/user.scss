@@ -29,6 +29,15 @@ html {
 
         form {
           @extend .valign;
+
+          .card {
+            .card-action {
+              a {
+                margin-top: 10px;
+                font-size: .8rem;
+              }
+            }
+          }
         }
       }
     }

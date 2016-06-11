@@ -1,13 +1,18 @@
 .row
-  .responsive-col
+  / .responsive-col
+  .col.s12
     = form_tag user_session_path
       .card
         .card-content
-          = label_tag :email
-          = email_field_tag :email, nil, autofocus: true
+          .row
+            .input-field.col.s12
+              = label_tag :email
+              = email_field_tag :email, nil, autofocus: true
 
-          = label_tag :password
-          = password_field_tag :password, nil, autocomplete: 'off'
+          .row
+            .input-field.col.s12
+              = label_tag 'Mot de passe'
+              = password_field_tag 'Mot de passe', nil, autocomplete: 'off'
 
           / - if devise_mapping.rememberable?
           /   .row
@@ -15,8 +20,7 @@
           /       = f.check_box :remember_me
           /       = f.label :remember_me
 
-          = link_to 'Enregistrement', sign_up_path, class: 'btn-flat waves-effect waves-black'
-
-          .center-align
-            = submit_tag 'Connexion', class: 'btn-large waves-effect waves-light'
+        .card-action
+          = submit_tag 'Connexion', class: 'btn-flat waves-effect waves-black'
+          = link_to 'Pas de compte ?', sign_up_path, class: 'right'
 
