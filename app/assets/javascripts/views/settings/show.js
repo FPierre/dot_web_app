@@ -1,6 +1,6 @@
 $(document).on('ready page:load', function () {
   if ($('body.settings.show').length) {
-    $('.sidebar').sideNav({ menuWidth: 300 })
+    $('.sidebar').sideNav({ menuWidth: 300, closeOnClick: true })
 
     $('.modal-trigger').leanModal()
 
