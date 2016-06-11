@@ -23,40 +23,80 @@ nav
 
       ul
         li
-          a href='#' @click.prevent="changeCurrentView('users-index')"
-            .row
-              .col.s3
-                i.material-icons people
+          .hide-on-small-only
+            a href='#' @click.stop="changeCurrentView('users-index')"
+              .row
+                .col.s3
+                  i.material-icons people
 
-              .col.s7
-                | Utilisateurs
+                .col.s7
+                  | Utilisateurs
 
-        li
-          a href='#' @click.prevent="changeCurrentView('raspberries-index')"
-            .row
-              .col.s3
-                i.material-icons personal_video
+          .hide-on-large-only
+            a href='#' @click.prevent="changeCurrentView('users-index')"
+              .row
+                .col.s3
+                  i.material-icons people
 
-              .col.s7
-                | Raspberry
-
-        li
-          a href='#' @click.prevent="changeCurrentView('reminders-index')"
-            .row
-              .col.s3
-                i.material-icons notifications
-
-              .col.s7
-                | Mémos
+                .col.s7
+                  | Utilisateurs
 
         li
-          a href='#' @click.prevent="changeCurrentView('setting-show')"
-            .row
-              .col.s3
-                i.material-icons settings
+          .hide-on-small-only
+            a href='#' @click.stop="changeCurrentView('raspberries-index')"
+              .row
+                .col.s3
+                  i.material-icons personal_video
 
-              .col.s7
-                | Options
+                .col.s7
+                  | Raspberry
+
+          .hide-on-large-only
+            a href='#' @click.prevent="changeCurrentView('raspberries-index')"
+              .row
+                .col.s3
+                  i.material-icons personal_video
+
+                .col.s7
+                  | Raspberry
+
+        li
+          .hide-on-small-only
+            a href='#' @click.stop="changeCurrentView('reminders-index')"
+              .row
+                .col.s3
+                  i.material-icons notifications
+
+                .col.s7
+                  | Mémos
+
+          .hide-on-large-only
+            a href='#' @click.prevent="changeCurrentView('reminders-index')"
+              .row
+                .col.s3
+                  i.material-icons notifications
+
+                .col.s7
+                  | Mémos
+
+        li
+          .hide-on-small-only
+            a href='#' @click.stop="changeCurrentView('setting-show')"
+              .row
+                .col.s3
+                  i.material-icons settings
+
+                .col.s7
+                  | Options
+
+          .hide-on-large-only
+            a href='#' @click.prevent="changeCurrentView('setting-show')"
+                .row
+                  .col.s3
+                    i.material-icons settings
+
+                  .col.s7
+                    | Options
 
       - if @current_user
         a.btn-flat.waves-effect.waves-dark Déconnexion
