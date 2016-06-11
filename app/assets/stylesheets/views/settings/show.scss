@@ -23,33 +23,6 @@ body.settings.show {
   }
 
   main {
-    .collection {
-      @extend .z-depth-1;
 
-      border: none;
-
-      &.with-header {
-        h4 {
-          font-size: 1.5rem;
-        }
-      }
-
-      .collection-header {
-        button {
-          margin-top: 10px;
-        }
-      }
-
-      .collection-item {
-        // Override default .waves-effect display
-        &.waves-effect {
-          display: block;
-        }
-
-        &.pressed {
-          @extend .grey, .lighten-3;
-        }
-      }
-    }
   }
 }

@@ -114,7 +114,6 @@ $(document).on('ready page:load', function () {
         }
       },
       data: {
-        // currentView: 'users-index',
         currentView: 'users-index',
         currentModal: null,
         tappedUser: null,
@@ -146,6 +145,7 @@ $(document).on('ready page:load', function () {
           $('#modal1').openModal()
         },
         submitModal: function () {
+          // console.log('submitModal')
           switch (this.currentModal) {
             case 'user-new':
               // To user-new
@@ -159,11 +159,16 @@ $(document).on('ready page:load', function () {
               // To reminder-new
               this.$broadcast('create-reminder')
               break
+            case 'user-edit':
+              // To user-edit
+              // console.log('switch update user')
+              this.$broadcast('update-user')
+              break
+            case 'raspberry-edit':
+              // To raspberry-edit
+              this.$broadcast('update-raspberry')
+              break
           }
-        },
-        updateUser: function () {
-          // To user-edit
-          this.$broadcast('update-user')
         }
       },
       events: {
@@ -173,8 +178,6 @@ $(document).on('ready page:load', function () {
         },
         // From user-new
         'user-created': function (user) {
-          console.log('user-created')
-          console.log(user)
           // To users-index
           this.$broadcast('user-created', user)
         },
@@ -190,6 +193,7 @@ $(document).on('ready page:load', function () {
         },
         // From user-show
         'user-tapped': function (user) {
+          // console.log('user-tapped')
           this.tappedUser = user
           this.currentModal = 'user-edit'
           $('#modal1').openModal()

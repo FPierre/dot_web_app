@@ -11,6 +11,15 @@ class UsersController < ApplicationController
     render json: user
   end
 
+  def update
+    ap 'UsersController#update'
+    user = @dot_api_connector.update_user(params[:id], user_params).data
+  rescue DotApiConnector::Error => e
+    ap e.message
+  else
+    render json: user
+  end
+
   def destroy
     ap 'UsersController#destroy'
     user = @dot_api_connector.destroy_user(params[:id]).data
@@ -22,6 +31,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.permit :email, :firstname, :lastname, :password
+      params.permit :admin, :approved, :email, :firstname, :lastname, :password
     end
 end

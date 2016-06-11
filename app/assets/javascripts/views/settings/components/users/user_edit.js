@@ -34,8 +34,8 @@ Vue.component('user-edit', {
   },
   methods: {
     update: function (event) {
-      this.user.__v_resource.update({ id: this.user.id }, this.user).then(function (response) {
-        console.log(response.data)
+      this.user.__v_resource.update({ id: this.user.id }, this.user.attributes).then(function (response) {
+        // console.log(response.data)
         // To index
         this.$dispatch('user-updated', response.data)
       }, function (response) {
@@ -45,6 +45,7 @@ Vue.component('user-edit', {
   },
   events: {
     'update-user': function () {
+      // console.log('update-user')
       this.update()
     }
   }

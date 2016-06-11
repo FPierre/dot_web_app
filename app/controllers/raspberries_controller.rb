@@ -11,6 +11,15 @@ class RaspberriesController < ApplicationController
     render json: rapsberry
   end
 
+  def update
+    ap 'RaspberriesController#update'
+    raspberry = @dot_api_connector.update_raspberry(params[:id], raspberry_params).data
+  rescue DotApiConnector::Error => e
+    ap e.message
+  else
+    render json: raspberry
+  end
+
   def destroy
     ap 'RaspberriesController#destroy'
     rapsberry = @dot_api_connector.destroy_raspberry(params[:id]).data

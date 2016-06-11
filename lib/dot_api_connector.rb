@@ -43,6 +43,10 @@ class DotApiConnector
     process { resource.post(route_for('users'), attributes.to_json, headers) }
   end
 
+  def update_user user_id, attributes = {}
+    process { resource.patch(route_for("users/#{user_id}"), attributes.to_json, headers) }
+  end
+
   def destroy_user user_id
     process { resource.delete(route_for("users/#{user_id}"), headers) }
   end
@@ -61,6 +65,10 @@ class DotApiConnector
 
   def create_raspberry attributes = {}
     process { resource.post(route_for('raspberries'), attributes.to_json, headers) }
+  end
+
+  def update_raspberry raspberry_id, attributes = {}
+    process { resource.patch(route_for("raspberries/#{raspberry_id}"), attributes.to_json, headers) }
   end
 
   def destroy_raspberry raspberry_id

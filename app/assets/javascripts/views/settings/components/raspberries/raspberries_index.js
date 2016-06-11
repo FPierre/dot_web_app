@@ -7,7 +7,7 @@ Vue.component('raspberries-index', {
           <h4>{{ pressedRaspberriesIdsTitle }}</h4>\
         </div>\
         <div class="col s7">\
-          <button class="btn-flat waves-effect right">Supprimer</button>\
+          <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
         </div>\
       </div>\
     </li>\
@@ -31,6 +31,29 @@ Vue.component('raspberries-index', {
       var plural = (this.pressedRaspberriesIds.length > 1) ? 's' : ''
 
       return this.pressedRaspberriesIds.length + ' raspberry sélectionnée' + plural
+    }
+  },
+  methods: {
+    delete: function () {
+      if (this.pressedRaspberriesIds.length > 0) {
+        for (var i = 0; i < this.pressedRaspberriesIds.length; i++) {
+          this.$http({ url: 'raspberries/' + this.pressedRaspberriesIds[i], method: 'DELETE' }).then(function (response) {
+            // console.log(response)
+            // console.log(response.data.id)
+
+            this.raspberries = this.raspberries.filter(function (currentRaspberry) {
+              return currentRaspberry.id != response.data.id
+            })
+
+            this.pressedRaspberriesIds = this.pressedRaspberriesIds.filter(function (currentRaspberryId) {
+              return currentRaspberryId != response.data.id
+            })
+          }, function (response) {
+            console.log('catch')
+            console.log(response)
+          })
+        }
+      }
     }
   },
   events: {

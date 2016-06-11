@@ -10,15 +10,7 @@ Vue.component('user-show', {
         {{ displayApproved }}\
       </p>\
     </div>\
-    <div class="blue-grey lighten-5" v-show="displayUserEdit">\
-      <user-edit :user="user"></user-edit>\
-    </div>\
   </li>',
-  data: function () {
-    return {
-      displayUserEdit: false
-    }
-  },
   ready: function () {
     this.user.__v_resource = this.$resource('users/{id}')
   },
@@ -35,6 +27,7 @@ Vue.component('user-show', {
   },
   methods: {
     tapUser: function (user) {
+      console.log('tapUser')
       // To Vue
       this.$dispatch('user-tapped', user)
     },
