@@ -7,11 +7,11 @@
           .row
             .input-field.col.s6
               = label_tag 'Prénom'
-              = text_field_tag 'Prénom', nil, autofocus: true
+              = text_field_tag :firstname, nil, autofocus: true
 
             .input-field.col.s6
               = label_tag 'Nom'
-              = text_field_tag 'Nom', nil
+              = text_field_tag :lastname, nil
 
           .row
             .input-field.col.s12
@@ -21,11 +21,11 @@
           .row
             .input-field.col.s6
               = label_tag 'Mot de passe'
-              = password_field_tag 'Mot de passe', nil, autocomplete: 'off'
+              = password_field_tag :password, nil, autocomplete: 'off'
 
             .input-field.col.s6
               = label_tag 'Confirmation'
-              = password_field_tag 'Confirmation', nil, autocomplete: 'off'
+              = password_field_tag :password_confirmation, nil, autocomplete: 'off'
 
         .card-action
           = submit_tag 'Enregistrer', class: 'btn-flat waves-effect waves-black'

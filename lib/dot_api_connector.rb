@@ -10,7 +10,7 @@ class DotApiConnector
   attr_accessor :data, :links
 
   def initialize options = {}
-    # ap 'DotApiConnector#initialize'
+    ap 'DotApiConnector#initialize'
     # ap options
     config = Rails.application.config_for(:dot_api).deep_symbolize_keys!
 
@@ -29,11 +29,15 @@ class DotApiConnector
       @user_email = options[:email]
       @user_token = options[:token]
 
-      ap @user_email
+      ap "@user_email: #{@user_email}"
     end
   end
 
   # User
+
+  def create_user_session attributes = {}
+    process { resource.post(route_for('sign_in'), attributes.to_json, headers) }
+  end
 
   def get_users options = {}
     process { resource.get(route_for('users', options), headers) }

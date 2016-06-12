@@ -12,7 +12,7 @@
           .row
             .input-field.col.s12
               = label_tag 'Mot de passe'
-              = password_field_tag 'Mot de passe', nil, autocomplete: 'off'
+              = password_field_tag :password, nil, autocomplete: 'off'
 
           / - if devise_mapping.rememberable?
           /   .row
