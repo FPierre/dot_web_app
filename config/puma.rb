@@ -44,7 +44,7 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # end
 
 # Obligatoire pour Nginx
-bind 'unix:///var/www/dot_web_app/tmp/sockets/puma.sock'
+bind ENV['unix_socket_path']
 
 pidfile 'tmp/pids/puma.pid'
 state_path 'tmp/pids/puma.state'

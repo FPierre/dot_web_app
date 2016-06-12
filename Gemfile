@@ -5,6 +5,7 @@ ruby '2.3.0'
 
 gem 'awesome_print'
 gem 'coffee-rails', '~> 4.1', '>= 4.1.1'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'font-awesome-rails'
 gem 'gmaps4rails'
 gem 'jquery-rails'
