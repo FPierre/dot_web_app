@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
     get 'sign_up', to: 'users/registrations#new'
     post 'sign_up', to: 'users/registrations#create', as: :user_registration
-
   end
 
   namespace :screens do
