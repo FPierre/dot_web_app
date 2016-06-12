@@ -137,10 +137,14 @@ $(document).on('ready page:load', function () {
 
             return voiceCommands
           }
+        },
+        remindersLinks: {
+
         }
       },
       data: {
-        currentView: 'users-index',
+        // currentView: 'users-index',
+        currentView: 'reminders-index',
         currentModal: null,
         tappedUser: null,
         tappedRaspberry: null

@@ -1,5 +1,5 @@
 Vue.component('reminders-index', {
-  props: ['reminders'],
+  props: ['reminders', 'remindersLinks'],
   template: '<div class="reminders-index">\
     <div class="card" v-if="pressedRemindersIds.length > 0">\
       <div class="card-content">\
@@ -10,6 +10,11 @@ Vue.component('reminders-index', {
       </div>\
     </div>\
     <reminder-show v-for="reminder in reminders" :reminder="reminder"></reminder-show>\
+    <div class="row">\
+      <div class="col s12">\
+        <pagination object="reminders" :links="remindersLinks"></pagination>\
+      </div>\
+    </div>\
   </div>',
   data: function () {
     return {

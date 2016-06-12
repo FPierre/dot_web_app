@@ -10,7 +10,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     = action_cable_meta_tag
-  body class='#{controller_name.deconstantize} #{controller_name.demodulize} #{action_name}' :users='#{@users.to_json}' :setting='#{@setting.to_json}' :reminders='#{@reminders.to_json}' :raspberries='#{@raspberries.to_json}' :voice-commands='#{@voice_commands.to_json}'
+  body class='#{controller_name.deconstantize} #{controller_name.demodulize} #{action_name}' :users='#{@users.to_json}' :setting='#{@setting.to_json}' :reminders='#{@reminders.to_json}' :reminders-links='#{@reminders_links.to_json}' :raspberries='#{@raspberries.to_json}' :voice-commands='#{@voice_commands.to_json}'
     = render 'sidebar'
 
     main = yield

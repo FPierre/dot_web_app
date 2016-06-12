@@ -7,7 +7,7 @@ class DotApiConnector
   class Error < StandardError; end
 
   attr_reader :api_url, :api_port, :api_ssl, :api_ssl_verification, :user_email, :user_token
-  attr_accessor :data, :meta
+  attr_accessor :data, :links
 
   def initialize options = {}
     # ap 'DotApiConnector#initialize'
@@ -96,7 +96,7 @@ class DotApiConnector
   end
 
   def process
-    @data, @meta = [nil, nil]
+    @data, @links = [nil, nil]
 
     response = yield
   rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH, Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError => e # API unreachable
@@ -110,7 +110,7 @@ class DotApiConnector
         # ap result
 
         @data = result&.dig :data
-        @meta = result&.dig :meta
+        @links = result&.dig :links
 
         self
       rescue JSON::ParserError => e # JSON error

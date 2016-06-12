@@ -6,10 +6,14 @@ class SettingsController < ApplicationController
     ap 'SettingsController#show'
 
     @raspberries    = @dot_api_connector.get_raspberries(params).data
-    @reminders      = @dot_api_connector.get_reminders(params).data
     @setting        = @dot_api_connector.get_setting(params).data
     @users          = @dot_api_connector.get_users(params).data
     @voice_commands = @dot_api_connector.get_voice_commands(params).data
+
+    reminders_info   = @dot_api_connector.get_reminders(params)
+
+    @reminders       = reminders_info.data
+    @reminders_links = reminders_info.links
   rescue DotApiConnector::Error => e
     ap e.message
     redirect_to root_path
