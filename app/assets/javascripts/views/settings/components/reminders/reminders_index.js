@@ -1,15 +1,26 @@
 Vue.component('reminders-index', {
   props: ['reminders', 'remindersLinks'],
   template: '<div class="reminders-index">\
-    <div class="card" v-if="pressedRemindersIds.length > 0">\
-      <div class="card-content">\
-        <span class="card-title">{{ pressedRemindersIdsTitle }}</span>\
-      </div>\
-      <div class="card-action">\
-        <button class="btn-flat waves-effect" @click="delete">Supprimer</button>\
-      </div>\
-    </div>\
-    <reminder-show v-for="reminder in reminders" :reminder="reminder"></reminder-show>\
+    <ul class="collection with-header">\
+      <li class="collection-header" v-if="pressedRemindersIds.length > 0">\
+        <div class="row" style="margin-bottom: 0;">\
+          <div class="col s5">\
+            <h4>{{ pressedRemindersIdsTitle }}</h4>\
+          </div>\
+          <div class="col s7">\
+            <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
+          </div>\
+        </div>\
+      </li>\
+      <li class="collection-header" v-else>\
+        <div class="row" style="margin-bottom: 0;">\
+          <div class="col s12">\
+            <h4>Mémos</h4>\
+          </div>\
+        </div>\
+      </li>\
+      <reminder-show v-for="reminder in reminders" :reminder="reminder"></reminder-show>\
+    </ul>\
     <div class="row" v-if="remindersLinks.length > 0">\
       <div class="col s12">\
         <pagination object="reminders" :links="remindersLinks"></pagination>\
