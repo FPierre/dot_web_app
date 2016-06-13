@@ -117,5 +117,5 @@ nav
                   .col.s7
                     | Options
 
-      - if @current_user
-        a.btn-flat.waves-effect.waves-dark Déconnexion
+      = form_tag sign_out_path, method: :delete
+        = submit_tag 'Déconnexion', class: 'btn-flat'

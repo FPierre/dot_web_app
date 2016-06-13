@@ -27,6 +27,11 @@ module Users
       redirect_to root_path and return
     end
 
+    def destroy
+      reset_session
+      redirect_to root_path and return
+    end
+
     private
       def user_params
         params.permit :email, :password
