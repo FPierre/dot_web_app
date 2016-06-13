@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
     end
 
     def authorize
-      @current_user['approved'] == true || render_forbidden
+      @current_user['attributes']['approved'] == true || render_forbidden
     end
 
     def authorize_admin
-      (self.authorize && @current_user['admin'] == true) || render_forbidden
+      (@current_user['attributes']['approved'] == true && @current_user['attributes']['admin'] == true) || render_forbidden
     end
 
   private

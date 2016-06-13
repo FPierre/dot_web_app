@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, :authorize_admin
   before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
   def show
