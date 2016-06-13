@@ -10,7 +10,7 @@ Vue.component('reminders-index', {
       </div>\
     </div>\
     <reminder-show v-for="reminder in reminders" :reminder="reminder"></reminder-show>\
-    <div class="row">\
+    <div class="row" v-if="remindersLinks.length > 0">\
       <div class="col s12">\
         <pagination object="reminders" :links="remindersLinks"></pagination>\
       </div>\
