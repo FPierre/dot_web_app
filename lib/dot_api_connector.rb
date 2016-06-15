@@ -61,6 +61,10 @@ class DotApiConnector
     process { resource.get(route_for('settings/1', options), headers) }
   end
 
+  def update_setting attributes = {}
+    process { resource.patch(route_for('settings/1'), attributes.to_json, headers) }
+  end
+
   # Raspberry
 
   def get_raspberries options = {}

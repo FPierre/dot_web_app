@@ -32,6 +32,9 @@ class SettingsController < ApplicationController
 
   private
     def setting_param
-      params.permit!
+      params.permit :sarah_enabled, :twitter_enabled, :reminders_enabled, :weather_enabled, :weather_current_day_only,
+                    :room_occupied, :screen_guest_enabled
     end
 end
+
+
