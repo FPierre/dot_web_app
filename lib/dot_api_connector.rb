@@ -99,6 +99,16 @@ class DotApiConnector
     process { resource.get(route_for('voice_commands', options), headers) }
   end
 
+  # Voice Recognition Server
+
+  def get_voice_recognition_server options = {}
+    process { resource.get(route_for('voice_recognition_servers/1', options), headers) }
+  end
+
+  def update_voice_recognition_server attributes = {}
+    process { resource.patch(route_for('voice_recognition_servers/1'), attributes.to_json, headers) }
+  end
+
   def process
     @data, @links = [nil, nil]
 

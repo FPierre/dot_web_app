@@ -10,13 +10,8 @@ Vue.component('raspberry-show', {
       Adresse MAC : {{ raspberry.attributes.macAddress }}\
     </p>\
   </li>',
-  data: function () {
-    return {
-      displayRaspberryEdit: false
-    }
-  },
   ready: function () {
-   this.raspberry.__v_resource = this.$resource('raspberries/{id}')
+    this.raspberry.__v_resource = this.$resource('raspberries/{id}')
   },
   methods: {
     tapRaspberry: function (raspberry) {

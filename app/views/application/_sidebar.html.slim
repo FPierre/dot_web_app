@@ -4,8 +4,6 @@ nav
       i.material-icons menu
 
     div#sidebar-nav.side-nav.fixed
-      / = ap(@current_user).html_safe
-
       - if @current_user
         .current-user
           .row
@@ -59,6 +57,25 @@ nav
 
                 .col.s7
                   | Raspberry
+
+        li
+          .hide-on-med-and-down
+            a href='#' @click.stop="changeCurrentView('voice-recognition-server-show')"
+              .row
+                .col.s3
+                  i.material-icons settings_voice
+
+                .col.s7
+                  | Serveur SARAH
+
+          .hide-on-large-only
+            a href='#' @click.prevent="changeCurrentView('voice-recognition-server-show')"
+              .row
+                .col.s3
+                  i.material-icons settings_voice
+
+                .col.s7
+                  | Serveur SARAH
 
         li
           .hide-on-med-and-down

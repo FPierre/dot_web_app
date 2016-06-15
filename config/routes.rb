@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :reminders, only: [:create, :destroy]
   resources :settings, only: :update
   resources :users, only: [:create, :update, :destroy]
+  resources :voice_recognition_servers, only: :update
 
   root 'screens#team'
 end

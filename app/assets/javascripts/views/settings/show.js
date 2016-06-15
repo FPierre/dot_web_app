@@ -140,18 +140,39 @@ $(document).on('ready page:load', function () {
         },
         remindersLinks: {
 
+        },
+        voiceRecognitionServer: {
+          coerce: function (voiceRecognitionServer) {
+            var props = {}
+
+            if (voiceRecognitionServer.attributes !== null) {
+              for (var key in voiceRecognitionServer.attributes) {
+                if (voiceRecognitionServer.attributes.hasOwnProperty(key)) {
+                  var value = voiceRecognitionServer.attributes[key]
+
+                  props[key.toCamelCase()] = value
+                }
+              }
+
+              voiceRecognitionServer.attributes = props
+            }
+
+            return voiceRecognitionServer
+          }
         }
       },
       data: {
-        // currentView: 'users-index',
-        currentView: 'reminders-index',
+        currentView: 'users-index',
         currentModal: null,
         tappedUser: null,
-        tappedRaspberry: null
+        tappedRaspberry: null,
+        tappedVoiceRecognitionServer: null
       },
       computed: {
         hideCreateButton: function () {
-          return this.currentView == 'setting-show' || this.currentView == 'voice-commands-index'
+          return this.currentView == 'setting-show' ||
+                 this.currentView == 'voice-commands-index' ||
+                 this.currentView == 'voice-recognition-server-show'
         }
       },
       methods: {
@@ -164,6 +185,7 @@ $(document).on('ready page:load', function () {
         openModal: function () {
           this.tappedUser = null
           this.tappedRaspberry = null
+          this.tappedVoiceRecognitionServer = null
 
           switch (this.currentView) {
             case 'users-index':
@@ -203,11 +225,14 @@ $(document).on('ready page:load', function () {
               // To raspberry-edit
               this.$broadcast('update-raspberry')
               break
+            case 'voice-recognition-server-edit':
+              // To voice-recognition-server-edit
+              this.$broadcast('update-voice-recognition-server')
+              break
           }
         }
       },
       events: {
-        // From ?
         'change-current-view': function (view) {
           this.currentView = view
         },
@@ -238,6 +263,13 @@ $(document).on('ready page:load', function () {
           console.log('raspberry-tapped')
           this.tappedRaspberry = raspberry
           this.currentModal = 'raspberry-edit'
+          $('#modal1').openModal()
+        },
+        // From voice-recognition-server-show
+        'voice-recognition-server-tapped': function (voiceRecognitionServer) {
+          console.log('voice-recognition-server-tapped')
+          this.tappedVoiceRecognitionServer = voiceRecognitionServer
+          this.currentModal = 'voice-recognition-server-edit'
           $('#modal1').openModal()
         }
       }
