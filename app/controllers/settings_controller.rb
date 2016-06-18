@@ -11,7 +11,7 @@ class SettingsController < ApplicationController
     @voice_commands           = @dot_api_connector.get_voice_commands(params).data
     @voice_recognition_server = @dot_api_connector.get_voice_recognition_server(params).data
 
-    reminders_info   = @dot_api_connector.get_reminders(params)
+    reminders_info = @dot_api_connector.get_reminders(params)
 
     @reminders       = reminders_info.data
     @reminders_links = reminders_info.links

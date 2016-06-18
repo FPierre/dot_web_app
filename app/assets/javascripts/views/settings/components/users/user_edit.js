@@ -3,17 +3,23 @@ Vue.component('user-edit', {
   mixins: [crudMixin],
   template: '<div class="user-edit">\
     <div class="row">\
-      <div class="input-field col s12 m4">\
+      <div class="input-field col s12 m6">\
         <input id="user-edit-firstname-{{ user.id }}" placeholder="Prénom" class="validate" type="text" v-model="user.attributes.firstname">\
         <label for="user-edit-firstname-{{ user.id }}">Prénom</label>\
       </div>\
-      <div class="input-field col s12 m4">\
+      <div class="input-field col s12 m6">\
         <input id="user-edit-lastname-{{ user.id }}" placeholder="Nom" class="validate" type="text" v-model="user.attributes.lastname">\
         <label for="user-edit-lastname-{{ user.id }}">Nom</label>\
       </div>\
-      <div class="input-field col s12 m4">\
+    </div>\
+    <div class="row">\
+      <div class="input-field col s12 m6">\
         <input id="user-edit-email-{{ user.id }}" placeholder="Email" class="validate" type="email" v-model="user.attributes.email">\
         <label for="user-edit-email-{{ user.id }}">Email</label>\
+      </div>\
+      <div class="input-field col s12 m6">\
+        <input id="user-edit-password-{{ user.id }}" placeholder="Mot de passe" class="validate" type="password" v-model="user.attributes.password">\
+        <label for="user-edit-password-{{ user.id }}">Mot de passe</label>\
       </div>\
     </div>\
     <div class="row">\
