@@ -3,7 +3,7 @@ Vue.component('reminder-new', {
   template: '<div class="reminder-new">\
     <div class="row">\
       <div class="input-field col s12 m4">\
-        <input id="reminder-new-title" placeholder="Titre" class="validate" type="text" v-model="reminder.title">\
+        <input id="reminder-new-title" class="validate" type="text" v-model="reminder.title">\
         <label for="reminder-new-title">Titre</label>\
       </div>\
       <div class="input-field col s12 m4">\

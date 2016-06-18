@@ -3,15 +3,15 @@ Vue.component('raspberry-new', {
   template: '<div class="raspberry-new">\
     <div class="row">\
       <div class="input-field col s12 m4">\
-        <input id="raspberry-new-name" placeholder="Nom" class="validate" type="text" v-model="raspberry.name">\
+        <input id="raspberry-new-name" class="validate" type="text" v-model="raspberry.name">\
         <label for="raspberry-new-name">Nom</label>\
       </div>\
       <div class="input-field col s12 m4">\
-        <input id="raspberry-new-ip-address" placeholder="Adresse IP" class="validate" type="text" v-model="raspberry.ipAddress">\
+        <input id="raspberry-new-ip-address" class="validate" type="text" v-model="raspberry.ipAddress">\
         <label for="raspberry-new-ip-address">Adresse IP</label>\
       </div>\
       <div class="input-field col s12 m4">\
-        <input id="raspberry-new-mac-address" placeholder="Adresse MAC" class="validate" type="text" v-model="raspberry.macAddress">\
+        <input id="raspberry-new-mac-address" class="validate" type="text" v-model="raspberry.macAddress">\
         <label for="raspberry-new-mac-address">Adresse MAC</label>\
       </div>\
     </div>\

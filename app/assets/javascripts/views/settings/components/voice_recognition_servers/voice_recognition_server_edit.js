@@ -4,11 +4,11 @@ Vue.component('voice-recognition-server-edit', {
   template: '<div class="voice-recognition-server-edit">\
     <div class="row">\
       <div class="input-field col s12 m6">\
-        <input id="voice-recognition-server-edit-ip-address-{{ voiceRecognitionServer.id }}" placeholder="Adresse IP" class="validate" type="text" v-model="voiceRecognitionServer.attributes.ipAddress">\
+        <input id="voice-recognition-server-edit-ip-address-{{ voiceRecognitionServer.id }}" class="validate" type="text" v-model="voiceRecognitionServer.attributes.ipAddress">\
         <label for="voice-recognition-server-edit-ip-address-{{ voiceRecognitionServer.id }}">Adresse IP</label>\
       </div>\
       <div class="input-field col s12 m6">\
-        <input id="voice-recognition-server-edit-mac-address-{{ voiceRecognitionServer.id }}" placeholder="Adresse MAC" class="validate" type="text" v-model="voiceRecognitionServer.attributes.macAddress">\
+        <input id="voice-recognition-server-edit-mac-address-{{ voiceRecognitionServer.id }}" class="validate" type="text" v-model="voiceRecognitionServer.attributes.macAddress">\
         <label for="voice-recognition-server-edit-mac-address-{{ voiceRecognitionServer.id }}">Adresse MAC</label>\
       </div>\
     </div>\
