@@ -10,13 +10,13 @@ $(document).on('ready', function () {
         if (data['notification'] !== undefined) {
           var notification = data.notification
           var toastContent = $('<div class="notification priority-' + notification.priority + '">' +
-                                 '<div class="user">' + notification.user + '</div>' +
+                                 '<div class="user">' + notification.user + ' dit :</div>' +
                                  '<p class="content">' + notification.content + '</p>' +
                                  '<p class="created-at">' + notification.created_at + '</p>' +
                                '</div>')
 
           console.log(toastContent)
-          return Materialize.toast(toastContent, 20000, 'rounded')
+          return Materialize.toast(toastContent, notification.duration, 'rounded')
         }
       },
       speak: function (data) {
