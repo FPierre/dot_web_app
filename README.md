@@ -1,3 +1,6 @@
+
+bundle exec puma -e production
+
 # DotWebApp
 
 ## Features
