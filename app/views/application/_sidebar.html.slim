@@ -3,6 +3,8 @@ nav
     a.sidebar href='#' data-activates='sidebar-nav'
       i.material-icons menu
 
+    a.brand-logo.center href='#' = image_tag 'dot_project_logo/48x48.png'
+
     div#sidebar-nav.side-nav.fixed
       - if @current_user
         .current-user
@@ -133,6 +135,25 @@ nav
 
                   .col.s7
                     | Options
+
+        li
+          .hide-on-med-and-down
+            a href='#' @click.stop="changeCurrentView('about-show')"
+              .row
+                .col.s3
+                  i.material-icons info
+
+                .col.s7
+                  | Crédits
+
+          .hide-on-large-only
+            a href='#' @click.prevent="changeCurrentView('about-show')"
+              .row
+                .col.s3
+                  i.material-icons info
+
+                .col.s7
+                  | Crédits
 
       = form_tag sign_out_path, method: :delete
         = submit_tag 'Déconnexion', class: 'btn-flat'
