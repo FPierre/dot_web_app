@@ -89,6 +89,9 @@ nav
                 .col.s7
                   | Mémos
 
+                  span.new.badge v-if="!hideBadgeNewReminders"
+                    | {{ numberReceivedReminders }}
+
           .hide-on-large-only
             a href='#' @click.prevent="changeCurrentView('reminders-index')"
               .row

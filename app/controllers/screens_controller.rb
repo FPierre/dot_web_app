@@ -1,10 +1,15 @@
-# require 'tweetstream'
-
 class ScreensController < ApplicationController
   layout 'screen'
 
-  def team
+  before_action -> { @dot_api_connector = DotApiConnector.new }
 
+  def team
+    ap 'ScreensController#team'
+
+    @weather = @dot_api_connector.get_weather.data
+  rescue DotApiConnector::Error => e
+    ap e.message
+    # redirect_to root_path
   end
 
   def news

@@ -11,6 +11,6 @@
 # app: rails s -p3001
 
 $(document).on 'ready', ->
-  if $('html.screens.team').length
+  if $('html.screens').length || $('body.settings.show').length
     @App ||= {}
     @App.cable = ActionCable.createConsumer()
