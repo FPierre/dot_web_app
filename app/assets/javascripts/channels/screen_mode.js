@@ -7,7 +7,7 @@ $(document).on('ready', function () {
         console.log('ScreenModeChannel: received')
         console.log(data)
 
-        window.location.href = 'http://localhost:3001/screens/' + data['mode']
+        window.location.href = 'http://localhost:3001/screens/' + data.mode
       },
       speak: function (data) {
         console.log('ScreenModeChannel: speak')

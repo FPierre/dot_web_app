@@ -113,6 +113,12 @@ class DotApiConnector
     process { resource.patch(route_for('voice_recognition_servers/1'), attributes.to_json, headers) }
   end
 
+  # Weather
+
+  def get_weather options = {}
+    process { resource.get(route_for('weather', options), headers) }
+  end
+
   def process
     @data, @links = [nil, nil]
 
