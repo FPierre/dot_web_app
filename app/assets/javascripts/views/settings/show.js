@@ -166,18 +166,40 @@ $(document).on('ready page:load', function () {
         currentModal: null,
         tappedUser: null,
         tappedRaspberry: null,
-        tappedVoiceRecognitionServer: null
+        tappedVoiceRecognitionServer: null,
+        numberReceivedReminders: null
+      },
+      ready: function () {
+        // console.log('ready')
+        // console.log($('.application-data').data('numberReceivedReminders'))
+        // this.numberReceivedReminders = $('.application-data').data('numberReceivedReminders')
+        // this.numberReceivedReminders = numberReceivedReminders
+
+            var _this = this;
+
+            $(document).on('.application-data', function(e, response) {
+              console.log('.application-data : ', response)
+              _this.$set('numberReceivedReminders', response)
+            })
       },
       computed: {
         hideCreateButton: function () {
           return this.currentView == 'setting-show' ||
                  this.currentView == 'voice-commands-index' ||
                  this.currentView == 'voice-recognition-server-show'
+        },
+        hideBadgeNewReminders: function () {
+          return this.numberReceivedReminders == 0
         }
       },
       methods: {
         changeCurrentView: function (view) {
           this.currentView = view
+
+          if (this.currentView == 'reminders-index') {
+            this.numberReceivedReminders = 0
+            $('.application-data').data('numberReceivedReminders', 0)
+          }
         },
         changeCurrentModal: function (modal) {
           this.currentModal = modal
@@ -323,19 +345,3 @@ Vue.http.interceptors.push({
     return response
   }
 })
-
-String.prototype.toSnakeCase = function () {
-  return this.replace(/([A-Z])/g, function ($1) {
-    return '_' + $1.toLowerCase()
-  })
-}
-
-String.prototype.toCamelCase = function () {
-  return this.replace(/(-[a-z])/g, function ($1) {
-    return $1[1].toUpperCase()
-  })
-}
-
-String.prototype.toBoolean = function () {
-  return (this == 'true' || this == 'on') ? true : false
-}

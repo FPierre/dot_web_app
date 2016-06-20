@@ -2,91 +2,96 @@ Vue.component('setting-show', {
   props: ['setting'],
   mixins: [crudMixin],
   template: '<div>\
-        <ul class="collection with-header">\
-          <li class="collection-header">\
-            <h4>SARAH</h4>\
-          </li>\
-          <li class="collection-item">\
-            <div>\
-              Activer\
-              <div class="secondary-content">\
-                <div class="switch">\
-                  <label>\
-                    <input type="checkbox" v-model="setting.attributes.sarahEnabled" @change="update">\
-                    <span class="lever">\
-                  </label>\
-                </div>\
-              </div>\
+    <ul class="collection with-header">\
+      <li class="collection-header">\
+        <h4>SARAH</h4>\
+      </li>\
+      <li class="collection-item">\
+        <div>\
+          Activer\
+          <div class="secondary-content">\
+            <div class="switch">\
+              <label>\
+                <input type="checkbox" v-model="setting.attributes.sarahEnabled" @change="update">\
+                <span class="lever">\
+              </label>\
             </div>\
-          </li>\
-        </ul>\
-        <ul class="collection with-header">\
-          <li class="collection-header">\
-            <h4>Twitter</h4>\
-          </li>\
-          <li class="collection-item">\
-            <div>\
-              Activer\
-              <div class="secondary-content">\
-                <div class="switch">\
-                  <label>\
-                    <input type="checkbox" v-model="setting.attributes.twitterEnabled" @change="update">\
-                    <span class="lever">\
-                  </label>\
-                </div>\
-              </div>\
+          </div>\
+        </div>\
+      </li>\
+    </ul>\
+    <ul class="collection with-header">\
+      <li class="collection-header">\
+        <h4>Twitter</h4>\
+      </li>\
+      <li class="collection-item">\
+        <div>\
+          Activer\
+          <div class="secondary-content">\
+            <div class="switch">\
+              <label>\
+                <input type="checkbox" v-model="setting.attributes.twitterEnabled" @change="update">\
+                <span class="lever">\
+              </label>\
             </div>\
-          </li>\
-        </ul>\
-        <ul class="collection with-header">\
-          <li class="collection-header">\
-            <h4>Mémos</h4>\
-          </li>\
-          <li class="collection-item">\
-            <div>\
-              Activer\
-              <div class="secondary-content">\
-                <div class="switch">\
-                  <label>\
-                    <input type="checkbox" v-model="setting.attributes.remindersEnabled" @change="update">\
-                    <span class="lever">\
-                  </label>\
-                </div>\
-              </div>\
+          </div>\
+        </div>\
+      </li>\
+    </ul>\
+    <ul class="collection with-header">\
+      <li class="collection-header">\
+        <h4>Mémos</h4>\
+      </li>\
+      <li class="collection-item">\
+        <div>\
+          Activer\
+          <div class="secondary-content">\
+            <div class="switch">\
+              <label>\
+                <input type="checkbox" v-model="setting.attributes.remindersEnabled" @change="update">\
+                <span class="lever">\
+              </label>\
             </div>\
-          </li>\
-        </ul>\
-        <ul class="collection with-header">\
-          <li class="collection-header">\
-            <h4>Météo</h4>\
-          </li>\
-          <li class="collection-item">\
-            <div>\
-              Activer\
-              <div class="secondary-content">\
-                <div class="switch">\
-                  <label>\
-                    <input type="checkbox" v-model="setting.attributes.weatherEnabled" @change="update">\
-                    <span class="lever">\
-                  </label>\
-                </div>\
-              </div>\
+          </div>\
+        </div>\
+      </li>\
+    </ul>\
+    <ul class="collection with-header">\
+      <li class="collection-header">\
+        <h4>Salles de travail</h4>\
+      </li>\
+      <li class="collection-item">\
+        <div>\
+          Salle occupée\
+          <div class="secondary-content">\
+            <div class="switch">\
+              <label>\
+                <input type="checkbox" v-model="setting.attributes.roomOccupied" @change="update">\
+                <span class="lever">\
+              </label>\
             </div>\
-          </li>\
-          <li class="collection-item">\
-            <div>\
-              Jour courant uniquement\
-              <div class="secondary-content">\
-                <div class="switch">\
-                  <label>\
-                    <input type="checkbox" v-model="setting.attributes.weatherCurrentDayOnly" @change="update">\
-                    <span class="lever">\
-                  </label>\
-                </div>\
-              </div>\
+          </div>\
+        </div>\
+      </li>\
+    </ul>\
+    <ul class="collection with-header">\
+      <li class="collection-header">\
+        <h4>Mode écran</h4>\
+      </li>\
+      <li class="collection-item">\
+        <div>\
+          Mode client\
+          <div class="secondary-content">\
+            <div class="switch">\
+              <label>\
+                <input type="checkbox" v-model="setting.attributes.screenGuestEnabled" @change="update">\
+                <span class="lever">\
+              </label>\
             </div>\
-          </li>\
-        </ul>\
+          </div>\
+        </div>\
+      </li>\
+    </ul>\
   </div>',
   ready: function () {
    this.setting.__v_resource = this.$resource('settings/{id}')
