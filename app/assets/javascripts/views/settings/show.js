@@ -10,7 +10,7 @@ $(document).on('ready page:load', function () {
 
     Vue.config.debug = true
 
-    Vue.http.options.root = 'http://localhost:3001'
+    Vue.http.options.root = 'http://dot-web-app.fpierre.ovh'
 
     new Vue({
       el: '.settings.show',
