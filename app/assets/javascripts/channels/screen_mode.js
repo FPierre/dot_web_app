@@ -7,15 +7,17 @@ $(document).on('ready', function () {
         console.log('ScreenModeChannel: received')
         console.log(data)
 
-        window.location.href = 'http://localhost:3001/screens/' + data.mode
+        if (data.mode !== undefined) {
+          window.location.href = 'http://' + window.location.hostname + ':' + location.port + '/screens/' + data.mode
+        }
       },
-      speak: function (data) {
-        console.log('ScreenModeChannel: speak')
+      // speak: function (data) {
+      //   console.log('ScreenModeChannel: speak')
 
-        return this.perform('speak', {
-          data: data
-        })
-      }
+      //   return this.perform('speak', {
+      //     data: data
+      //   })
+      // }
     })
   }
 })
