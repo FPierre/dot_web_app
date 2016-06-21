@@ -19,26 +19,22 @@ html.screens.team {
         .zone {
           @extend .valign-wrapper, .z-depth-1;
 
-          -webkit-transition: all 7s ease;
-             -moz-transition: all 7s ease;
-              -ms-transition: all 7s ease;
-               -o-transition: all 7s ease;
-                  transition: all 7s ease;
-
           &.full {
             display: flex;
-            width: 98.8%;
+            width: 0;
+            flex-grow: 1;
           }
 
           &.half {
             display: flex;
             width: 49.4%;
+            flex-grow: 0;
           }
 
           &.hidden {
-            // display: none;
-            width: 0%;
-            // opacity: 0;
+            display: flex;
+            width: 0;
+            flex-grow: 0;
           }
 
           span {
@@ -57,7 +53,7 @@ html.screens.team {
         align-items: stretch;
         align-content: stretch;
         height: 120px;
-        padding: 15px;
+        padding: 5px;
 
         .room_occupied, .screen_guest_enabled {
           @extend .valign-wrapper, .green, .lighten-3, .z-depth-1;
