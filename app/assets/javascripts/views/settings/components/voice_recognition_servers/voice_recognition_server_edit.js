@@ -24,8 +24,9 @@ Vue.component('voice-recognition-server-edit', {
         // console.log(response.data)
         // To voice-recognition-server-index
         // A utiliser ? this.$dispatch('voiceRecognitionServer-updated', response.data)
+        Materialize.toast('Serveur SARAH modifié', 4000)
       }, function (response) {
-
+        Materialize.toast('Serveur SARAH non modifié', 4000)
       })
     }
   },

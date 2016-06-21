@@ -4,7 +4,7 @@ class RaspberriesController < ApplicationController
 
   def create
     ap 'RaspberriesController#create'
-    rapsberry = @dot_api_connector.create_raspberry(rapsberry_params).data
+    rapsberry = @dot_api_connector.create_raspberry(raspberry_params).data
   rescue DotApiConnector::Error => e
     ap e.message
   else

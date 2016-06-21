@@ -32,8 +32,10 @@ Vue.component('raspberry-new', {
         console.log(response.data)
         // To vm
         this.$dispatch('raspberry-created', response.data)
-      }, function (response) {
 
+        Materialize.toast('Raspberry crée', 4000)
+      }, function (response) {
+        Materialize.toast('Raspberry crée', 4000)
       })
     }
   },

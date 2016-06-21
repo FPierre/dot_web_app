@@ -28,8 +28,9 @@ Vue.component('raspberry-edit', {
         // console.log(response.data)
         // To raspberries-index
         // A utiliser ? this.$dispatch('raspberry-updated', response.data)
+        Materialize.toast('Raspberry crée', 4000)
       }, function (response) {
-
+        Materialize.toast('Raspberry crée', 4000)
       })
     }
   },

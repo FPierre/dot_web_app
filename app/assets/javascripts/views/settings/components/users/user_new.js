@@ -39,7 +39,10 @@ Vue.component('user-new', {
         console.log(response)
         // To vm
         this.$dispatch('user-created', response.data)
+
+        Materialize.toast('Utilisateur crée', 4000)
       }, function (response) {
+        Materialize.toast('Utilisateur non crée', 4000)
         console.log('catch')
         console.log(response)
       })
