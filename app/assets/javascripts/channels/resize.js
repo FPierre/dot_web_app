@@ -18,7 +18,7 @@ $(document).on('ready', function () {
             $currentZone.addClass('full').removeClass('half').removeClass('hidden')
             $otherZone.addClass('hidden').removeClass('half').removeClass('full')
 
-            // google.maps.event.trigger(handler.getMap(), 'resize')
+            google.maps.event.trigger(handler.getMap(), 'resize')
           }
           else if (data['size'] == 'half') {
             console.log('full to half')
@@ -26,7 +26,7 @@ $(document).on('ready', function () {
             $currentZone.addClass('half').removeClass('full').removeClass('hidden')
             $otherZone.addClass('half').removeClass('hidden').removeClass('full')
 
-            // google.maps.event.trigger(handler.getMap(), 'resize')
+            google.maps.event.trigger(handler.getMap(), 'resize')
           }
         }
       },
