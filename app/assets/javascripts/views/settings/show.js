@@ -10,7 +10,7 @@ $(document).on('ready page:load', function () {
 
     Vue.config.debug = true
 
-    Vue.http.options.root = 'http://dot-web-app.fpierre.ovh'
+    // Vue.http.options.root = 'http://dot-web-app.fpierre.ovh'
 
     new Vue({
       el: '.settings.show',
@@ -22,7 +22,21 @@ $(document).on('ready page:load', function () {
         },
         setting: {
           coerce: function (setting) {
-            return coerceProp(setting)
+            var props = {}
+
+            if (setting.attributes !== null) {
+              for (var key in setting.attributes) {
+                if (setting.attributes.hasOwnProperty(key)) {
+                  var value = setting.attributes[key]
+
+                  props[key.toCamelCase()] = value
+                }
+              }
+
+              setting.attributes = props
+            }
+
+            return setting
           }
         },
         reminders: {
