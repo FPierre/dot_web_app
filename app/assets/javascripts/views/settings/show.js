@@ -17,125 +17,27 @@ $(document).on('ready page:load', function () {
       props: {
         users: {
           coerce: function (users) {
-            for (var index in users) {
-              if (users.hasOwnProperty(index)) {
-                var user = users[index]
-                var props = {}
-
-                if (user.attributes === null) {
-                  continue
-                }
-
-                for (var key in user.attributes) {
-                  if (user.attributes.hasOwnProperty(key)) {
-                    var value = user.attributes[key]
-
-                    props[key.toCamelCase()] = value
-                  }
-                }
-
-                user.attributes = props
-              }
-            }
-
-            return users
+            return coerceProp(users)
           }
         },
         setting: {
           coerce: function (setting) {
-            var props = {}
-
-            if (setting.attributes !== null) {
-              for (var key in setting.attributes) {
-                if (setting.attributes.hasOwnProperty(key)) {
-                  var value = setting.attributes[key]
-
-                  props[key.toCamelCase()] = value
-                }
-              }
-
-              setting.attributes = props
-            }
-
-            return setting
+            return coerceProp(setting)
           }
         },
         reminders: {
           coerce: function (reminders) {
-            for (var index in reminders) {
-              if (reminders.hasOwnProperty(index)) {
-                var user = reminders[index]
-                var props = {}
-
-                if (user.attributes === null) {
-                  continue
-                }
-
-                for (var key in user.attributes) {
-                  if (user.attributes.hasOwnProperty(key)) {
-                    var value = user.attributes[key]
-
-                    props[key.toCamelCase()] = value
-                  }
-                }
-
-                user.attributes = props
-              }
-            }
-
-            return reminders
+            return coerceProp(reminders)
           }
         },
         raspberries: {
           coerce: function (raspberries) {
-            for (var index in raspberries) {
-              if (raspberries.hasOwnProperty(index)) {
-                var raspberry = raspberries[index]
-                var props = {}
-
-                if (raspberry.attributes === null) {
-                  continue
-                }
-
-                for (var key in raspberry.attributes) {
-                  if (raspberry.attributes.hasOwnProperty(key)) {
-                    var value = raspberry.attributes[key]
-
-                    props[key.toCamelCase()] = value
-                  }
-                }
-
-                raspberry.attributes = props
-              }
-            }
-
-            return raspberries
+            return coerceProp(raspberries)
           }
         },
         voiceCommands: {
           coerce: function (voiceCommands) {
-            for (var index in voiceCommands) {
-              if (voiceCommands.hasOwnProperty(index)) {
-                var voiceCommand = voiceCommands[index]
-                var props = {}
-
-                if (voiceCommand.attributes === null) {
-                  continue
-                }
-
-                for (var key in voiceCommand.attributes) {
-                  if (voiceCommand.attributes.hasOwnProperty(key)) {
-                    var value = voiceCommand.attributes[key]
-
-                    props[key.toCamelCase()] = value
-                  }
-                }
-
-                voiceCommand.attributes = props
-              }
-            }
-
-            return voiceCommands
+            return coerceProp(voiceCommands)
           }
         },
         remindersLinks: {
@@ -143,21 +45,7 @@ $(document).on('ready page:load', function () {
         },
         voiceRecognitionServer: {
           coerce: function (voiceRecognitionServer) {
-            var props = {}
-
-            if (voiceRecognitionServer.attributes !== null) {
-              for (var key in voiceRecognitionServer.attributes) {
-                if (voiceRecognitionServer.attributes.hasOwnProperty(key)) {
-                  var value = voiceRecognitionServer.attributes[key]
-
-                  props[key.toCamelCase()] = value
-                }
-              }
-
-              voiceRecognitionServer.attributes = props
-            }
-
-            return voiceRecognitionServer
+            return coerceProp(voiceRecognitionServer)
           }
         }
       },
