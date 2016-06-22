@@ -1,6 +1,10 @@
 $(document).on('ready', function () {
+  window.notification = {
+    numberReceivedReminders: 0
+  }
+
   this.App.notification = this.App.cable.subscriptions.create('NotificationChannel', {
-    connected: function () { console.log('NotificationChannel: connected');  numberReceivedReminders = 0 },
+    connected: function () { console.log('NotificationChannel: connected') },
     disconnected: function () { console.log('NotificationChannel: disconnected') },
     received: function (data) {
       console.log('NotificationChannel: received')
@@ -19,25 +23,15 @@ $(document).on('ready', function () {
           return Materialize.toast(toastContent, notification.duration, 'rounded')
         }
       }
-      numberReceivedReminders++
 
-      // else if ($('body.settings.show').length) {
-        // var numberReceivedReminders = $('.application-data').data('numberReceivedReminders')
-
-        // console.log('notif:')
-        // console.log(numberReceivedReminders)
-
-        // $('.application-data').data('numberReceivedReminders', numberReceivedReminders++)
-        // console.log('notif:')
-        // console.log($('.application-data').data('numberReceivedReminders'))
-      // }
+      window.notification.numberReceivedReminders++
     },
-    speak: function (data) {
-      console.log('NotificationChannel: speak')
+    // speak: function (data) {
+    //   console.log('NotificationChannel: speak')
 
-      return this.perform('speak', {
-        data: data
-      })
-    }
+    //   return this.perform('speak', {
+    //     data: data
+    //   })
+    // }
   })
 })
