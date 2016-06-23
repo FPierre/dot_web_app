@@ -44,9 +44,9 @@ Vue.component('user-edit', {
         // console.log(response.data)
         // To users-index
         // A utiliser ? this.$dispatch('user-updated', response.data)
-        Materialize.toast('Utilisateur modifié', 4000)
+        // Materialize.toast('Utilisateur modifié', 4000)
       }, function (response) {
-        Materialize.toast('Utilisateur non modifié', 4000)
+        // Materialize.toast('Utilisateur non modifié', 4000)
       })
     }
   },

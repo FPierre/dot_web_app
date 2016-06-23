@@ -2,12 +2,9 @@ Vue.component('user-show', {
   props: ['user'],
   template: '<li class="collection-item avatar waves-effect" :class="{ \'pressed\': user.pressed }" v-touch:tap="tapUser(user)" v-touch:press="pressUser(user.id)">\
     <img src="http://placehold.it/50x50" alt="" class="circle">\
-    <span class="title">{{ fullName }} {{ displayAdmin }}</span>\
-    <p>\
-      {{ user.attributes.createdAt }}\
-      <br>\
-      {{ displayApproved }}\
-    </p>\
+    <span class="title">{{ fullName }}</span>\
+    <p>{{ displayApproved }} {{ displayAdmin }}</p>\
+    <span class="secondary-content">{{ user.attributes.createdAt | fr-datetime }}</span>\
   </li>',
   ready: function () {
     this.user.__v_resource = this.$resource('users/{id}')
@@ -17,7 +14,7 @@ Vue.component('user-show', {
       return this.user.attributes.firstname + ' ' + this.user.attributes.lastname
     },
     displayAdmin: function () {
-      return (this.user.attributes.admin) ? '(Admin)' : ''
+      return (this.user.attributes.admin) ? 'et Administrateur' : ''
     },
     displayApproved: function () {
       return (this.user.attributes.approved) ? 'Approuvé' : 'Non approuvé'
@@ -34,7 +31,8 @@ Vue.component('user-show', {
         // To users-index
         this.$dispatch('user-unpressed', userId)
         this.$set('user.pressed', false)
-      } else {
+      }
+      else {
         // To users-index
         this.$dispatch('user-pressed', userId)
         this.$set('user.pressed', true)

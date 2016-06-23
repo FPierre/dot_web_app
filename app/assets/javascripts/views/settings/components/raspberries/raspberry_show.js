@@ -3,12 +3,11 @@ Vue.component('raspberry-show', {
   template: '<li class="collection-item waves-effect" :class="{ \'pressed\': raspberry.pressed }" v-touch:tap="tapRaspberry(raspberry)" v-touch:press="pressRaspberry(raspberry.id)">\
     <span class="title">{{ raspberry.attributes.name }}</span>\
     <p>\
-      {{ raspberry.attributes.createdAt }}\
-      <br>\
       Adresse IP : {{ raspberry.attributes.ipAddress }}\
       <br>\
       Adresse MAC : {{ raspberry.attributes.macAddress }}\
     </p>\
+    <span class="secondary-content">{{ raspberry.attributes.createdAt | fr-datetime }}</span>\
   </li>',
   ready: function () {
     this.raspberry.__v_resource = this.$resource('raspberries/{id}')
