@@ -1,6 +1,6 @@
 Vue.component('raspberry-show', {
   props: ['raspberry'],
-  template: '<li class="collection-item waves-effect" :class="{ \'pressed\': raspberry.pressed }" v-touch:tap="tapRaspberry(raspberry)" v-touch:press="pressRaspberry(raspberry.id)">\
+  template: '<li class="collection-item" :class="{ \'pressed\': raspberry.pressed }" v-touch:tap="tapRaspberry(raspberry)" v-touch:press="pressRaspberry(raspberry.id)">\
     <span class="title">{{ raspberry.attributes.name }}</span>\
     <p>\
       Adresse IP : {{ raspberry.attributes.ipAddress }}\

@@ -1,6 +1,6 @@
 Vue.component('reminder-show', {
   props: ['reminder'],
-  template: '<li class="collection-item waves-effect" :class="{ \'pressed\': reminder.pressed }" v-touch:press="pressReminder(reminder.id)">\
+  template: '<li class="collection-item" :class="{ \'pressed\': reminder.pressed }" v-touch:press="pressReminder(reminder.id)">\
     <span class="title">{{ reminder.attributes.title }}</span>\
     <p>\
       {{ reminder.attributes.content }}\
