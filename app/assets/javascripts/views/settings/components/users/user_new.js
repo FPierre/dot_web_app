@@ -7,20 +7,30 @@ Vue.component('user-new', {
     <li class="collection-item">\
       <div class="row">\
         <div class="input-field col s12 m6">\
-          <input id="user-new-firstname" class="validate" type="text" v-model="user.firstname">\
+          <input id="user-new-firstname" class="validate" type="text" v-model="user.firstname" required>\
           <label for="user-new-firstname">Prénom</label>\
         </div>\
         <div class="input-field col s12 m6">\
-          <input id="user-new-lastname" class="validate" type="text" v-model="user.lastname">\
+          <input id="user-new-lastname" class="validate" type="text" v-model="user.lastname" required>\
           <label for="user-new-lastname">Nom</label>\
         </div>\
         <div class="input-field col s12 m6">\
-          <input id="user-new-email" class="validate" type="email" v-model="user.email">\
+          <input id="user-new-email" class="validate" type="email" v-model="user.email" required>\
           <label for="user-new-email">Email</label>\
         </div>\
         <div class="input-field col s12 m6">\
-          <input id="user-new-password" class="validate" type="password" v-model="user.password">\
+          <input id="user-new-password" class="validate" type="password" v-model="user.password" required>\
           <label for="user-new-password">Mot de passe</label>\
+        </div>\
+      </div>\
+      <div class="row">\
+        <div class="col s6">\
+          <input id="approved-new-user" type="checkbox" v-model="user.approved">\
+          <label for="approved-new-user">Approuvé</label>\
+        </div>\
+        <div class="col s6">\
+          <input id="admin-new-user" type="checkbox" v-model="user.admin">\
+          <label for="admin-new-user">Administrateur</label>\
         </div>\
       </div>\
       <button type="submit" class="btn waves-effect waves-light" @click="create">\

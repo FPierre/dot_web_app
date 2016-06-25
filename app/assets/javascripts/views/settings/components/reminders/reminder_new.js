@@ -25,7 +25,7 @@ Vue.component('reminder-new', {
       </div>\
       <div class="row">\
         <div class="input-field col s12">\
-          <textarea id="reminder-new-content" class="materialize-textarea" v-model="reminder.content"></textarea>\
+          <textarea id="reminder-new-content" class="materialize-textarea" v-model="reminder.content" required></textarea>\
           <label for="reminder-new-content">Contenu</label>\
         </div>\
       </div>\

@@ -7,15 +7,15 @@ Vue.component('raspberry-new', {
     <li class="collection-item">\
       <div class="row">\
         <div class="input-field col s12 m4">\
-          <input id="raspberry-new-name" class="validate" type="text" v-model="raspberry.name">\
+          <input id="raspberry-new-name" class="validate" type="text" v-model="raspberry.name" required>\
           <label for="raspberry-new-name">Nom</label>\
         </div>\
         <div class="input-field col s12 m4">\
-          <input id="raspberry-new-ip-address" class="validate" type="text" v-model="raspberry.ipAddress">\
+          <input id="raspberry-new-ip-address" class="validate invalid" data-error="wrong" type="text" v-model="raspberry.ipAddress" required>\
           <label for="raspberry-new-ip-address">Adresse IP</label>\
         </div>\
         <div class="input-field col s12 m4">\
-          <input id="raspberry-new-mac-address" class="validate" type="text" v-model="raspberry.macAddress">\
+          <input id="raspberry-new-mac-address" class="validate" type="text" v-model="raspberry.macAddress" required>\
           <label for="raspberry-new-mac-address">Adresse MAC</label>\
         </div>\
       </div>\

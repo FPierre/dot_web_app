@@ -8,15 +8,15 @@ Vue.component('raspberry-edit', {
     <li class="collection-item">\
       <div class="row">\
         <div class="input-field col s12 m4">\
-          <input id="raspberry-edit-name-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.name">\
+          <input id="raspberry-edit-name-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.name" required>\
           <label for="raspberry-edit-name-{{ raspberry.id }}">Nom</label>\
         </div>\
         <div class="input-field col s12 m4">\
-          <input id="raspberry-edit-ip-address-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.ipAddress">\
+          <input id="raspberry-edit-ip-address-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.ipAddress" required>\
           <label for="raspberry-edit-ip-address-{{ raspberry.id }}">Adresse IP</label>\
         </div>\
         <div class="input-field col s12 m4">\
-          <input id="raspberry-edit-mac-address-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.macAddress">\
+          <input id="raspberry-edit-mac-address-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.macAddress" required>\
           <label for="raspberry-edit-mac-address-{{ raspberry.id }}">Adresse MAC</label>\
         </div>\
       </div>\

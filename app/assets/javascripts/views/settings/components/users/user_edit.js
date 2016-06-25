@@ -8,21 +8,21 @@ Vue.component('user-edit', {
     <li class="collection-item">\
       <div class="row">\
         <div class="input-field col s12 m6">\
-          <input id="user-edit-firstname-{{ user.id }}" class="validate" type="text" v-model="user.attributes.firstname">\
+          <input id="user-edit-firstname-{{ user.id }}" class="validate" type="text" v-model="user.attributes.firstname" required>\
           <label for="user-edit-firstname-{{ user.id }}">Prénom</label>\
         </div>\
         <div class="input-field col s12 m6">\
-          <input id="user-edit-lastname-{{ user.id }}" class="validate" type="text" v-model="user.attributes.lastname">\
+          <input id="user-edit-lastname-{{ user.id }}" class="validate" type="text" v-model="user.attributes.lastname" required>\
           <label for="user-edit-lastname-{{ user.id }}">Nom</label>\
         </div>\
       </div>\
       <div class="row">\
         <div class="input-field col s12 m6">\
-          <input id="user-edit-email-{{ user.id }}" class="validate" type="email" v-model="user.attributes.email">\
+          <input id="user-edit-email-{{ user.id }}" class="validate" type="email" v-model="user.attributes.email" required>\
           <label for="user-edit-email-{{ user.id }}">Email</label>\
         </div>\
         <div class="input-field col s12 m6">\
-          <input id="user-edit-password-{{ user.id }}" class="validate" type="password" v-model="user.attributes.password">\
+          <input id="user-edit-password-{{ user.id }}" class="validate" type="password" v-model="user.attributes.password" required>\
           <label for="user-edit-password-{{ user.id }}">Mot de passe</label>\
         </div>\
       </div>\
