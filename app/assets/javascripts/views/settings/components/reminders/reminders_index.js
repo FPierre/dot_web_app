@@ -1,14 +1,21 @@
 Vue.component('reminders-index', {
-  props: ['reminders', 'remindersLinks'],
+  props: ['reminders', 'remindersLinks', 'receivedReminders'],
   template: '<div class="reminders-index">\
     <ul class="collection with-header">\
       <li class="collection-header" v-if="pressedRemindersIds.length > 0">\
         <div class="row" style="margin-bottom: 0;">\
-          <div class="col s5">\
-            <h4>{{ pressedRemindersIdsTitle }}</h4>\
+          <div class="col s4">\
+            <h4>{{ pressedRemindersIds.length }}</h4>\
           </div>\
-          <div class="col s7">\
-            <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
+          <div class="col s8">\
+            <div class="hide-on-med-and-down">\
+              <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
+            </div>\
+            <div class="hide-on-med-and-up">\
+              <button class="btn-flat waves-effect right" @click="delete">\
+                <i class="material-icons">delete</i>\
+              </button>\
+            </div>\
           </div>\
         </div>\
       </li>\
@@ -30,13 +37,6 @@ Vue.component('reminders-index', {
   data: function () {
     return {
       pressedRemindersIds: []
-    }
-  },
-  computed: {
-    pressedRemindersIdsTitle: function () {
-      var plural = (this.pressedRemindersIds.length > 1) ? 's' : ''
-
-      return this.pressedRemindersIds.length + ' mémo' + plural + ' sélectionné' + plural
     }
   },
   methods: {

@@ -3,11 +3,18 @@ Vue.component('raspberries-index', {
   template: '<ul class="collection with-header">\
     <li class="collection-header" v-if="pressedRaspberriesIds.length > 0">\
       <div class="row" style="margin-bottom: 0;">\
-        <div class="col s5">\
-          <h4>{{ pressedRaspberriesIdsTitle }}</h4>\
+        <div class="col s4">\
+          <h4>{{ pressedRaspberriesIds.length }}</h4>\
         </div>\
-        <div class="col s7">\
-          <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
+        <div class="col s8">\
+          <div class="hide-on-med-and-down">\
+            <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
+          </div>\
+          <div class="hide-on-med-and-up">\
+            <button class="btn-flat waves-effect right" @click="delete">\
+              <i class="material-icons">delete</i>\
+            </button>\
+          </div>\
         </div>\
       </div>\
     </li>\
@@ -23,13 +30,6 @@ Vue.component('raspberries-index', {
   data: function () {
     return {
       pressedRaspberriesIds: []
-    }
-  },
-  computed: {
-    pressedRaspberriesIdsTitle: function () {
-      var plural = (this.pressedRaspberriesIds.length > 1) ? 's' : ''
-
-      return this.pressedRaspberriesIds.length + ' raspberry sélectionnée' + plural
     }
   },
   methods: {
@@ -63,7 +63,7 @@ Vue.component('raspberries-index', {
     // From raspberry-show
     'raspberry-unpressed': function (raspberryId) {
       this.pressedRaspberriesIds = this.pressedRaspberriesIds.filter(function (currentRaspberryId) {
-        return currenRaspberryrId != raspberryId
+        return currentRaspberryId != raspberryId
       })
     },
     // From from raspberry-new trough vm

@@ -3,12 +3,22 @@ Vue.component('users-index', {
   template: '<ul class="collection with-header">\
     <li class="collection-header" v-if="pressedUsersIds.length > 0">\
       <div class="row" style="margin-bottom: 0;">\
-        <div class="col s5">\
-          <h4>{{ pressedUsersIdsTitle }}</h4>\
+        <div class="col s4">\
+          <h4>{{ pressedUsersIds.length }}</h4>\
         </div>\
-        <div class="col s7">\
-          <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
-          <button class="btn-flat waves-effect right">Approuver</button>\
+        <div class="col s8">\
+          <div class="hide-on-med-and-down">\
+            <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
+            <button class="btn-flat waves-effect right">Approuver</button>\
+          </div>\
+          <div class="hide-on-med-and-up">\
+            <button class="btn-flat waves-effect right" @click="delete">\
+              <i class="material-icons">delete</i>\
+            </button>\
+            <button class="btn-flat waves-effect right">\
+              <i class="material-icons">done</i>\
+            </button>\
+          </div>\
         </div>\
       </div>\
     </li>\
@@ -25,13 +35,6 @@ Vue.component('users-index', {
     return {
       pressedUsersIds: [],
       userToEdit: null
-    }
-  },
-  computed: {
-    pressedUsersIdsTitle: function () {
-      var plural = (this.pressedUsersIds.length > 1) ? 's' : ''
-
-      return this.pressedUsersIds.length + ' utilisateur' + plural + ' sélectionné' + plural
     }
   },
   methods: {

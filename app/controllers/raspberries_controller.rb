@@ -4,29 +4,41 @@ class RaspberriesController < ApplicationController
 
   def create
     ap 'RaspberriesController#create'
-    rapsberry = @dot_api_connector.create_raspberry(raspberry_params).data
+    raspberry = @dot_api_connector.create_raspberry(raspberry_params)
   rescue DotApiConnector::Error => e
     ap e.message
   else
-    render json: rapsberry
+    if raspberry.errors
+      render json: raspberry.errors, status: :unprocessable_entity
+    else
+      render json: raspberry.data, status: :created
+    end
   end
 
   def update
     ap 'RaspberriesController#update'
-    raspberry = @dot_api_connector.update_raspberry(params[:id], raspberry_params).data
+    raspberry = @dot_api_connector.update_raspberry(params[:id], raspberry_params)
   rescue DotApiConnector::Error => e
     ap e.message
   else
-    render json: raspberry
+    if raspberry.errors
+      render json: raspberry.errors, status: :unprocessable_entity
+    else
+      render json: raspberry.data, status: :created
+    end
   end
 
   def destroy
     ap 'RaspberriesController#destroy'
-    rapsberry = @dot_api_connector.destroy_raspberry(params[:id]).data
+    raspberry = @dot_api_connector.destroy_raspberry(params[:id])
   rescue DotApiConnector::Error => e
     ap e.message
   else
-    render json: rapsberry
+    if raspberry.errors
+      render json: raspberry.errors, status: :unprocessable_entity
+    else
+      render json: raspberry.data, status: :created
+    end
   end
 
   private

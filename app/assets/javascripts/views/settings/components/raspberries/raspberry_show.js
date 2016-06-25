@@ -1,13 +1,14 @@
 Vue.component('raspberry-show', {
   props: ['raspberry'],
   template: '<li class="collection-item" :class="{ \'pressed\': raspberry.pressed }" v-touch:tap="tapRaspberry(raspberry)" v-touch:press="pressRaspberry(raspberry.id)">\
-    <span class="title">{{ raspberry.attributes.name }}</span>\
-    <p>\
-      Adresse IP : {{ raspberry.attributes.ipAddress }}\
-      <br>\
-      Adresse MAC : {{ raspberry.attributes.macAddress }}\
-    </p>\
-    <span class="secondary-content">{{ raspberry.attributes.createdAt | fr-datetime }}</span>\
+    <div class="row">\
+      <div class="col s9 m6">\
+        {{ raspberry.attributes.name }} (IP : {{ raspberry.attributes.ipAddress }}, MAC : {{ raspberry.attributes.macAddress }})\
+      </div>\
+      <div class="col s3 m6">\
+        <span class="secondary-content">{{ raspberry.attributes.createdAt | fr-datetime }}</span>\
+      </div>\
+    </div>\
   </li>',
   ready: function () {
     this.raspberry.__v_resource = this.$resource('raspberries/{id}')

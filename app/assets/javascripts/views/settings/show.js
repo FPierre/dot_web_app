@@ -10,14 +10,32 @@ $(document).on('ready page:load', function () {
 
     Vue.config.debug = true
 
-    // Vue.http.options.root = 'http://dot-web-app.fpierre.ovh'
-
     new Vue({
       el: '.settings.show',
       props: {
         users: {
           coerce: function (users) {
             return coerceProp(users)
+          }
+        },
+        reminders: {
+          coerce: function (reminders) {
+            return coerceProp(reminders)
+          }
+        },
+        raspberries: {
+          coerce: function (raspberries) {
+            return coerceProp(raspberries)
+          }
+        },
+        voiceCommands: {
+          coerce: function (voiceCommands) {
+            return coerceProp(voiceCommands)
+          }
+        },
+        voiceRecognitionServer: {
+          coerce: function (voiceRecognitionServer) {
+            return coerceProp(voiceRecognitionServer)
           }
         },
         setting: {
@@ -39,33 +57,13 @@ $(document).on('ready page:load', function () {
             return setting
           }
         },
-        reminders: {
-          coerce: function (reminders) {
-            return coerceProp(reminders)
-          }
-        },
-        raspberries: {
-          coerce: function (raspberries) {
-            return coerceProp(raspberries)
-          }
-        },
-        voiceCommands: {
-          coerce: function (voiceCommands) {
-            return coerceProp(voiceCommands)
-          }
-        },
         remindersLinks: {
 
-        },
-        voiceRecognitionServer: {
-          coerce: function (voiceRecognitionServer) {
-            return coerceProp(voiceRecognitionServer)
-          }
         }
       },
       data: {
         currentView: 'users-index',
-        currentModal: null,
+        // currentModal: null,
         tappedUser: null,
         tappedRaspberry: null,
         tappedVoiceRecognitionServer: null,
@@ -80,10 +78,17 @@ $(document).on('ready page:load', function () {
             this.notification.numberReceivedReminders = 0
           }
         },
+        receivedReminders: function () {
+          return this.notification.receivedReminders
+        },
         hideCreateButton: function () {
           return this.currentView == 'setting-show' ||
                  this.currentView == 'voice-commands-index' ||
-                 this.currentView == 'voice-recognition-server-show'
+                 this.currentView == 'voice-recognition-server-show' ||
+                 this.currentView == 'user-new' ||
+                 this.currentView == 'raspberry-new' ||
+                 this.currentView == 'reminder-new' ||
+                 this.currentView == 'voice-recognition-server-new'
         },
         hideBadgeNewReminders: function () {
           return this.numberReceivedReminders == 0
@@ -97,58 +102,77 @@ $(document).on('ready page:load', function () {
             this.numberReceivedReminders = 0
           }
         },
-        changeCurrentModal: function (modal) {
-          this.currentModal = modal
-        },
-        openModal: function () {
+        openNewView: function () {
           this.tappedUser = null
           this.tappedRaspberry = null
           this.tappedVoiceRecognitionServer = null
 
           switch (this.currentView) {
             case 'users-index':
-              this.currentModal = 'user-new'
+            case 'user-edit':
+              this.changeCurrentView('user-new')
               break
             case 'raspberries-index':
-              this.currentModal = 'raspberry-new'
+            case 'raspberry-edit':
+              this.changeCurrentView('raspberry-new')
               break
             case 'reminders-index':
-              this.currentModal = 'reminder-new'
-              break
-          }
-
-          $('#modal1').openModal()
-        },
-        submitModal: function () {
-          // console.log('submitModal')
-          switch (this.currentModal) {
-            case 'user-new':
-              // To user-new
-              this.$broadcast('create-user')
-              break
-            case 'raspberry-new':
-              // To raspberry-new
-              this.$broadcast('create-raspberry')
-              break
-            case 'reminder-new':
-              // To reminder-new
-              this.$broadcast('create-reminder')
-              break
-            case 'user-edit':
-              // To user-edit
-              // console.log('switch update user')
-              this.$broadcast('update-user')
-              break
-            case 'raspberry-edit':
-              // To raspberry-edit
-              this.$broadcast('update-raspberry')
-              break
-            case 'voice-recognition-server-edit':
-              // To voice-recognition-server-edit
-              this.$broadcast('update-voice-recognition-server')
+              this.changeCurrentView('reminder-new')
               break
           }
         }
+        // changeCurrentModal: function (modal) {
+        //   this.currentModal = modal
+        // },
+        // openModal: function () {
+        //   this.tappedUser = null
+        //   this.tappedRaspberry = null
+        //   this.tappedVoiceRecognitionServer = null
+
+        //   switch (this.currentView) {
+        //     case 'users-index':
+        //       this.currentModal = 'user-new'
+        //       break
+        //     case 'raspberries-index':
+        //       this.currentModal = 'raspberry-new'
+        //       break
+        //     case 'reminders-index':
+        //       this.currentModal = 'reminder-new'
+        //       break
+        //   }
+
+        //   $('#modal1').openModal()
+        // },
+        // submitModal: function () {
+        //   // console.log('submitModal')
+        //   switch (this.currentModal) {
+        //     case 'user-new':
+        //       // To user-new
+        //       this.$broadcast('create-user')
+        //       break
+        //     case 'raspberry-new':
+        //       // To raspberry-new
+        //       this.$broadcast('create-raspberry')
+        //       break
+        //     case 'reminder-new':
+        //       // To reminder-new
+        //       this.$broadcast('create-reminder')
+        //       break
+        //     case 'user-edit':
+        //       // To user-edit
+        //       // console.log('switch update user')
+        //       this.$broadcast('update-user')
+        //       break
+        //     case 'raspberry-edit':
+        //       // To raspberry-edit
+        //       this.$broadcast('update-raspberry')
+        //       break
+        //     case 'voice-recognition-server-edit':
+        //       // To voice-recognition-server-edit
+        //       this.$broadcast('update-voice-recognition-server')
+        //       break
+        //   }
+        // }
       },
       events: {
         'change-current-view': function (view) {
@@ -173,22 +197,29 @@ $(document).on('ready page:load', function () {
         'user-tapped': function (user) {
           // console.log('user-tapped')
           this.tappedUser = user
-          this.currentModal = 'user-edit'
-          $('#modal1').openModal()
+          this.changeCurrentView('user-edit')
+          // this.currentModal = 'user-edit'
+          // $('#modal1').openModal()
         },
         // From raspberry-show
         'raspberry-tapped': function (raspberry) {
-          console.log('raspberry-tapped')
+          // console.log('raspberry-tapped')
           this.tappedRaspberry = raspberry
-          this.currentModal = 'raspberry-edit'
-          $('#modal1').openModal()
+          this.changeCurrentView('raspberry-edit')
+          // this.currentModal = 'raspberry-edit'
+          // $('#modal1').openModal()
         },
         // From voice-recognition-server-show
         'voice-recognition-server-tapped': function (voiceRecognitionServer) {
-          console.log('voice-recognition-server-tapped')
+          // console.log('voice-recognition-server-tapped')
           this.tappedVoiceRecognitionServer = voiceRecognitionServer
-          this.currentModal = 'voice-recognition-server-edit'
-          $('#modal1').openModal()
+          this.changeCurrentView('voice-recognition-server-edit')
+          // this.currentModal = 'voice-recognition-server-edit'
+          // $('#modal1').openModal()
+        },
+        'raspberry-updated': function (raspberry) {
+          console.log('raspberry-updated')
+          this.changeCurrentView('raspberry-index')
         }
       }
     })

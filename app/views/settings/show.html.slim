@@ -1,16 +1,16 @@
 .absolute-action-btn v-if='!hideCreateButton'
-  a href='#' @click.prevent='openModal'
+  a href='#' @click.prevent='openNewView'
     i.material-icons add
 
-#modal1.modal
-  .modal-content
-    / h4 Ajouter un utilisateur
+/ #modal1.modal
+/   .modal-content
+/     / h4 Ajouter un utilisateur
 
-    component :is='currentModal' :user='tappedUser' :raspberry='tappedRaspberry' :voice-recognition-server='voiceRecognitionServer'
+/     component :is='currentModal' :user='tappedUser' :raspberry='tappedRaspberry' :voice-recognition-server='voiceRecognitionServer'
 
-  .modal-footer
-    a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='submitModal' Valider
+/   .modal-footer
+/     a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='submitModal' Valider
 
 .row
   .responsive-col
-    component :is='currentView' :users='users' :setting='setting' :reminders='reminders' :reminders-links='remindersLinks' :raspberries='raspberries' :voice-commands='voiceCommands' :voice-recognition-server='voiceRecognitionServer'
+    component :is='currentView' :users='users' :setting='setting' :reminders='reminders' :reminders-links='remindersLinks' :received-reminders='receivedReminders' :raspberries='raspberries' :voice-commands='voiceCommands' :voice-recognition-server='voiceRecognitionServer' :user='tappedUser' :raspberry='tappedRaspberry'

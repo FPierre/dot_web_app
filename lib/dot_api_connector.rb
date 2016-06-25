@@ -7,7 +7,7 @@ class DotApiConnector
   class Error < StandardError; end
 
   attr_reader :api_url, :api_port, :api_ssl, :api_ssl_verification, :user_email, :user_token
-  attr_accessor :data, :links
+  attr_accessor :data, :links, :errors
 
   def initialize options = {}
     ap 'DotApiConnector#initialize'
@@ -120,7 +120,9 @@ class DotApiConnector
   end
 
   def process
-    @data, @links = [nil, nil]
+    ap 'DotApiConnector#process'
+
+    @data, @links, @errors = [nil, nil, nil]
 
     response = yield
   rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH, Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError => e # API unreachable
@@ -128,24 +130,25 @@ class DotApiConnector
   else
     case response
     when Net::HTTPSuccess
+      ap 'not error from api'
       begin
-        result = JSON.parse(response.body).with_indifferent_access
-
-        # ap result
-
+        result = (JSON.parse(response.body).with_indifferent_access rescue {})
         @data = result&.dig :data
         @links = result&.dig :links
 
         self
-      rescue JSON::ParserError => e # JSON error
+      rescue JSON::ParserError => e
         raise Error.new e.message
       end
     else
-      raise Error.new(response.code == 401)
+      ap 'error from api'
+      begin
+        @errors = (JSON.parse(response.body).with_indifferent_access rescue {})
 
-      result = (JSON.parse(response.body) rescue {})
-
-      raise Error.new(result['errors'].presence || result['error'].presence || 'undefined error')
+        self
+      rescue JSON::ParserError => e
+        raise Error.new e.message
+      end
     end
   end
 
