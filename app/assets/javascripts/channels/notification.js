@@ -15,14 +15,29 @@ $(document).on('ready', function () {
         var notification = data.notification
 
         if ($('html.screens.team').length) {
-          var toastContent = $('<div class="notification priority-' + notification.priority + '">' +
-                                 '<div class="user">' + notification.user + ' dit :</div>' +
-                                 '<p class="content">' + notification.content + '</p>' +
-                                 '<p class="created-at">' + notification.created_at + '</p>' +
-                               '</div>')
+          if (notification.priority == 1) {
+            var toastContent = $('<div class="notification priority-' + notification.priority + '">' +
+                                   '<div class="user">' + notification.user + ' dit :</div>' +
+                                   '<p class="content">' + notification.content + '</p>' +
+                                   '<p class="created-at">' + notification.created_at + '</p>' +
+                                 '</div>')
 
-          // console.log(toastContent)
-          return Materialize.toast(toastContent, notification.duration, 'rounded')
+            // console.log(toastContent)
+            return Materialize.toast(toastContent, notification.duration, 'rounded')
+          }
+          else {
+            if ($('#zone-2 .collection').length == 0) {
+              $('#zone-2').html('<ul class="collection"></ul>')
+            }
+
+            $('#zone-2 .collection').prepend(
+              '<li class="collection-item notification priority-' + notification.priority + '">' +
+                '<div class="user">' + notification.user + ' dit :</div>' +
+                '<p class="content">' + notification.content + '</p>' +
+                '<p class="created-at">' + notification.created_at + '</p>' +
+              '</li>'
+            )
+          }
         }
         else if ($('body.settings.show').length) {
           window.notification.numberReceivedReminders++

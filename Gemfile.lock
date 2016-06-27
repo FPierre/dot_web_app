@@ -159,6 +159,8 @@ GEM
     tilt (2.0.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uglifier (3.0.0)
+      execjs (>= 0.3.0, < 3)
     underscore-rails (1.8.3)
     weather-icons-rails (0.1.1)
       railties (>= 3.2, < 5.0)
@@ -197,6 +199,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3
   tzinfo-data
+  uglifier (~> 3.0)
   underscore-rails (~> 1.8, >= 1.8.3)
   weather-icons-rails
   web-console (~> 3.0)

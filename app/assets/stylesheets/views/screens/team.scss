@@ -15,6 +15,7 @@ html.screens.team {
         align-items: stretch;
         height: calc(100% - 120px);
         padding: 5px;
+        overflow: hidden;
 
         .zone {
           @extend .valign-wrapper, .z-depth-1;
@@ -35,6 +36,10 @@ html.screens.team {
             display: flex;
             width: 0;
             flex-grow: 0;
+          }
+
+          .collection {
+            width: 100%;
           }
 
           span {
@@ -70,8 +75,8 @@ html.screens.team {
         .weather {
           @extend .valign-wrapper, .blue-grey, .lighten-2, .z-depth-1;
 
-          -webkit-flex: 5 0 0;
-          flex: 5 0 0;
+          -webkit-flex: 1 0 0;
+          flex: 1 0 0;
         }
 
         span {

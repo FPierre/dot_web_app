@@ -5,7 +5,7 @@ String.prototype.toSnakeCase = function () {
 }
 
 String.prototype.toCamelCase = function () {
-  return this.replace(/(-[a-z])/g, function ($1) {
+  return this.replace(/((-|_)[a-z])/g, function ($1) {
     return $1[1].toUpperCase()
   })
 }
@@ -37,4 +37,42 @@ function coerceProp(prop) {
   }
 
   return prop
+}
+
+function formatError(obj, apiErrors) {
+  // console.log(obj.ipAddress)
+  var props = {}
+
+  for (var prop in apiErrors) {
+    if (apiErrors.hasOwnProperty(prop)) {
+      // console.log(prop.toCamelCase())
+
+      if (obj.hasOwnProperty(prop.toCamelCase())) {
+        // console.log(apiErrors[prop])
+        props[prop.toCamelCase()] = apiErrors[prop]
+      }
+    }
+  }
+
+  return props
+}
+
+function displayErrors(errorsObject) {
+  console.log(errorsObject)
+
+  var stringError = ''
+
+  for (var prop in errorsObject) {
+    if (errorsObject.hasOwnProperty(prop)) {
+      var tmpStringError = prop + ' '
+
+      for (var i = 0; i < errorsObject[prop].length; i++) {
+        tmpStringError += errorsObject[prop][i] + ' '
+      }
+
+      stringError += tmpStringError
+    }
+  }
+
+  return stringError
 }

@@ -1,27 +1,22 @@
 require 'net/http'
-require 'net/https'
 require 'uri'
 require 'json'
 
 class DotApiConnector
   class Error < StandardError; end
 
-  attr_reader :api_url, :api_port, :api_ssl, :api_ssl_verification, :user_email, :user_token
+  attr_reader :api_url, :api_port, :user_email, :user_token
   attr_accessor :data, :links, :errors
 
   def initialize options = {}
     ap 'DotApiConnector#initialize'
-    # ap options
     config = Rails.application.config_for(:dot_api).deep_symbolize_keys!
 
     @api_port = config[:api_port]
     @api_ssl  = config[:api_ssl]
     @api_url  = config[:api_url]
-
-    # Optionnal
-    @api_ssl_verification = config[:api_ssl_verification].present? ? config[:api_ssl_verification] : OpenSSL::SSL::VERIFY_NONE
   rescue NoMethodError => e
-    raise Error.new "Please add 'api_url', 'api_port' and 'api_ssl' keys into your configuration"
+    raise Error.new "Please add 'api_url' and 'api_port' keys into your configuration"
   else
     if options
       options.deep_symbolize_keys
@@ -120,8 +115,6 @@ class DotApiConnector
   end
 
   def process
-    ap 'DotApiConnector#process'
-
     @data, @links, @errors = [nil, nil, nil]
 
     response = yield
@@ -130,7 +123,7 @@ class DotApiConnector
   else
     case response
     when Net::HTTPSuccess
-      ap 'not error from api'
+      ap 'no error from api'
       begin
         result = (JSON.parse(response.body).with_indifferent_access rescue {})
         @data = result&.dig :data
@@ -159,8 +152,6 @@ class DotApiConnector
       route = %Q(/api/#{API_VERSION}/#{path.to_s})
       options = { user_email: @user_email, user_token: @user_token }.merge(options)
 
-      # ap @user_email
-
       "#{route}?#{URI.encode_www_form(options)}"
     end
 
@@ -170,8 +161,6 @@ class DotApiConnector
 
     def resource
       http = Net::HTTP.new @api_url, @api_port
-      http.use_ssl = @api_ssl
-      http.verify_mode = @api_ssl_verification if @api_ssl == true
 
       http
     end

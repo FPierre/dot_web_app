@@ -16,6 +16,7 @@ gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 gem 'sass-rails', '~> 5.0'
 gem 'slim', '~> 3.0', '>= 3.0.6'
 gem 'sqlite3'
+gem 'uglifier', '~> 3.0'
 gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 gem 'weather-icons-rails'
 

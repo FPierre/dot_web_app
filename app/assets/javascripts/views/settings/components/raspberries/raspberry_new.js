@@ -33,7 +33,8 @@ Vue.component('raspberry-new', {
         name: null,
         ipAddress: null,
         macAddress: null
-      }
+      },
+      errors: null
     }
   },
   methods: {
@@ -42,20 +43,14 @@ Vue.component('raspberry-new', {
         console.log('create raspberry (ok): ', response)
         // To vm
         this.$dispatch('raspberry-created', response.data)
-
-        // Materialize.toast('Raspberry crée', 4000)
       }, function (response) {
         console.log('create raspberry (ko): ', response)
-        // Materialize.toast('Raspberry crée', 4000)
+        // To vm
+        this.$dispatch('raspberry-not-created', formatError(this.raspberry, response.data))
       })
     },
     back: function () {
       this.$dispatch('change-current-view', 'raspberries-index')
     }
-  },
-  // events: {
-  //   'create-raspberry': function () {
-  //     this.create()
-  //   }
-  // }
+  }
 })
