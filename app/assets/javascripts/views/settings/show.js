@@ -83,12 +83,13 @@ $(document).on('ready page:load', function () {
         },
         hideCreateButton: function () {
           return this.currentView == 'setting-show' ||
-                 this.currentView == 'voice-commands-index' ||
                  this.currentView == 'voice-recognition-server-show' ||
+                 this.currentView == 'voice-commands-index' ||
                  this.currentView == 'user-new' ||
                  this.currentView == 'raspberry-new' ||
                  this.currentView == 'reminder-new' ||
-                 this.currentView == 'voice-recognition-server-new'
+                 this.currentView == 'voice-recognition-server-new' ||
+                 this.currentView == 'about-show'
         },
         hideBadgeNewReminders: function () {
           return this.numberReceivedReminders == 0

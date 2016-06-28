@@ -30,11 +30,21 @@ $(document).on('ready', function () {
               $('#zone-2').html('<ul class="collection"></ul>')
             }
 
+            var numberReminders = $('#zone-2 .collection .collection-item').length
+            var numberRemindersLimit = 3
+
+            if (numberReminders > numberRemindersLimit) {
+              $('#zone-2 .collection .collection-item:last-child').remove()
+            }
+
             $('#zone-2 .collection').prepend(
-              '<li class="collection-item notification priority-' + notification.priority + '">' +
-                '<div class="user">' + notification.user + ' dit :</div>' +
-                '<p class="content">' + notification.content + '</p>' +
-                '<p class="created-at">' + notification.created_at + '</p>' +
+              '<li class="collection-item avatar">' +
+                '<img src="images/yuna.jpg" alt="" class="circle">' +
+                '<span class="title">' + notification.user + ' dit :</span>' +
+                '<p>' + notification.content + '<br>' +
+                  + notification.created_at +
+                '</p>' +
+                '<a href="#!" class="secondary-content">' + notification.priority + '</a>' +
               '</li>'
             )
           }
