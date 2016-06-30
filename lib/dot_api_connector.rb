@@ -92,6 +92,16 @@ class DotApiConnector
     process { resource.delete(route_for("reminders/#{reminder_id}"), headers) }
   end
 
+  # Test
+
+  def ping options = {}
+    process { resource.get(route_for('reminders', options), headers) }
+  end
+
+  def voice attributes = {}
+    process { resource.post(route_for('tests/voice'), attributes.to_json, headers) }
+  end
+
   # Voice command
 
   def get_voice_commands options = {}

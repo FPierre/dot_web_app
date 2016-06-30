@@ -36,5 +36,3 @@ class SettingsController < ApplicationController
                     :room_occupied, :screen_guest_enabled
     end
 end
-
-

@@ -3,23 +3,20 @@ nav
     a.sidebar href='#' data-activates='sidebar-nav'
       i.material-icons menu
 
-    a.brand-logo.center href='#' = image_tag 'dot_project_logo/48x48.png'
+    #sidebar-nav.side-nav.fixed
+      .current-user
+        .row
+          .col.s6.offset-s3
+            - if @current_user[:attributes][:avatar].present?
+              img.circle.responsive-img src='http://localhost:3000/images/#{@current_user[:attributes][:avatar]}'
 
-    div#sidebar-nav.side-nav.fixed
-      - if @current_user
-        .current-user
-          .row
-            .col.s6.offset-s3
-              - if @current_user[:attributes][:avatar].present?
-                img.circle.responsive-img src='http://localhost:3000/images/#{@current_user[:attributes][:avatar]}'
+        .row
+          .col.s12
+            span #{@current_user[:attributes][:firstname]} #{@current_user[:attributes][:lastname]}
 
-          .row
-            .col.s12
-              span #{@current_user[:attributes][:firstname]} #{@current_user[:attributes][:lastname]}
-
-          .row
-            .col.s12
-              span = @current_user[:attributes][:email]
+        .row
+          .col.s12
+            span = @current_user[:attributes][:email]
 
       ul
         li
@@ -128,7 +125,7 @@ nav
                   i.material-icons settings
 
                 .col.s7
-                  | Options
+                  | Paramètres
 
           .hide-on-large-only
             a href='#' @click.prevent="changeCurrentView('setting-show')"
@@ -137,7 +134,7 @@ nav
                     i.material-icons settings
 
                   .col.s7
-                    | Options
+                    | Paramètres
 
         li
           .hide-on-med-and-down

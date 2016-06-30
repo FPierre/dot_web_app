@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     get 'guest', action: 'guest'
   end
 
+  namespace :tests do
+    get 'ping'
+    post 'voice'
+  end
+
   get :settings, to: 'settings#show'
 
   resources :raspberries, only: [:create, :update, :destroy]
