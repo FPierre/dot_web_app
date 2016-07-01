@@ -3,22 +3,27 @@ class RemindersController < ApplicationController
   before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
   def create
-    ap 'RemindersController#create'
-
-    reminder = @dot_api_connector.create_reminder(reminder_params).data
+    reminder = @dot_api_connector.create_reminder(reminder_params)
   rescue DotApiConnector::Error => e
     ap e.message
   else
-    render json: reminder
+    if reminder.errors
+      render json: reminder.errors, status: :unprocessable_entity
+    else
+      render json: reminder.data, status: :created
+    end
   end
 
   def destroy
-    ap 'RemindersController#destroy'
-    reminder = @dot_api_connector.destroy_reminder(params[:id]).data
+    reminder = @dot_api_connector.destroy_reminder(params[:id])
   rescue DotApiConnector::Error => e
     ap e.message
   else
-    render json: reminder
+    if reminder.errors
+      render json: reminder.errors, status: :unprocessable_entity
+    else
+      render json: reminder.data, status: :created
+    end
   end
 
   private

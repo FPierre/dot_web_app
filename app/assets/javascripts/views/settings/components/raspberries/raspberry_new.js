@@ -33,8 +33,7 @@ Vue.component('raspberry-new', {
         name: null,
         ipAddress: null,
         macAddress: null
-      },
-      errors: null
+      }
     }
   },
   methods: {

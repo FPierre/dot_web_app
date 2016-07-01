@@ -78,7 +78,8 @@ Vue.component('reminder-new', {
         // Materialize.toast('Mémo crée', 4000)
       }, function (response) {
         console.log('create reminder (ko): ', response)
-        // Materialize.toast('Mémo non crée', 4000)
+        // To vm
+        this.$dispatch('reminder-not-created', formatError(this.reminder, response.data))
       })
     },
     back: function () {
