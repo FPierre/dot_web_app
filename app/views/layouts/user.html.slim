@@ -9,6 +9,11 @@ html class="#{controller_name.deconstantize} #{controller_name.demodulize} #{act
     = javascript_include_tag 'user'
   body
     - if flash[:notice]
-      p = flash[:notice]
+      .row
+        .responsive-col
+          .notice
+            .card
+              .card-content
+                span.card-title = flash[:notice]
 
     main = yield
