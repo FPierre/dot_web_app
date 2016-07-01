@@ -1,4 +1,6 @@
 html.screens.team {
+  @extend .blue-grey, .lighten-5;
+
   height: 100%;
 
   body {
@@ -10,30 +12,29 @@ html.screens.team {
       .zones {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         flex-wrap: wrap;
         align-items: stretch;
-        height: calc(100% - 120px);
-        padding: 5px;
+        height: calc(100% - 100px);
+        padding: 15px;
         overflow: hidden;
 
         .zone {
-          @extend .valign-wrapper, .z-depth-1;
+          @extend .white, .valign-wrapper, .z-depth-1;
+
+          display: flex;
 
           &.full {
-            display: flex;
             width: 0;
             flex-grow: 1;
           }
 
           &.half {
-            display: flex;
             width: 49.4%;
             flex-grow: 0;
           }
 
           &.hidden {
-            display: flex;
             width: 0;
             flex-grow: 0;
           }
@@ -54,37 +55,44 @@ html.screens.team {
 
       .info {
         display: flex;
+        // flex-direction: row;
         justify-content: space-between;
-        align-items: stretch;
-        align-content: stretch;
-        height: 120px;
-        padding: 5px;
+        // flex-wrap: wrap;
+        // align-items: stretch;
+        height: 100px;
+        padding: 0 15px 15px;
+        font-size: 1.7rem;
 
-        .room_occupied, .screen_guest_enabled {
-          @extend .valign-wrapper, .green, .lighten-3, .z-depth-1;
+        .room_occupied {
+          @extend .valign-wrapper, .z-depth-1;
 
-          -webkit-flex: 1 0 0;
-          flex: 1 0 0;
-          margin-right: 15px;
+          span {
+            @extend .valign;
 
-          &.occupied, &.enabled {
-            @extend .red;
+            margin: auto;
+
+            // text-transform: uppercase;
+          }
+
+          // display: flex;
+          width: 49.4%;
+
+          &.occupied {
+            @extend .red, .lighten-3, .red-text, .text-darken-3;
+          }
+
+          &.not-occupied {
+            @extend .green, .lighten-3, .green-text, .text-darken-3;
           }
         }
 
         .weather {
-          @extend .valign-wrapper, .blue-grey, .lighten-2, .z-depth-1;
+          // @extend .valign-wrapper, .blue-grey, .lighten-2, .z-depth-1;
+          @extend .blue-grey, .lighten-2, .white-text, .z-depth-1;
 
-          -webkit-flex: 1 0 0;
-          flex: 1 0 0;
-        }
+          // display: flex;
+          width: 49.4%;
 
-        span {
-          @extend .valign;
-
-          margin: auto;
-          font-size: 1.3rem;
-          text-transform: uppercase;
         }
       }
     }

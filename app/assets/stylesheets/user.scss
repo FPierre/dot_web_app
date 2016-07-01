@@ -23,20 +23,15 @@ html {
       height: 100%;
 
       main {
-        @extend .valign-wrapper;
+        // @extend .valign-wrapper;
 
         height: 100%;
 
         form {
-          @extend .valign;
+          // @extend .valign;
 
-          .card {
-            .card-action {
-              a {
-                margin-top: 10px;
-                font-size: .8rem;
-              }
-            }
+          input[type=submit] {
+
           }
         }
       }

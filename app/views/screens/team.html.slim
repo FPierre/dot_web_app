@@ -6,16 +6,27 @@
     span Zone 2
 
 .info
-  .room_occupied
-    span Salle libre
-
-  .screen_guest_enabled
-    span Mode invité désactivé
+  .room_occupied class="#{@room_occupied ? 'occupied' : 'not-occupied'}"
+    - if @room_occupied
+      span Salle occupée
+    - else
+      span Salle libre
 
   .weather
     / = ap(@weather).html_safe
 
     - if @weather
-      span = wi_icon weather_icons_codes[@weather[:weather][:icon]], class: 'wi-2x'
-      span = "#{@weather[:temp][:current]}°c"
-      span = "Min : #{@weather[:temp][:min]}°c Max : #{@weather[:temp][:max]}°c"
+      .row class="#{weather_icons_codes[@weather[:weather][:icon]]}"
+        .col.s3
+          = fa_icon 'map-marker'
+          | Paris
+
+        .col.s3
+          span = wi_icon weather_icons_codes[@weather[:weather][:icon]], class: 'wi-2x'
+          span = @weather[:weather][:description]
+
+        .col.s6
+          span = "#{@weather[:temp][:current]}°c"
+          span = "Min : #{@weather[:temp][:min]}°c Max : #{@weather[:temp][:max]}°c"
+    - else
+      span Météo indisponible

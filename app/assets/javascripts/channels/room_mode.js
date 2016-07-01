@@ -1,0 +1,26 @@
+$(document).on('ready', function () {
+  if ($('html.screens').length) {
+    this.App.notification = this.App.cable.subscriptions.create('RoomModeChannel', {
+      connected: function () { console.log('RoomModeChannel: connected') },
+      disconnected: function () { console.log('RoomModeChannel: disconnected') },
+      received: function (data) {
+        console.log('RoomModeChannel: received')
+        console.log(data)
+
+        if (data.room_occupied == true) {
+          $('.room_occupied span').text('Salle occupée')
+        }
+        else {
+          $('.room_occupied span').text('Salle libre')
+        }
+      },
+      // speak: function (data) {
+      //   console.log('RoomModeChannel: speak')
+
+      //   return this.perform('speak', {
+      //     data: data
+      //   })
+      // }
+    })
+  }
+})

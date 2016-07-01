@@ -4,20 +4,13 @@ class ScreensController < ApplicationController
   before_action -> { @dot_api_connector = DotApiConnector.new }
 
   def team
-    ap 'ScreensController#team'
-
-    @weather = @dot_api_connector.get_weather.data
+    @weather       = @dot_api_connector.get_weather.data
+    @room_occupied = @dot_api_connector.get_setting.data['attributes']['room-occupied']
   rescue DotApiConnector::Error => e
     ap e.message
-    # redirect_to root_path
-  end
-
-  def news
-
   end
 
   def guest
-
   end
 
   # api :GET, '/routes/from/:from/to/:to', 'Display the route in zone one'

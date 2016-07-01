@@ -1,32 +1,34 @@
 .row
-  / .responsive-col
-  .col.s12
+  / .col.s12
+  .responsive-col
     = form_tag user_registration_path
-      .card
-        .card-content
-          .row
-            .input-field.col.s6
-              = label_tag 'Prénom'
-              = text_field_tag :firstname, nil, autofocus: true
+      .row
+        .input-field.col.s6
+          = label_tag 'Prénom'
+          = text_field_tag :firstname, nil, autocomplete: 'off'
 
-            .input-field.col.s6
-              = label_tag 'Nom'
-              = text_field_tag :lastname, nil
+        .input-field.col.s6
+          = label_tag 'Nom'
+          = text_field_tag :lastname, nil, autocomplete: 'off'
 
-          .row
-            .input-field.col.s12
-              = label_tag :email
-              = email_field_tag :email, nil
+      .row
+        .input-field.col.s12
+          = label_tag :email
+          = email_field_tag :email, nil, autocomplete: 'off'
 
-          .row
-            .input-field.col.s6
-              = label_tag 'Mot de passe'
-              = password_field_tag :password, nil, autocomplete: 'off'
+      .row
+        .input-field.col.s6
+          = label_tag 'Mot de passe'
+          = password_field_tag :password, nil, autocomplete: 'off'
 
-            .input-field.col.s6
-              = label_tag 'Confirmation'
-              = password_field_tag :password_confirmation, nil, autocomplete: 'off'
+        .input-field.col.s6
+          = label_tag 'Confirmation'
+          = password_field_tag :password_confirmation, nil, autocomplete: 'off'
 
-        .card-action
-          = submit_tag 'Enregistrer', class: 'btn-flat waves-effect waves-black'
-          = link_to 'Déjà un compte ?', sign_in_path, class: 'right'
+      .row
+        .col.s12
+          = submit_tag 'Enregistrer', class: 'btn waves-effect'
+
+      .row
+        .col.s12
+          = link_to 'Déjà un compte ?', sign_in_path
