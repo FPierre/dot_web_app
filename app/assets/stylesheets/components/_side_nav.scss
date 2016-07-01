@@ -17,6 +17,10 @@
   }
 
   li {
+    &.separator {
+      border-bottom: 1px solid #607d8b;
+    }
+
     a {
       padding: {
         right: 10px !important;
