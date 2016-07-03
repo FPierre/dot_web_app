@@ -1,7 +1,6 @@
 default: &default
   api_url: localhost
   api_port: 3000
-  api_ssl: false
 
 development:
   <<: *default
@@ -12,4 +11,3 @@ test:
 production:
   api_url: <%= ENV['api_url'] %>
   api_port: <%= ENV['api_port'] %>
-  api_ssl: false
