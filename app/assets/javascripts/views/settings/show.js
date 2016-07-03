@@ -65,9 +65,10 @@ $(document).on('ready page:load', function () {
         currentView: 'users-index',
         errors: null,
         notification: window.notification,
-        tappedRaspberry: null,
-        tappedUser: null,
-        tappedVoiceRecognitionServer: null
+        // tappedRaspberry: null,
+        // tappedUser: null,
+        // tappedVoiceRecognitionServer: null,
+        tappedObject: null
       },
       computed: {
         numberReceivedReminders: {
@@ -81,16 +82,6 @@ $(document).on('ready page:load', function () {
         receivedReminders: function () {
           return this.notification.receivedReminders
         },
-        hideCreateButton: function () {
-          return this.currentView == 'setting-show' ||
-                 this.currentView == 'voice-recognition-server-show' ||
-                 this.currentView == 'voice-commands-index' ||
-                 this.currentView == 'user-new' ||
-                 this.currentView == 'raspberry-new' ||
-                 this.currentView == 'reminder-new' ||
-                 this.currentView == 'voice-recognition-server-new' ||
-                 this.currentView == 'about-show'
-        },
         hideBadgeNewReminders: function () {
           return this.numberReceivedReminders == 0
         }
@@ -101,25 +92,6 @@ $(document).on('ready page:load', function () {
 
           if (this.currentView == 'reminders-index') {
             this.numberReceivedReminders = 0
-          }
-        },
-        openNewView: function () {
-          this.tappedUser = null
-          this.tappedRaspberry = null
-          this.tappedVoiceRecognitionServer = null
-
-          switch (this.currentView) {
-            case 'users-index':
-            case 'user-edit':
-              this.changeCurrentView('user-new')
-              break
-            case 'raspberries-index':
-            case 'raspberry-edit':
-              this.changeCurrentView('raspberry-new')
-              break
-            case 'reminders-index':
-              this.changeCurrentView('reminder-new')
-              break
           }
         }
       },
@@ -152,20 +124,20 @@ $(document).on('ready page:load', function () {
         },
         // From user-show
         'user-tapped': function (user) {
-          // console.log('user-tapped')
-          this.tappedUser = user
+          // this.tappedUser = user
+          this.tappedObject = user
           this.changeCurrentView('user-edit')
         },
         // From raspberry-show
         'raspberry-tapped': function (raspberry) {
-          // console.log('raspberry-tapped')
-          this.tappedRaspberry = raspberry
+          // this.tappedRaspberry = raspberry
+          this.tappedObject = raspberry
           this.changeCurrentView('raspberry-edit')
         },
         // From voice-recognition-server-show
         'voice-recognition-server-tapped': function (voiceRecognitionServer) {
           // console.log('voice-recognition-server-tapped')
-          this.tappedVoiceRecognitionServer = voiceRecognitionServer
+          this.tappedObject = voiceRecognitionServer
           this.changeCurrentView('voice-recognition-server-edit')
         },
         'raspberry-updated': function (raspberry) {

@@ -1,6 +1,4 @@
-.absolute-action-btn v-if='!hideCreateButton'
-  a href='#' @click.prevent='openNewView'
-    i.material-icons add
+fixed-button :current-view='currentView' :tapped-object='tappedObject'
 
 errors-modal :errors.sync='errors'
 

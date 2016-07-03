@@ -16,8 +16,6 @@ body.settings.show {
     }
 
     a {
-      @extend .btn-floating, .btn-large, .waves-effect, .waves-light;
-
       color: $primary-color;
     }
   }
