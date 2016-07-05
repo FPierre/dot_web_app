@@ -65,10 +65,9 @@ $(document).on('ready page:load', function () {
         currentView: 'users-index',
         errors: null,
         notification: window.notification,
-        // tappedRaspberry: null,
-        // tappedUser: null,
-        // tappedVoiceRecognitionServer: null,
-        tappedObject: null
+        tappedRaspberry: null,
+        tappedUser: null,
+        tappedVoiceRecognitionServer: null,
       },
       computed: {
         numberReceivedReminders: {
@@ -99,50 +98,48 @@ $(document).on('ready page:load', function () {
         'change-current-view': function (view) {
           this.currentView = view
         },
+        'display-error': function (errors) {
+          console.log('display-error')
+          this.errors = errors
+          $('#errors-modal').openModal()
+        },
+        // From user-show
+        'user-tapped': function (user) {
+          this.tappedUser = user
+          // this.tappedObject = user
+          this.changeCurrentView('user-edit')
+        },
         // From user-new
         'user-created': function (user) {
           // To users-index
           this.$broadcast('user-created', user)
+        },
+        // From raspberry-show
+        'raspberry-tapped': function (raspberry) {
+          this.tappedRaspberry = raspberry
+          // this.tappedObject = raspberry
+          this.changeCurrentView('raspberry-edit')
         },
         // From raspberry-new
         'raspberry-created': function (raspberry) {
           // To raspberries-index
           this.$broadcast('raspberry-created', raspberry)
         },
-        'raspberry-not-created': function (errors) {
-          this.errors = errors
-          $('#errors-modal').openModal()
+        'raspberry-updated': function (raspberry) {
+          console.log('raspberry-updated')
+          this.changeCurrentView('raspberry-index')
         },
         // From reminder-new
         'reminder-created': function (reminder) {
           // To reminders-index
           this.$broadcast('reminder-created', reminder)
         },
-        'reminder-not-created': function (errors) {
-          this.errors = errors
-          $('#errors-modal').openModal()
-        },
-        // From user-show
-        'user-tapped': function (user) {
-          // this.tappedUser = user
-          this.tappedObject = user
-          this.changeCurrentView('user-edit')
-        },
-        // From raspberry-show
-        'raspberry-tapped': function (raspberry) {
-          // this.tappedRaspberry = raspberry
-          this.tappedObject = raspberry
-          this.changeCurrentView('raspberry-edit')
-        },
         // From voice-recognition-server-show
         'voice-recognition-server-tapped': function (voiceRecognitionServer) {
           // console.log('voice-recognition-server-tapped')
-          this.tappedObject = voiceRecognitionServer
+          this.tappedvoiceRecognitionServer = voiceRecognitionServer
+          // this.tappedObject = voiceRecognitionServer
           this.changeCurrentView('voice-recognition-server-edit')
-        },
-        'raspberry-updated': function (raspberry) {
-          console.log('raspberry-updated')
-          this.changeCurrentView('raspberry-index')
         }
       }
     })

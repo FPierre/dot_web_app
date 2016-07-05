@@ -40,7 +40,6 @@ function coerceProp(prop) {
 }
 
 function formatError(obj, apiErrors) {
-  // console.log(obj.ipAddress)
   var props = {}
 
   for (var prop in apiErrors) {
@@ -51,28 +50,12 @@ function formatError(obj, apiErrors) {
         // console.log(apiErrors[prop])
         props[prop.toCamelCase()] = apiErrors[prop]
       }
-    }
-  }
-
-  return props
-}
-
-function displayErrors(errorsObject) {
-  console.log(errorsObject)
-
-  var stringError = ''
-
-  for (var prop in errorsObject) {
-    if (errorsObject.hasOwnProperty(prop)) {
-      var tmpStringError = prop + ' '
-
-      for (var i = 0; i < errorsObject[prop].length; i++) {
-        tmpStringError += errorsObject[prop][i] + ' '
+      else if (obj.attributes.hasOwnProperty(prop.toCamelCase())) {
+        props[prop.toCamelCase()] = apiErrors[prop]
       }
-
-      stringError += tmpStringError
     }
   }
 
-  return stringError
+  // console.log(props)
+  return props
 }

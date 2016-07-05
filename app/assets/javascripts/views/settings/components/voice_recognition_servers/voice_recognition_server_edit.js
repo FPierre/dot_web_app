@@ -31,22 +31,17 @@ Vue.component('voice-recognition-server-edit', {
   methods: {
     update: function (event) {
       this.voiceRecognitionServer.__v_resource.update({ id: 1 }, this.voiceRecognitionServer.attributes).then(function (response) {
-        // console.log(response.data)
-        // To voice-recognition-server-index
-        // A utiliser ? this.$dispatch('voice-recognition-server-updated', response.data)
-        // Materialize.toast('Serveur SARAH modifié', 4000)
+        console.log('update voiceRecognitionServer (ok): ', response)
+        // To vm
+        this.$dispatch('voiceRecognitionServer-updated', response.data)
       }, function (response) {
-        // Materialize.toast('Serveur SARAH non modifié', 4000)
+        console.log('update voiceRecognitionServer (ko): ', response)
+        // To vm
+        this.$dispatch('display-error', formatError(this.voiceRecognitionServer, response.data))
       })
     },
     back: function () {
       this.$dispatch('change-current-view', 'voice-recognition-server-show')
     }
-  },
-  // events: {
-  //   'update-voice-recognition-server': function () {
-  //     // console.log('update-voice-recognition-server')
-  //     this.update()
-  //   }
-  // }
+  }
 })

@@ -1,10 +1,7 @@
 Vue.component('reminder-new', {
   mixins: [crudMixin],
-  template: '<ul class="collection with-header">\
-    <li class="collection-header">\
-      <h4>Créer un mémo</h4>\
-    </li>\
-    <li class="collection-item">\
+  template: '\
+      <div><h4>Créer un mémo</h4>\
       <div class="row">\
         <div class="input-field col s12 m6">\
           <input id="reminder-new-title" class="validate" type="text" v-model="reminder.title">\
@@ -34,8 +31,7 @@ Vue.component('reminder-new', {
         <i class="material-icons right">send</i>\
       </button>\
       <a class="btn-flat waves-effect" @click="back">Annuler</a>\
-    </li>\
-  </ul>',
+      </div>',
   data: function () {
     return {
       reminder: {
@@ -74,12 +70,10 @@ Vue.component('reminder-new', {
         console.log('create reminder (ok): ', response)
         // To vm
         this.$dispatch('reminder-created', response.data)
-
-        // Materialize.toast('Mémo crée', 4000)
       }, function (response) {
         console.log('create reminder (ko): ', response)
         // To vm
-        this.$dispatch('reminder-not-created', formatError(this.reminder, response.data))
+        this.$dispatch('display-error', formatError(this.reminder, response.data))
       })
     },
     back: function () {

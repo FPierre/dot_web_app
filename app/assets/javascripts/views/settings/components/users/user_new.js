@@ -59,20 +59,14 @@ Vue.component('user-new', {
         console.log('create user (ok): ', response)
         // To vm
         this.$dispatch('user-created', response.data)
-
-        // Materialize.toast('Utilisateur crée', 4000)
       }, function (response) {
         console.log('create user (ko): ', response)
-        // Materialize.toast('Utilisateur non crée', 4000)
+        // To vm
+        this.$dispatch('display-error', formatError(this.user, response.data))
       })
     },
     back: function () {
       this.$dispatch('change-current-view', 'users-index')
     }
-  },
-  // events: {
-  //   'create-user': function () {
-  //     this.create()
-  //   }
-  // }
+  }
 })

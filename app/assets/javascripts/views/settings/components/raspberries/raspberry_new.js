@@ -31,6 +31,7 @@ Vue.component('raspberry-new', {
       raspberry: {
         __v_resource: this.$resource('raspberries{/id}'),
         name: null,
+        apiPort: null,
         ipAddress: null,
         macAddress: null
       }
@@ -45,7 +46,7 @@ Vue.component('raspberry-new', {
       }, function (response) {
         console.log('create raspberry (ko): ', response)
         // To vm
-        this.$dispatch('raspberry-not-created', formatError(this.raspberry, response.data))
+        this.$dispatch('display-error', formatError(this.raspberry, response.data))
       })
     },
     back: function () {

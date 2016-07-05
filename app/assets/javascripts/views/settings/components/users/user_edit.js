@@ -52,22 +52,17 @@ Vue.component('user-edit', {
   methods: {
     update: function (event) {
       this.user.__v_resource.update({ id: this.user.id }, this.user.attributes).then(function (response) {
-        // console.log(response.data)
-        // To users-index
-        // A utiliser ? this.$dispatch('user-updated', response.data)
-        // Materialize.toast('Utilisateur modifié', 4000)
+        console.log('update user (ok): ', response)
+        // To vm
+        this.$dispatch('user-updated', response.data)
       }, function (response) {
-        // Materialize.toast('Utilisateur non modifié', 4000)
+        console.log('update user (ko): ', response)
+        // To vm
+        this.$dispatch('display-error', formatError(this.user, response.data))
       })
     },
     back: function () {
       this.$dispatch('change-current-view', 'users-index')
     }
-  },
-  // events: {
-  //   'update-user': function () {
-  //     // console.log('update-user')
-  //     this.update()
-  //   }
-  // }
+  }
 })

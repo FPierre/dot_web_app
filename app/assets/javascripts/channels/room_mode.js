@@ -8,9 +8,11 @@ $(document).on('ready', function () {
         console.log(data)
 
         if (data.room_occupied == true) {
+          $('.room_occupied').addClass('occupied').removeClass('not-occupied')
           $('.room_occupied span').text('Salle occupée')
         }
         else {
+          $('.room_occupied').addClass('not-occupied').removeClass('occupied')
           $('.room_occupied span').text('Salle libre')
         }
       },

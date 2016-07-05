@@ -4,20 +4,28 @@ class UsersController < ApplicationController
 
   def create
     ap 'UsersController#create'
-    user = @dot_api_connector.create_user_registration(user_params).data
+    user = @dot_api_connector.create_user_registration(user_params)
   rescue DotApiConnector::Error => e
     ap e.message
   else
-    render json: user
+    if user.errors
+      render json: user.errors, status: :unprocessable_entity
+    else
+      render json: user.data, status: :created
+    end
   end
 
   def update
     ap 'UsersController#update'
-    user = @dot_api_connector.update_user(params[:id], user_params).data
+    user = @dot_api_connector.update_user(params[:id], user_params)
   rescue DotApiConnector::Error => e
     ap e.message
   else
-    render json: user
+    if user.errors
+      render json: user.errors, status: :unprocessable_entity
+    else
+      render json: user.data, status: :created
+    end
   end
 
   def destroy
