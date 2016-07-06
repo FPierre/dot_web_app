@@ -6,17 +6,29 @@ Vue.component('raspberry-new', {
     </li>\
     <li class="collection-item">\
       <div class="row">\
-        <div class="input-field col s12 m4">\
+        <div class="input-field col s12 m6">\
           <input id="raspberry-new-name" class="validate" type="text" v-model="raspberry.name" required>\
           <label for="raspberry-new-name">Nom</label>\
         </div>\
-        <div class="input-field col s12 m4">\
-          <input id="raspberry-new-ip-address" class="validate invalid" data-error="wrong" type="text" v-model="raspberry.ipAddress" required>\
+      </div>\
+      <div class="row">\
+        <div class="input-field col s12 m6">\
+          <input id="raspberry-new-ip-address" class="validate" type="text" v-model="raspberry.ipAddress" required>\
           <label for="raspberry-new-ip-address">Adresse IP</label>\
         </div>\
-        <div class="input-field col s12 m4">\
+        <div class="input-field col s12 m6">\
           <input id="raspberry-new-mac-address" class="validate" type="text" v-model="raspberry.macAddress" required>\
           <label for="raspberry-new-mac-address">Adresse MAC</label>\
+        </div>\
+      </div>\
+      <div class="row">\
+        <div class="input-field col s12 m6">\
+          <input id="raspberry-new-api-port" class="validate" type="text" v-model="raspberry.apiPort" required>\
+          <label for="raspberry-new-api-port">Port API</label>\
+        </div>\
+        <div class="col s12 m6">\
+          <input id="raspberry-new-master-device" type="checkbox" v-model="raspberry.masterDevice">\
+          <label for="raspberry-new-master-device">Raspberry Maitre</label>\
         </div>\
       </div>\
       <button type="submit" class="btn waves-effect waves-light" @click="create">\
@@ -30,10 +42,11 @@ Vue.component('raspberry-new', {
     return {
       raspberry: {
         __v_resource: this.$resource('raspberries{/id}'),
-        name: null,
         apiPort: null,
         ipAddress: null,
-        macAddress: null
+        macAddress: null,
+        masterDevice: false,
+        name: null
       }
     }
   },

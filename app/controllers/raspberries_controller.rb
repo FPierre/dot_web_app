@@ -2,6 +2,14 @@ class RaspberriesController < ApplicationController
   before_action :authenticate
   before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
+  def index
+    raspberries = @dot_api_connector.get_raspberries(params)
+  rescue DotApiConnector::Error => e
+    ap e.message
+  else
+    render json: raspberries.data, status: :ok
+  end
+
   def create
     ap 'RaspberriesController#create'
     raspberry = @dot_api_connector.create_raspberry(raspberry_params)
@@ -24,7 +32,7 @@ class RaspberriesController < ApplicationController
     if raspberry.errors
       render json: raspberry.errors, status: :unprocessable_entity
     else
-      render json: raspberry.data, status: :created
+      render json: raspberry.data, status: :ok
     end
   end
 
@@ -43,6 +51,6 @@ class RaspberriesController < ApplicationController
 
   private
     def raspberry_params
-      params.permit :ip_address, :mac_address, :name
+      params.permit :api_port, :ip_address, :mac_address, :master_device, :name
     end
 end

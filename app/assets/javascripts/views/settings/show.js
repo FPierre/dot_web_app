@@ -139,10 +139,10 @@ $(document).on('ready page:load', function () {
           // To raspberries-index
           this.$broadcast('raspberry-created', raspberry)
         },
-        'raspberry-updated': function (raspberry) {
-          console.log('raspberry-updated')
-          this.changeCurrentView('raspberry-index')
-        },
+        // 'raspberry-updated': function (raspberry) {
+        //   console.log('raspberry-updated')
+        //   this.changeCurrentView('raspberry-index')
+        // },
         // // From reminder-new
         // 'reminder-created': function (reminder) {
         //   console.log('show reminder-created')

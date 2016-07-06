@@ -32,6 +32,11 @@ Vue.component('raspberries-index', {
       pressedRaspberriesIds: []
     }
   },
+  ready: function () {
+    this.$http({ url: 'raspberries', method: 'GET' }).then(function (response) {
+      this.raspberries = coerceProp(response.data)
+    })
+  },
   methods: {
     delete: function () {
       if (this.pressedRaspberriesIds.length > 0) {
