@@ -3,7 +3,17 @@ Vue.component('raspberry-show', {
   template: '<li class="collection-item" :class="{ \'pressed\': raspberry.pressed }" v-touch:tap="tapRaspberry(raspberry)" v-touch:press="pressRaspberry(raspberry.id)">\
     <div class="row">\
       <div class="col s9 m6">\
-        {{ raspberry.attributes.name }} (IP : {{ raspberry.attributes.ipAddress }}, MAC : {{ raspberry.attributes.macAddress }})\
+        <div class="row">\
+          <div class="col s12">\
+            {{ raspberry.attributes.name }}\
+          </div>\
+          <div class="col s12">\
+            IP : {{ raspberry.attributes.ipAddress }}, MAC : {{ raspberry.attributes.macAddress }}\
+          </div>\
+          <div class="col s12">\
+            Port API : {{ raspberry.attributes.apiPort }}, Master device : {{ raspberry.attributes.masterDevice }}\
+          </div>\
+        </div>\
       </div>\
       <div class="col s3 m6">\
         <span class="secondary-content">{{ raspberry.attributes.createdAt | fr-datetime }}</span>\
