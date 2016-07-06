@@ -1,29 +1,23 @@
 .row
-  / .col.s12
   .responsive-col
     = form_tag user_registration_path
       .row
-        .input-field.col.s6
+        .input-field.col.s12
           = label_tag 'Prénom'
-          = text_field_tag :firstname, nil, autocomplete: 'off'
+          = text_field_tag :firstname, nil, autocomplete: 'off', required: true
 
-        .input-field.col.s6
+        .input-field.col.s12
           = label_tag 'Nom'
-          = text_field_tag :lastname, nil, autocomplete: 'off'
+          = text_field_tag :lastname, nil, autocomplete: 'off', required: true
 
       .row
         .input-field.col.s12
           = label_tag :email
-          = email_field_tag :email, nil, autocomplete: 'off'
+          = email_field_tag :email, nil, autocomplete: 'off', required: true
 
-      .row
-        .input-field.col.s6
+        .input-field.col.s12
           = label_tag 'Mot de passe'
-          = password_field_tag :password, nil, autocomplete: 'off'
-
-        .input-field.col.s6
-          = label_tag 'Confirmation'
-          = password_field_tag :password_confirmation, nil, autocomplete: 'off'
+          = password_field_tag :password, nil, autocomplete: 'off', required: true
 
       .row
         .col.s12

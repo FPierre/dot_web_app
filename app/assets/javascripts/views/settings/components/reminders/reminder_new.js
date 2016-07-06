@@ -8,7 +8,7 @@ Vue.component('reminder-new', {
           <label for="reminder-new-title">Titre</label>\
         </div>\
         <div class="input-field col s12 m6">\
-          <input id="reminder-new-display-at" type="date" class="datepicker" v-model="reminder.displayedAt">\
+          <input id="reminder-new-display-at" type="datetime-local" v-model="reminder.displayedAt">\
           <label for="reminder-new-display-at" class="active">Date d\'affichage</label>\
         </div>\
         <div class="input-field col s12 m6">\

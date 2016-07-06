@@ -8,15 +8,18 @@ module Users
     end
 
     def create
-      response = @dot_api_connector.create_user_registration(user_params).data
-
-      # User not approved yet
-      redirect_to root_path
-
-      # In case API responds with HTTP code 200 but without 'user_token' field (shouldn't append)
-      # redirect_to external_users_ui.sign_in_path(redirect_url: params[:redirect_url]), alert: 'Mauvais identifiants.' and return
+      response = @dot_api_connector.create_user_registration(user_params)
     rescue DotApiConnector::Error => e
-      # redirect_to external_users_ui.sign_in_path(redirect_url: params[:redirect_url]), alert: 'Mauvais identifiants.' and return
+      ap e.message
+    else
+      if response.errors
+        flash.now[:notice] = response.errors
+
+        render :new
+      else
+        # User not approved yet
+        redirect_to root_path
+      end
     end
 
     private
