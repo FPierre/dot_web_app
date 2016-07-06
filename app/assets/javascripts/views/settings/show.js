@@ -35,7 +35,21 @@ $(document).on('ready page:load', function () {
         },
         voiceRecognitionServer: {
           coerce: function (voiceRecognitionServer) {
-            return coerceProp(voiceRecognitionServer)
+            var props = {}
+
+            if (voiceRecognitionServer.attributes !== null) {
+              for (var key in voiceRecognitionServer.attributes) {
+                if (voiceRecognitionServer.attributes.hasOwnProperty(key)) {
+                  var value = voiceRecognitionServer.attributes[key]
+
+                  props[key.toCamelCase()] = value
+                }
+              }
+
+              voiceRecognitionServer.attributes = props
+            }
+
+            return voiceRecognitionServer
           }
         },
         setting: {
