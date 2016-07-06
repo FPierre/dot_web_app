@@ -55,14 +55,17 @@ Vue.component('user-new', {
   },
   methods: {
     create: function () {
-      this.user.__v_resource.save(this.user).then(function (response) {
-        console.log('create user (ok): ', response)
+      var component = this
+
+      component.user.__v_resource.save(component.user).then(function (response) {
+        // console.log('create user (ok): ', response)
         // To vm
-        this.$dispatch('user-created', response.data)
+        // component.$dispatch('user-created', response.data)
+        component.back()
       }, function (response) {
-        console.log('create user (ko): ', response)
+        // console.log('create user (ko): ', response)
         // To vm
-        this.$dispatch('display-error', formatError(this.user, response.data))
+        component.$dispatch('display-error', formatError(component.user, response.data))
       })
     },
     back: function () {

@@ -52,14 +52,17 @@ Vue.component('raspberry-new', {
   },
   methods: {
     create: function () {
-      this.raspberry.__v_resource.save(this.raspberry).then(function (response) {
-        console.log('create raspberry (ok): ', response)
+      var component = this
+
+      component.raspberry.__v_resource.save(component.raspberry).then(function (response) {
+        // console.log('create raspberry (ok): ', response)
         // To vm
-        this.$dispatch('raspberry-created', response.data)
+        // component.$dispatch('raspberry-created', response.data)
+        component.back()
       }, function (response) {
-        console.log('create raspberry (ko): ', response)
+        // console.log('create raspberry (ko): ', response)
         // To vm
-        this.$dispatch('display-error', formatError(this.raspberry, response.data))
+        component.$dispatch('display-error', formatError(component.raspberry, response.data))
       })
     },
     back: function () {

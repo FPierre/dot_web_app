@@ -53,15 +53,17 @@ Vue.component('reminder-new', {
   },
   methods: {
     create: function () {
-      this.reminder.__v_resource.save(this.reminder).then(function (response) {
-        console.log('create reminder (ok): ', response)
+      var component = this
+
+      component.reminder.__v_resource.save(component.reminder).then(function (response) {
+        // console.log('create reminder (ok): ', response)
         // To vm
-        // this.$dispatch('reminder-created', response.data)
-        this.back()
+        // component.$dispatch('reminder-created', response.data)
+        component.back()
       }, function (response) {
-        console.log('create reminder (ko): ', response)
+        // console.log('create reminder (ko): ', response)
         // To vm
-        this.$dispatch('display-error', formatError(this.reminder, response.data))
+        component.$dispatch('display-error', formatError(component.reminder, response.data))
       })
     },
     back: function () {

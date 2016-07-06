@@ -30,14 +30,17 @@ Vue.component('voice-recognition-server-edit', {
   },
   methods: {
     update: function (event) {
-      this.voiceRecognitionServer.__v_resource.update({ id: 1 }, this.voiceRecognitionServer.attributes).then(function (response) {
-        console.log('update voiceRecognitionServer (ok): ', response)
+      var component = this
+
+      component.voiceRecognitionServer.__v_resource.update({ id: 1 }, component.voiceRecognitionServer.attributes).then(function (response) {
+        // console.log('update voiceRecognitionServer (ok): ', response)
         // To vm
-        this.$dispatch('voiceRecognitionServer-updated', response.data)
+        // component.$dispatch('voiceRecognitionServer-updated', response.data)
+        component.back()
       }, function (response) {
-        console.log('update voiceRecognitionServer (ko): ', response)
+        // console.log('update voiceRecognitionServer (ko): ', response)
         // To vm
-        this.$dispatch('display-error', formatError(this.voiceRecognitionServer, response.data))
+        component.$dispatch('display-error', formatError(component.voiceRecognitionServer, response.data))
       })
     },
     back: function () {

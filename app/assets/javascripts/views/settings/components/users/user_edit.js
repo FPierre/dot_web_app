@@ -51,14 +51,15 @@ Vue.component('user-edit', {
   },
   methods: {
     update: function (event) {
-      this.user.__v_resource.update({ id: this.user.id }, this.user.attributes).then(function (response) {
+      var component = this
+
+      component.user.__v_resource.update({ id: component.user.id }, component.user.attributes).then(function (response) {
         console.log('update user (ok): ', response)
-        // To vm
-        this.$dispatch('user-updated', response.data)
+        component.back()
       }, function (response) {
         console.log('update user (ko): ', response)
         // To vm
-        this.$dispatch('display-error', formatError(this.user, response.data))
+        component.$dispatch('display-error', formatError(component.user, response.data))
       })
     },
     back: function () {

@@ -47,12 +47,15 @@ Vue.component('raspberry-edit', {
   },
   methods: {
     update: function () {
-      this.raspberry.__v_resource.update({ id: this.raspberry.id }, this.raspberry.attributes).then(function (response) {
+      var component = this
+
+      component.raspberry.__v_resource.update({ id: component.raspberry.id }, component.raspberry.attributes).then(function (response) {
         // console.log('update raspberry (ok): ', response)
+        component.back()
       }, function (response) {
-        console.log('update raspberry (ko): ', response)
+        // console.log('update raspberry (ko): ', response)
         // To vm
-        this.$dispatch('display-error', formatError(this.raspberry, response.data))
+        component.$dispatch('display-error', formatError(component.raspberry, response.data))
       })
     },
     back: function () {

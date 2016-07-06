@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if user.errors
       render json: user.errors, status: :unprocessable_entity
     else
-      render json: user.data, status: :created
+      render json: user.data, status: :ok
     end
   end
 
