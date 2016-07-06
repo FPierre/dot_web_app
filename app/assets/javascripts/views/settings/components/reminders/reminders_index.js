@@ -34,6 +34,11 @@ Vue.component('reminders-index', {
       pressedRemindersIds: []
     }
   },
+  ready: function () {
+    this.$http({ url: 'reminders', method: 'GET' }).then(function (response) {
+      this.reminders = coerceProp(response.data)
+    })
+  },
   methods: {
     delete: function () {
       if (this.pressedRemindersIds.length > 0) {
@@ -69,8 +74,17 @@ Vue.component('reminders-index', {
       })
     },
     // From from reminder-new trough vm
-    'reminder-created': function (reminder) {
-      this.reminders.push(reminder)
-    }
+    // 'reminder-created': function (reminder) {
+    //   console.log('index reminder-created')
+    //   // this.reminders.push(reminder)
+
+    //   this.reminder.__v_resource.get().then(function (response) {
+    //     console.log('get reminders (ok): ', response)
+    //     // To vm
+    //     this.$dispatch('reminder-created', response.data)
+    //   }, function (response) {
+    //     console.log('get reminders (ko): ', response)
+    //   })
+    // }
   }
 })

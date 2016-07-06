@@ -143,11 +143,13 @@ $(document).on('ready page:load', function () {
           console.log('raspberry-updated')
           this.changeCurrentView('raspberry-index')
         },
-        // From reminder-new
-        'reminder-created': function (reminder) {
-          // To reminders-index
-          this.$broadcast('reminder-created', reminder)
-        },
+        // // From reminder-new
+        // 'reminder-created': function (reminder) {
+        //   console.log('show reminder-created')
+
+        //   // To reminders-index
+        //   this.$broadcast('reminder-created', reminder)
+        // },
         // From voice-recognition-server-show
         'voice-recognition-server-tapped': function (voiceRecognitionServer) {
           // console.log('voice-recognition-server-tapped')

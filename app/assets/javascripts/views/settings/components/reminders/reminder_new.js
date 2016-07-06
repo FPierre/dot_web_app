@@ -44,19 +44,6 @@ Vue.component('reminder-new', {
       }
     }
   },
-  // computed: {
-  //   'reminder.displayedAt': {
-  //     get: function () {
-  //       var $input = $('.datepicker').pickadate()
-  //       var picker = $input.pickadate('picker')
-
-  //       return picker.get('select').obj
-  //     },
-  //     set: function () {
-
-  //     }
-  //   }
-  // },
   ready: function () {
     $('select').material_select()
     $('.datepicker').pickadate({ 'min': new Date() })
@@ -69,7 +56,8 @@ Vue.component('reminder-new', {
       this.reminder.__v_resource.save(this.reminder).then(function (response) {
         console.log('create reminder (ok): ', response)
         // To vm
-        this.$dispatch('reminder-created', response.data)
+        // this.$dispatch('reminder-created', response.data)
+        this.back()
       }, function (response) {
         console.log('create reminder (ko): ', response)
         // To vm
@@ -79,11 +67,6 @@ Vue.component('reminder-new', {
     back: function () {
       this.$dispatch('change-current-view', 'reminders-index')
     }
-  },
-  // events: {
-  //   'create-reminder': function () {
-  //     this.create()
-  //   }
-  // }
+  }
 })
 

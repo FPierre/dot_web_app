@@ -2,6 +2,14 @@ class RemindersController < ApplicationController
   before_action :authenticate
   before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
+  def index
+    reminders = @dot_api_connector.get_reminders(params)
+  rescue DotApiConnector::Error => e
+    ap e.message
+  else
+    render json: reminders.data, status: :ok
+  end
+
   def create
     reminder = @dot_api_connector.create_reminder(reminder_params)
   rescue DotApiConnector::Error => e
