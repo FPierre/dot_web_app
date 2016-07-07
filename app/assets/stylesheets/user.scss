@@ -14,7 +14,7 @@
 @import 'views/**/*';
 
 html {
-  &.sessions.new, &.registrations.new {
+  &.sessions, &.registrations {
     @extend .blue-grey, .lighten-5;
 
     height: 100%;

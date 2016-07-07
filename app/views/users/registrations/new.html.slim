@@ -4,20 +4,20 @@
       .row
         .input-field.col.s12
           = label_tag 'Prénom'
-          = text_field_tag :firstname, nil, autocomplete: 'off', required: true
+          = text_field_tag :firstname, nil, autocomplete: 'off'
 
         .input-field.col.s12
           = label_tag 'Nom'
-          = text_field_tag :lastname, nil, autocomplete: 'off', required: true
+          = text_field_tag :lastname, nil, autocomplete: 'off'
 
       .row
         .input-field.col.s12
           = label_tag :email
-          = email_field_tag :email, nil, autocomplete: 'off', required: true
+          = email_field_tag :email, nil, autocomplete: 'off'
 
         .input-field.col.s12
           = label_tag 'Mot de passe'
-          = password_field_tag :password, nil, autocomplete: 'off', required: true
+          = password_field_tag :password, nil, autocomplete: 'off'
 
       .row
         .col.s12
