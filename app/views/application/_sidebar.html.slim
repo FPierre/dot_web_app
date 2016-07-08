@@ -8,7 +8,7 @@ nav
         .row
           .col.s6.offset-s3
             - if @current_user[:attributes][:avatar].present?
-              img.circle.responsive-img src="http://#{ENV['api_url']}:#{ENV['api_port']}/images/#{@current_user[:attributes][:avatar]}"
+              img.circle.responsive-img src="http://#{ENV['api_url_http']}:#{ENV['api_port_http']}/images/#{@current_user[:attributes][:avatar]}"
 
         .row
           .col.s12
