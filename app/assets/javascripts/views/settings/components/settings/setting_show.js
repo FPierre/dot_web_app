@@ -76,7 +76,7 @@ Vue.component('setting-show', {
     </ul>\
     <ul class="collection with-header">\
       <li class="collection-header">\
-        <h4>Mode écran</h4>\
+        <h4>Mode écran externe</h4>\
       </li>\
       <li class="collection-item">\
         <div>\

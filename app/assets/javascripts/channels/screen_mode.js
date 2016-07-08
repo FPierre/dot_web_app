@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-  if ($('html.screens').length) {
+  if ($('html.screens.guest').length || $('html.screens.normal').length) {
     this.App.notification = this.App.cable.subscriptions.create('ScreenModeChannel', {
       connected: function () { console.log('ScreenModeChannel: connected') },
       disconnected: function () { console.log('ScreenModeChannel: disconnected') },

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   end
 
   namespace :screens do
-    get 'team', action: 'team'
-    get 'news', action: 'news'
     get 'guest', action: 'guest'
+    get 'normal', action: 'normal'
+    get 'team', action: 'team'
   end
 
   namespace :tests do

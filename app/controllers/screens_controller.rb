@@ -13,6 +13,9 @@ class ScreensController < ApplicationController
   def guest
   end
 
+  def normal
+  end
+
   # api :GET, '/routes/from/:from/to/:to', 'Display the route in zone one'
   # description 'Fetch Google API to get the route from/to'
   # param :from, String, desc: '', required: true
