@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :raspberries, only: [:index, :create, :update, :destroy]
   resources :reminders, only: [:index, :create, :destroy]
   resources :settings, only: :update
-  resources :users, only: [:create, :update, :destroy]
+  resources :users, only: [:index, :create, :update, :destroy]
   resources :voice_recognition_servers, only: :update
 
   root 'screens#team'

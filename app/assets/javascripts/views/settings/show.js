@@ -13,16 +13,6 @@ $(document).on('ready page:load', function () {
     new Vue({
       el: '.settings.show',
       props: {
-        users: {
-          coerce: function (users) {
-            return coerceProp(users)
-          }
-        },
-        reminders: {
-          coerce: function (reminders) {
-            return coerceProp(reminders)
-          }
-        },
         raspberries: {
           coerce: function (raspberries) {
             return coerceProp(raspberries)
@@ -70,13 +60,11 @@ $(document).on('ready page:load', function () {
 
             return setting
           }
-        },
-        remindersLinks: {
-
         }
       },
       data: {
-        currentView: 'users-index',
+        // currentView: 'users-index',
+        currentView: 'reminders-index',
         errors: null,
         notification: window.notification,
         tappedRaspberry: null,
@@ -123,11 +111,6 @@ $(document).on('ready page:load', function () {
           // this.tappedObject = user
           this.changeCurrentView('user-edit')
         },
-        // From user-new
-        'user-created': function (user) {
-          // To users-index
-          this.$broadcast('user-created', user)
-        },
         // From raspberry-show
         'raspberry-tapped': function (raspberry) {
           this.tappedRaspberry = raspberry
@@ -139,17 +122,6 @@ $(document).on('ready page:load', function () {
           // To raspberries-index
           this.$broadcast('raspberry-created', raspberry)
         },
-        // 'raspberry-updated': function (raspberry) {
-        //   console.log('raspberry-updated')
-        //   this.changeCurrentView('raspberry-index')
-        // },
-        // // From reminder-new
-        // 'reminder-created': function (reminder) {
-        //   console.log('show reminder-created')
-
-        //   // To reminders-index
-        //   this.$broadcast('reminder-created', reminder)
-        // },
         // From voice-recognition-server-show
         'voice-recognition-server-tapped': function (voiceRecognitionServer) {
           // console.log('voice-recognition-server-tapped')

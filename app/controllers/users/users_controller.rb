@@ -2,6 +2,14 @@ class UsersController < ApplicationController
   before_action :authenticate
   before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
+  def index
+    users = @dot_api_connector.get_users(params)
+  rescue DotApiConnector::Error => e
+    ap e.message
+  else
+    render json: users.data, status: :ok
+  end
+
   def create
     ap 'UsersController#create'
     user = @dot_api_connector.create_user_registration(user_params)

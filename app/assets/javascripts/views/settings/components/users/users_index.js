@@ -37,6 +37,11 @@ Vue.component('users-index', {
       userToEdit: null
     }
   },
+  created: function () {
+    this.$http.get('/users').then(function (response) {
+      this.users = coerceProp(response.data)
+    })
+  },
   methods: {
     delete: function () {
       if (this.pressedUsersIds.length > 0) {
@@ -74,9 +79,9 @@ Vue.component('users-index', {
     'display-user-edit': function (user) {
       this.userToEdit = user
     },
-    // From from user-new trough vm
-    'user-created': function (user) {
-      this.users.push(user)
-    }
+    // // From from user-new trough vm
+    // 'user-created': function (user) {
+    //   this.users.push(user)
+    // }
   }
 })

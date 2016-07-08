@@ -1,5 +1,4 @@
 Vue.component('reminders-index', {
-  props: ['reminders', 'remindersLinks', 'receivedReminders'],
   template: '<div class="reminders-index">\
     <ul class="collection with-header">\
       <li class="collection-header" v-if="pressedRemindersIds.length > 0">\
@@ -28,15 +27,21 @@ Vue.component('reminders-index', {
       </li>\
       <reminder-show v-for="reminder in reminders" :reminder="reminder"></reminder-show>\
     </ul>\
+    <div v-if="reminders.length > 0">\
+      <pagination :reminders.sync="reminders" :links="links"></pagination>\
+    </div>\
   </div>',
   data: function () {
     return {
+      reminders: [],
+      links: [],
       pressedRemindersIds: []
     }
   },
-  ready: function () {
-    this.$http({ url: 'reminders', method: 'GET' }).then(function (response) {
-      this.reminders = coerceProp(response.data)
+  created: function () {
+    this.$http.get('/reminders').then(function (response) {
+      this.reminders = coerceProp(response.data.data)
+      this.links = coerceProp(response.data.links)
     })
   },
   methods: {

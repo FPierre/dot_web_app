@@ -1,6 +1,6 @@
 Vue.component('fixed-button', {
   props: ['tappedObject', 'currentView'],
-  template: '<div class="absolute-action-btn" v-if="!hideButton">\
+  template: '<div class="absolute-action-btn" v-if="showButton">\
     <a href="#" class="btn-floating btn-large waves-effect waves-light" @click.prevent="openView">\
       <i class="material-icons">add</i>\
     </a>\
@@ -13,11 +13,11 @@ Vue.component('fixed-button', {
 
       switch (this.currentView) {
         case 'users-index':
-        case 'user-edit':
+        // case 'user-edit':
           viewToDispatch = 'user-new'
           break
         case 'raspberries-index':
-        case 'raspberry-edit':
+        // case 'raspberry-edit':
           viewToDispatch = 'raspberry-new'
           break
         case 'reminders-index':
@@ -29,16 +29,11 @@ Vue.component('fixed-button', {
     }
   },
   computed: {
-    hideButton: function () {
-      views = [
-        'about-show',
-        'raspberry-new',
-        'reminder-new',
-        'setting-show',
-        'user-new',
-        'voice-commands-index',
-        'voice-recognition-server-show',
-        'voice-recognition-server-new'
+    showButton: function () {
+      var views = [
+        'raspberries-index',
+        'users-index',
+        'reminders-index'
       ]
 
       return views.some(function(view) {

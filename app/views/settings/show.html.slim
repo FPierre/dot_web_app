@@ -2,15 +2,6 @@ fixed-button :current-view='currentView' :tapped-object='tappedObject'
 
 errors-modal :errors.sync='errors'
 
-/ #modal1.modal
-/   .modal-content
-/     / h4 Ajouter un utilisateur
-
-/     component :is='currentModal' :user='tappedUser' :raspberry='tappedRaspberry' :voice-recognition-server='voiceRecognitionServer'
-
-/   .modal-footer
-/     a.modal-action.modal-close.btn-flat.btn-large.waves-effect href='#' @click.prevent='submitModal' Valider
-
 .row
   .responsive-col
     component :is='currentView' :users='users' :setting='setting' :reminders='reminders' :reminders-links='remindersLinks' :received-reminders='receivedReminders' :raspberries='raspberries' :voice-commands='voiceCommands' :voice-recognition-server='voiceRecognitionServer' :user='tappedUser' :raspberry='tappedRaspberry'
