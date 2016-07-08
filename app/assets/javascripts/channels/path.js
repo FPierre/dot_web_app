@@ -1,5 +1,8 @@
 $(document).on('ready', function () {
   if ($('html.screens.team').length) {
+    mapLogoPath = $('.map-logo').data('path')
+    console.log(mapLogoPath)
+
     this.App.path = this.App.cable.subscriptions.create('PathChannel', {
       connected: function () {
         console.log('PathChannel: connected')
@@ -21,9 +24,10 @@ $(document).on('ready', function () {
               'lat': 48.9188200,
               'lng': 2.3429520,
               'picture': {
-                'url': 'http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png',
-                'width':  32,
-                'height': 32
+                // 'url': 'http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png',
+                'url': mapLogoPath,
+                'width':  120,
+                'height': 26
               },
               'infowindow': 'itnovem.'
             }
