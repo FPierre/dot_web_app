@@ -5,9 +5,8 @@ body.settings.show {
     @extend .fixed-action-btn;
 
     @media #{$small-and-down} {
-      // position: fixed through .fixed-action-btn
-      right: 30px;
-      bottom: 30px;
+      right: 25px;
+      bottom: 25px;
     }
     @media #{$medium-and-up} {
       position: absolute;
@@ -28,6 +27,8 @@ body.settings.show {
   }
 
   main {
-
+    .collection {
+      margin-bottom: 3rem;
+    }
   }
 }
