@@ -16,14 +16,7 @@ $(document).on('ready', function () {
             <span>Min : ' + weather.temp.min + '°c Max : ' + weather.temp.max + '°c</span>'
           )
         }
-      },
-      // speak: function (data) {
-      //   console.log('WeatherChannel: speak')
-
-      //   return this.perform('speak', {
-      //     data: data
-      //   })
-      // }
+      }
     })
   }
 })

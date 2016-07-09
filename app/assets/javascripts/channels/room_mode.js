@@ -15,14 +15,7 @@ $(document).on('ready', function () {
           $('.room_occupied').addClass('not-occupied').removeClass('occupied')
           $('.room_occupied span').text('Salle libre')
         }
-      },
-      // speak: function (data) {
-      //   console.log('RoomModeChannel: speak')
-
-      //   return this.perform('speak', {
-      //     data: data
-      //   })
-      // }
+      }
     })
   }
 })

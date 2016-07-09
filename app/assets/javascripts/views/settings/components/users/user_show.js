@@ -3,7 +3,7 @@ Vue.component('user-show', {
   template: '<li class="collection-item avatar" :class="{ \'pressed\': user.pressed }" v-touch:tap="tapUser(user)" v-touch:press="pressUser(user.id)">\
     <img src="http://placehold.it/50x50" alt="" class="circle">\
     <span class="title truncate">{{ fullName }}</span>\
-    <p class="truncate">{{ displayApproved }} {{ displayAdmin }}</p>\
+    <p>{{ displayApproved }} {{ displayAdmin }}</p>\
     <span class="secondary-content">{{ user.attributes.createdAt | fr-datetime }}</span>\
   </li>',
   ready: function () {

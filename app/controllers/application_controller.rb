@@ -18,8 +18,6 @@ class ApplicationController < ActionController::Base
 
   private
     def authenticate_by_session
-      # ap 'ApplicationController#authenticate_by_session'
-      # ap session[:current_user]
       @current_user = (session[:current_user].present?) ? session[:current_user].with_indifferent_access : nil
     end
 

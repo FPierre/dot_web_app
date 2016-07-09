@@ -3,14 +3,11 @@
  */
 
 @import 'base/fonts';
-// @import 'base/custom';
 @import 'materialize/components/color';
 @import 'base/variables';
 @import 'materialize';
-// @import 'base/mixins';
 @import 'base/global';
 @import 'components/*';
-// @import 'partials/*';
 @import 'views/**/*';
 
 html {
@@ -23,13 +20,9 @@ html {
       height: 100%;
 
       main {
-        // @extend .valign-wrapper;
-
         height: 100%;
 
         form {
-          // @extend .valign;
-
           input[type=submit] {
 
           }

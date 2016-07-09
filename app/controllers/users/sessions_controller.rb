@@ -17,9 +17,6 @@ module Users
           session[:current_user] = user
 
           redirect_to settings_path and return
-        # else
-        #   ap 'else'
-        #   redirect_to root_path and return
         end
       end
     rescue DotApiConnector::Error => e

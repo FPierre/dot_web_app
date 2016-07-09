@@ -23,7 +23,6 @@ $(document).on('ready', function () {
                                      '<p class="created-at">' + notification.created_at + '</p>' +
                                    '</div>')
 
-              // console.log(toastContent)
               return Materialize.toast(toastContent, notification.duration, 'rounded')
             }
             else {
@@ -32,15 +31,14 @@ $(document).on('ready', function () {
               }
 
               var numberReminders = $('#zone-2 .collection .collection-item').length
-              var numberRemindersLimit = 3
+              var numberRemindersLimit = 5
 
               if (numberReminders > numberRemindersLimit) {
                 $('#zone-2 .collection .collection-item:last-child').remove()
               }
 
               $('#zone-2 .collection').prepend(
-                '<li class="collection-item avatar">' +
-                  '<img src="images/yuna.jpg" alt="" class="circle">' +
+                '<li class="collection-item">' +
                   '<span class="title">' + notification.user + ' dit :</span>' +
                   '<p>' + notification.content + '<br>' +
                     + notification.created_at +
@@ -55,14 +53,7 @@ $(document).on('ready', function () {
             window.receivedReminders.push(notification)
           }
         }
-      },
-      // speak: function (data) {
-      //   console.log('NotificationChannel: speak')
-
-      //   return this.perform('speak', {
-      //     data: data
-      //   })
-      // }
+      }
     })
   }
 })

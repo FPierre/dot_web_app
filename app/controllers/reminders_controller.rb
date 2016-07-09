@@ -3,7 +3,6 @@ class RemindersController < ApplicationController
   before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
   def index
-    # reminders = @dot_api_connector.get_reminders(params)
     reminders_info = @dot_api_connector.get_reminders(params)
 
     reminders_links = reminders_info.links

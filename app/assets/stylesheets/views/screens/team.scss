@@ -55,10 +55,7 @@ html.screens.team {
 
       .info {
         display: flex;
-        // flex-direction: row;
         justify-content: space-between;
-        // flex-wrap: wrap;
-        // align-items: stretch;
         height: 100px;
         padding: 0 15px 15px;
         font-size: 1.7rem;
@@ -70,11 +67,8 @@ html.screens.team {
             @extend .valign;
 
             margin: auto;
-
-            // text-transform: uppercase;
           }
 
-          // display: flex;
           width: 49.4%;
 
           &.occupied {
@@ -87,12 +81,9 @@ html.screens.team {
         }
 
         .weather {
-          // @extend .valign-wrapper, .blue-grey, .lighten-2, .z-depth-1;
           @extend .blue-grey, .lighten-2, .white-text, .z-depth-1;
 
-          // display: flex;
           width: 49.4%;
-
         }
       }
     }

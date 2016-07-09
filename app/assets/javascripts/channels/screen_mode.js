@@ -10,14 +10,7 @@ $(document).on('ready', function () {
         if (data.mode !== undefined) {
           window.location.href = 'http://' + window.location.hostname + ':' + location.port + '/screens/' + data.mode
         }
-      },
-      // speak: function (data) {
-      //   console.log('ScreenModeChannel: speak')
-
-      //   return this.perform('speak', {
-      //     data: data
-      //   })
-      // }
+      }
     })
   }
 })

@@ -63,8 +63,7 @@ $(document).on('ready page:load', function () {
         }
       },
       data: {
-        // currentView: 'users-index',
-        currentView: 'reminders-index',
+        currentView: 'users-index',
         errors: null,
         notification: window.notification,
         tappedRaspberry: null,
