@@ -40,9 +40,8 @@ class UsersController < ApplicationController
     if user.errors
       render json: user.errors, status: :unprocessable_entity
     else
-      # If admin user modified himself
-      # Update current_user in session
-      @current_user = user.data if user.data[:id] == @current_user[:id]
+      # If user updates himself
+      session[:current_user] = @current_user = user.data if @current_user[:id] == params[:id]
 
       render json: user.data, status: :ok
     end
