@@ -43,7 +43,7 @@ function formatError(obj, apiErrors) {
   var props = {}
 
   for (var prop in apiErrors) {
-    if (apiErrors.hasOwnProperty(prop)) {
+    if (prop != 'attributes' && apiErrors.hasOwnProperty(prop)) {
       // console.log(prop.toCamelCase())
 
       if (obj.hasOwnProperty(prop.toCamelCase())) {
