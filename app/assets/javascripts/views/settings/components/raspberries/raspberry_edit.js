@@ -9,23 +9,23 @@ Vue.component('raspberry-edit', {
       <div class="row">\
         <div class="input-field col s12 m6">\
           <input id="raspberry-edit-name-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.name" required>\
-          <label for="raspberry-edit-name-{{ raspberry.id }}">Nom</label>\
+          <label for="raspberry-edit-name-{{ raspberry.id }}">Nom*</label>\
         </div>\
       </div>\
       <div class="row">\
         <div class="input-field col s12 m6">\
           <input id="raspberry-edit-ip-address-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.ipAddress" required>\
-          <label for="raspberry-edit-ip-address-{{ raspberry.id }}">Adresse IP</label>\
+          <label for="raspberry-edit-ip-address-{{ raspberry.id }}">Adresse IP*</label>\
         </div>\
         <div class="input-field col s12 m6">\
           <input id="raspberry-edit-mac-address-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.macAddress" required>\
-          <label for="raspberry-edit-mac-address-{{ raspberry.id }}">Adresse MAC</label>\
+          <label for="raspberry-edit-mac-address-{{ raspberry.id }}">Adresse MAC*</label>\
         </div>\
       </div>\
       <div class="row">\
         <div class="input-field col s12 m6">\
           <input id="raspberry-edit-api-port-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.apiPort">\
-          <label for="raspberry-edit-api-port-{{ raspberry.id }}">Port de l\'API</label>\
+          <label for="raspberry-edit-api-port-{{ raspberry.id }}">Port API</label>\
         </div>\
         <div class="col s12 m6">\
           <input id="raspberry-edit-master-device-{{ raspberry.id }}" type="checkbox" v-model="raspberry.attributes.masterDevice">\
@@ -37,7 +37,7 @@ Vue.component('raspberry-edit', {
         <i class="material-icons right">send</i>\
       </button>\
       <a class="btn-flat waves-effect" @click="back">Annuler</a>\
-      <a class="btn-flat waves-effect">Supprimer</a>\
+      <a class="btn-flat waves-effect" @click="delete">Supprimer</a>\
     </li>\
   </ul>',
   ready: function () {
@@ -56,6 +56,15 @@ Vue.component('raspberry-edit', {
         // console.log('update raspberry (ko): ', response)
         // To vm
         component.$dispatch('display-error', formatError(component.raspberry, response.data))
+      })
+    },
+    delete: function () {
+      var component = this
+
+      component.raspberry.__v_resource.delete({ id: component.raspberry.id }).then(function (response) {
+        component.back()
+      }, function (response) {
+
       })
     },
     back: function () {

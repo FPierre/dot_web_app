@@ -13,9 +13,9 @@ $(document).on('ready page:load', function () {
     new Vue({
       el: '.settings.show',
       props: {
-        raspberries: {
-          coerce: function (raspberries) {
-            return coerceProp(raspberries)
+        currentUser: {
+          coerce: function (currentUser) {
+            return coerceProp(currentUser)
           }
         },
         voiceCommands: {
@@ -84,6 +84,9 @@ $(document).on('ready page:load', function () {
         },
         hideBadgeNewReminders: function () {
           return this.numberReceivedReminders == 0
+        },
+        isAdmin: function () {
+          return this.currentUser.attributes.admin
         }
       },
       methods: {
@@ -93,14 +96,17 @@ $(document).on('ready page:load', function () {
           if (this.currentView == 'reminders-index') {
             this.numberReceivedReminders = 0
           }
-        }
+        },
+        // currentUserEdit: function (user) {
+        //   this.tappedUser = user
+        //   this.changeCurrentView('user-edit')
+        // }
       },
       events: {
         'change-current-view': function (view) {
           this.currentView = view
         },
         'display-error': function (errors) {
-          console.log('display-error')
           this.errors = errors
           $('#errors-modal').openModal()
         },
@@ -123,7 +129,6 @@ $(document).on('ready page:load', function () {
         },
         // From voice-recognition-server-show
         'voice-recognition-server-tapped': function (voiceRecognitionServer) {
-          // console.log('voice-recognition-server-tapped')
           this.tappedvoiceRecognitionServer = voiceRecognitionServer
           // this.tappedObject = voiceRecognitionServer
           this.changeCurrentView('voice-recognition-server-edit')

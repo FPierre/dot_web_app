@@ -1,5 +1,5 @@
 Vue.component('users-index', {
-  props: ['users'],
+  props: ['users', 'currentUser'],
   template: '<ul class="collection with-header">\
     <li class="collection-header" v-if="pressedUsersIds.length > 0">\
       <div class="row" style="margin-bottom: 0;">\
@@ -38,8 +38,13 @@ Vue.component('users-index', {
     }
   },
   created: function () {
-    this.$http.get('/users').then(function (response) {
-      this.users = coerceProp(response.data)
+    var component = this
+
+    component.$http.get('/users').then(function (response) {
+      // Return all users but currentUser
+      component.users = response.data.filter(function (user) {
+        return user.id != component.currentUser.id
+      })
     })
   },
   methods: {
@@ -47,9 +52,6 @@ Vue.component('users-index', {
       if (this.pressedUsersIds.length > 0) {
         for (var i = 0; i < this.pressedUsersIds.length; i++) {
           this.$http({ url: 'users/' + this.pressedUsersIds[i], method: 'DELETE' }).then(function (response) {
-            // console.log(response)
-            // console.log(response.data.id)
-
             this.users = this.users.filter(function (currentUser) {
               return currentUser.id != response.data.id
             })

@@ -4,19 +4,7 @@ nav
       i.material-icons menu
 
     #sidebar-nav.side-nav.fixed
-      .current-user
-        .row
-          .col.s6.offset-s3
-            - if @current_user[:attributes][:avatar].present?
-              img.circle.responsive-img src="http://#{ENV['api_url_http']}:#{ENV['api_port_http']}/images/#{@current_user[:attributes][:avatar]}"
-
-        .row
-          .col.s12
-            span #{@current_user[:attributes][:firstname]} #{@current_user[:attributes][:lastname]}
-
-        .row
-          .col.s12
-            span = @current_user[:attributes][:email]
+      current-user-show :current-user='currentUser' api-url='#{ENV["api_url_http"]}' api-port='#{ENV["api_port_http"]}'
 
       ul
         li
@@ -65,7 +53,7 @@ nav
                   i.material-icons settings_voice
 
                 .col.s7
-                  | Serveur SARAH
+                  | SARAH
 
           .hide-on-large-only
             a href='#' @click.prevent="changeCurrentView('voice-recognition-server-show')"
@@ -74,7 +62,7 @@ nav
                   i.material-icons settings_voice
 
                 .col.s7
-                  | Serveur SARAH
+                  | SARAH
 
         li
           .hide-on-med-and-down
@@ -98,24 +86,24 @@ nav
                 .col.s7
                   | Mémos
 
-        li
-          .hide-on-med-and-down
-            a href='#' @click.stop="changeCurrentView('voice-commands-index')"
-              .row
-                .col.s3
-                  i.material-icons record_voice_over
+        / li
+        /   .hide-on-med-and-down
+        /     a href='#' @click.stop="changeCurrentView('voice-commands-index')"
+        /       .row
+        /         .col.s3
+        /           i.material-icons record_voice_over
 
-                .col.s7
-                  | Commandes vocales
+        /         .col.s7
+        /           | Commandes vocales
 
-          .hide-on-large-only
-            a href='#' @click.prevent="changeCurrentView('voice-commands-index')"
-              .row
-                .col.s3
-                  i.material-icons record_voice_over
+        /   .hide-on-large-only
+        /     a href='#' @click.prevent="changeCurrentView('voice-commands-index')"
+        /       .row
+        /         .col.s3
+        /           i.material-icons record_voice_over
 
-                .col.s7
-                  | Commandes vocales
+        /         .col.s7
+        /           | Commandes vocales
 
         li.separator
 

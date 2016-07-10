@@ -12,8 +12,8 @@ $(document).on('ready', function () {
         console.log('NotificationChannel: received')
         console.log(data)
 
-        if (data['notification'] !== undefined) {
-          var notification = data.notification
+        if (data.notification !== undefined) {
+          var notification = data.notification.data.attributes
 
           if ($('html.screens.team').length) {
             if (notification.priority == 1) {

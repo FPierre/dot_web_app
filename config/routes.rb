@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   end
 
   namespace :screens do
-    get 'guest', action: 'guest'
-    get 'normal', action: 'normal'
-    get 'team', action: 'team'
+    get :guest, action: 'guest'
+    get :normal, action: 'normal'
+    get :team, action: 'team'
   end
 
   namespace :tests do
@@ -24,8 +24,10 @@ Rails.application.routes.draw do
   resources :raspberries, only: [:index, :create, :update, :destroy]
   resources :reminders, only: [:index, :create, :destroy]
   resources :settings, only: :update
-  resources :users, only: [:index, :create, :update, :destroy]
   resources :voice_recognition_servers, only: :update
+  resources :users, only: [:index, :create, :update, :destroy] do
+    get :myself, on: :collection
+  end
 
   root 'screens#team'
 end

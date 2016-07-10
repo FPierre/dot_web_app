@@ -8,19 +8,19 @@ Vue.component('user-new', {
       <div class="row">\
         <div class="input-field col s12 m6">\
           <input id="user-new-firstname" class="validate" type="text" v-model="user.firstname" required>\
-          <label for="user-new-firstname">Prénom</label>\
+          <label for="user-new-firstname">Prénom*</label>\
         </div>\
         <div class="input-field col s12 m6">\
           <input id="user-new-lastname" class="validate" type="text" v-model="user.lastname" required>\
-          <label for="user-new-lastname">Nom</label>\
+          <label for="user-new-lastname">Nom*</label>\
         </div>\
         <div class="input-field col s12 m6">\
           <input id="user-new-email" class="validate" type="email" v-model="user.email" required>\
-          <label for="user-new-email">Email</label>\
+          <label for="user-new-email">Email*</label>\
         </div>\
         <div class="input-field col s12 m6">\
           <input id="user-new-password" class="validate" type="password" v-model="user.password" required>\
-          <label for="user-new-password">Mot de passe</label>\
+          <label for="user-new-password">Mot de passe*</label>\
         </div>\
       </div>\
       <div class="row">\

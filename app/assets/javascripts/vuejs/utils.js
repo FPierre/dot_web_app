@@ -15,9 +15,6 @@ String.prototype.toBoolean = function () {
 }
 
 function coerceProp(prop) {
-
-  // if (prop.type=="voice-recognition-servers"); console.log(prop)
-
   for (var index in prop) {
     if (prop.hasOwnProperty(index)) {
       var obj = prop[index]

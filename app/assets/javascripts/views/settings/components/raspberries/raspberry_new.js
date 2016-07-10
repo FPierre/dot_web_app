@@ -8,17 +8,17 @@ Vue.component('raspberry-new', {
       <div class="row">\
         <div class="input-field col s12 m6">\
           <input id="raspberry-new-name" class="validate" type="text" v-model="raspberry.name" required>\
-          <label for="raspberry-new-name">Nom</label>\
+          <label for="raspberry-new-name">Nom*</label>\
         </div>\
       </div>\
       <div class="row">\
         <div class="input-field col s12 m6">\
           <input id="raspberry-new-ip-address" class="validate" type="text" v-model="raspberry.ipAddress" required>\
-          <label for="raspberry-new-ip-address">Adresse IP</label>\
+          <label for="raspberry-new-ip-address">Adresse IP*</label>\
         </div>\
         <div class="input-field col s12 m6">\
           <input id="raspberry-new-mac-address" class="validate" type="text" v-model="raspberry.macAddress" required>\
-          <label for="raspberry-new-mac-address">Adresse MAC</label>\
+          <label for="raspberry-new-mac-address">Adresse MAC*</label>\
         </div>\
       </div>\
       <div class="row">\

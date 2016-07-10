@@ -17,13 +17,13 @@ Vue.component('reminder-new', {
             <option value="2">2</option>\
             <option value="3" selected>3</option>\
           </select>\
-          <label>Priorité</label>\
+          <label>Priorité*</label>\
         </div>\
       </div>\
       <div class="row">\
         <div class="input-field col s12">\
           <textarea id="reminder-new-content" class="materialize-textarea" v-model="reminder.content" required></textarea>\
-          <label for="reminder-new-content">Contenu</label>\
+          <label for="reminder-new-content">Contenu*</label>\
         </div>\
       </div>\
       <button type="submit" class="btn waves-effect waves-light" @click="create">\

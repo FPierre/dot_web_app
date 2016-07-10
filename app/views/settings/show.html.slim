@@ -1,7 +1,7 @@
-fixed-button :current-view='currentView' :tapped-object='tappedObject'
+fixed-button :current-view='currentView' :tapped-object='tappedObject' v-if='isAdmin'
 
 errors-modal :errors.sync='errors'
 
 .row
   .responsive-col
-    component :is='currentView' :users='users' :setting='setting' :reminders='reminders' :reminders-links='remindersLinks' :received-reminders='receivedReminders' :raspberries='raspberries' :voice-commands='voiceCommands' :voice-recognition-server='voiceRecognitionServer' :user='tappedUser' :raspberry='tappedRaspberry'
+    component :is='currentView' :users='users' :setting='setting' :reminders='reminders' :reminders-links='remindersLinks' :received-reminders='receivedReminders' :raspberries='raspberries' :voice-commands='voiceCommands' :voice-recognition-server='voiceRecognitionServer' :user='tappedUser' :raspberry='tappedRaspberry' :current-user='currentUser'
