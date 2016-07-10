@@ -42,7 +42,7 @@ Vue.component('users-index', {
 
     component.$http.get('/users').then(function (response) {
       // Return all users but currentUser
-      component.users = response.data.filter(function (user) {
+      component.users = coerceProp(response.data).filter(function (user) {
         return user.id != component.currentUser.id
       })
     })
