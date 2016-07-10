@@ -1,9 +1,9 @@
 Vue.component('current-user-show', {
   props: ['currentUser', 'apiUrl', 'apiPort'],
   template: '<div class="current-user" @click="changeCurrentView">\
-    <div class="row">\
+    <div class="row" v-if="currentUser.attributes.avatar">\
       <div class="col s6 offset-s3">\
-        <img class="circle responsive-img" :src="avatarUrl" v-if="currentUser.attributes.avatar">\
+        <img class="circle responsive-img" :src="avatarUrl">\
       </div>\
     </div>\
     <div class="row">\
@@ -14,7 +14,9 @@ Vue.component('current-user-show', {
   </div>',
   computed: {
     avatarUrl: function () {
-      return 'http://' + this.apiUrl + ':' + this.apiPort + '/images/' + this.current_user.attributes.avatar
+      if (this.current_user.attributes.avatar) {
+        return 'http://' + this.apiUrl + ':' + this.apiPort + '/images/' + this.current_user.attributes.avatar
+      }
     },
     fullName: function () {
       return this.currentUser.attributes.firstname + ' ' + this.currentUser.attributes.lastname
