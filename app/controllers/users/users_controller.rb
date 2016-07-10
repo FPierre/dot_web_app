@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     # If non admin User tries to update other users
     if !@current_user['attributes']['admin'] && @current_user['id'] != params[:id]
-      render json: { droits: 'Forbidden' }, status: :forbidden and return
+      render json: { droits: 'Interdit' }, status: :forbidden and return
     else
       user = @dot_api_connector.update_user(params[:id], user_params)
     end

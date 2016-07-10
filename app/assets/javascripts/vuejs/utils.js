@@ -40,7 +40,7 @@ function coerceProp(prop) {
 }
 
 function formatError(obj, apiErrors) {
-  var props = {}
+  var props = []
 
   for (var prop in apiErrors) {
     if (prop != 'attributes' && apiErrors.hasOwnProperty(prop)) {
@@ -48,13 +48,16 @@ function formatError(obj, apiErrors) {
 
       if (obj.hasOwnProperty(prop.toCamelCase())) {
         // console.log(apiErrors[prop])
-        props[prop.toCamelCase()] = apiErrors[prop]
+        // props[prop.toCamelCase()] = apiErrors[prop]
+        props.push(apiErrors[prop])
       }
       else if (obj.attributes.hasOwnProperty(prop.toCamelCase())) {
-        props[prop.toCamelCase()] = apiErrors[prop]
+        // props[prop.toCamelCase()] = apiErrors[prop]
+        props.push(apiErrors[prop])
       }
       else if (prop == 'droits') {
-        props[prop] = apiErrors[prop]
+        // props[prop] = apiErrors[prop]
+        props.push(apiErrors[prop])
       }
     }
   }
