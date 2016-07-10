@@ -4,7 +4,6 @@ Vue.component('user-show', {
     <img src="http://placehold.it/50x50" alt="" class="circle">\
     <span class="title truncate">{{ fullName }}</span>\
     <p>{{ displayApproved }} {{ displayAdmin }}</p>\
-    <span class="secondary-content">{{ user.attributes.createdAt | fr-datetime }}</span>\
   </li>',
   ready: function () {
     this.user.__v_resource = this.$resource('users/{id}')

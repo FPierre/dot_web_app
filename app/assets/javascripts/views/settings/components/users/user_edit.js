@@ -7,6 +7,11 @@ Vue.component('user-edit', {
     </li>\
     <li class="collection-item">\
       <div class="row">\
+        <div class="col s12">\
+          <span>Date de création : {{ user.attributes.createdAt | fr-datetime }}</span>\
+        </div>\
+      </div>\
+      <div class="row">\
         <div class="input-field col s12 m6">\
           <input id="user-edit-firstname-{{ user.id }}" class="validate" type="text" v-model="user.attributes.firstname" required>\
           <label for="user-edit-firstname-{{ user.id }}">Prénom*</label>\
