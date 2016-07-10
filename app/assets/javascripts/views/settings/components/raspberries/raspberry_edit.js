@@ -32,12 +32,20 @@ Vue.component('raspberry-edit', {
           <label for="raspberry-edit-master-device-{{ raspberry.id }}">Raspberry Maitre</label>\
         </div>\
       </div>\
-      <button type="submit" class="btn waves-effect waves-light" @click="update">\
-        Modifier\
-        <i class="material-icons right">send</i>\
-      </button>\
-      <a class="btn-flat waves-effect" @click="back">Annuler</a>\
-      <a class="btn-flat waves-effect" @click="delete">Supprimer</a>\
+      <div class="row">\
+        <div class="col s12">\
+          <button type="submit" class="btn waves-effect waves-light" @click="update">\
+            Modifier\
+            <i class="material-icons right">send</i>\
+          </button>\
+        </div>\
+      </div>\
+      <div class="row">\
+        <div class="col s12">\
+          <a class="btn-flat waves-effect" @click="back">Annuler</a>\
+          <a class="btn-flat waves-effect" @click="delete">Supprimer</a>\
+        </div>\
+      </div>\
     </li>\
   </ul>',
   ready: function () {
