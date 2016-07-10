@@ -56,12 +56,15 @@ Vue.component('current-user-edit', {
 
       component.currentUser.__v_resource.update({ id: component.currentUser.id }, component.currentUser.attributes).then(function (response) {
         console.log('update currentUser (ok): ', response)
-        // this.currentUser = response.data
+        component.back()
       }, function (response) {
         console.log('update currentUser (ko): ', response)
         // To vm
         component.$dispatch('display-error', formatError(component.currentUser, response.data))
       })
+    },
+    back: function () {
+      this.$dispatch('change-current-view', 'users-index')
     }
   }
 })
