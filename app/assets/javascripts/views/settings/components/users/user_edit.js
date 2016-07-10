@@ -46,8 +46,8 @@ Vue.component('user-edit', {
       </div>\
       <div class="row">\
         <div class="col s12">\
-          <a class="btn-flat waves-effect" @click="delete">Supprimer</a>\
           <a class="btn-flat waves-effect" @click="back">Annuler</a>\
+          <a class="btn-flat waves-effect" @click="delete">Supprimer</a>\
         </div>\
       </div>\
     </li>\
@@ -76,7 +76,9 @@ Vue.component('user-edit', {
       component.user.__v_resource.delete({ id: component.user.id }).then(function (response) {
         component.back()
       }, function (response) {
-
+        console.log('delete user (ko): ', response)
+        // To vm
+        component.$dispatch('display-error', formatError(component.user, response.data))
       })
     },
     back: function () {

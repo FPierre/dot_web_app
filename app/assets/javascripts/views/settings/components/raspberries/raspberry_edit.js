@@ -61,7 +61,7 @@ Vue.component('raspberry-edit', {
         // console.log('update raspberry (ok): ', response)
         component.back()
       }, function (response) {
-        // console.log('update raspberry (ko): ', response)
+        console.log('update raspberry (ko): ', response)
         // To vm
         component.$dispatch('display-error', formatError(component.raspberry, response.data))
       })
@@ -72,7 +72,9 @@ Vue.component('raspberry-edit', {
       component.raspberry.__v_resource.delete({ id: component.raspberry.id }).then(function (response) {
         component.back()
       }, function (response) {
-
+        console.log('delete raspberry (ko): ', response)
+        // To vm
+        component.$dispatch('display-error', formatError(component.raspberry, response.data))
       })
     },
     back: function () {
