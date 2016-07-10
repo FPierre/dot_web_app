@@ -147,7 +147,7 @@ class DotApiConnector
       ap 'error from api'
       begin
         @errors = (JSON.parse(response.body).with_indifferent_access rescue {})
-
+        ap @errors
         self
       rescue JSON::ParserError => e
         raise Error.new e.message

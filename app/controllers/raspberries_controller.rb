@@ -1,5 +1,7 @@
 class RaspberriesController < ApplicationController
   before_action :authenticate
+  before_action :authorize, only: :index
+  before_action :authorize_admin, only: [:create, :update, :destroy]
   before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
   def index

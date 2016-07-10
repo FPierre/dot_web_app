@@ -26,6 +26,9 @@ class ApplicationController < ActionController::Base
     end
 
     def render_forbidden
-      redirect_to sign_in_path, notice: 'Droits administrateur requis' and return
+      respond_to do |format|
+        format.html { redirect_to sign_in_path, notice: 'Droits administrateur requis' and return }
+        format.json { render json: { droits: 'Forbidden' }, status: :forbidden }
+      end
     end
 end

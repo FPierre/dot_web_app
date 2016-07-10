@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate
+  before_action :authorize, only: [:index, :update]
+  before_action :authorize_admin, only: [:create, :destroy]
   before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
   def index

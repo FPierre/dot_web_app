@@ -53,6 +53,9 @@ function formatError(obj, apiErrors) {
       else if (obj.attributes.hasOwnProperty(prop.toCamelCase())) {
         props[prop.toCamelCase()] = apiErrors[prop]
       }
+      else if (prop == 'droits') {
+        props[prop] = apiErrors[prop]
+      }
     }
   }
 

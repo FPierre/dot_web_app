@@ -2,8 +2,7 @@ Vue.component('errors-modal', {
   props: ['errors'],
   template: '<div id="errors-modal" class="modal">\
     <div class="modal-content">\
-      <h4>Erreurs</h4>\
-      <p>Sur les champs suivants</p>\
+      <h4>Erreur</h4>\
       <ul>\
         <li v-for="(prop, message) in errors">\
           <b>{{ prop }}</b> : {{ message }}\

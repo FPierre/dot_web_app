@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, :authorize
   before_action -> { @dot_api_connector = DotApiConnector.new(@current_user[:attributes]) }
 
   def voice
