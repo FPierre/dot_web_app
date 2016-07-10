@@ -11,11 +11,6 @@ Vue.component('current-user-show', {
         <span>{{ fullName }}</span>\
       </div>\
     </div>\
-    <div class="row">\
-      <div class="col s12">\
-        <span>{{ currentUser.attributes.email }}</span>\
-      </div>\
-    </div>\
   </div>',
   computed: {
     avatarUrl: function () {
