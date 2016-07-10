@@ -14,6 +14,6 @@ class VoiceRecognitionServersController < ApplicationController
 
   private
     def voice_recognition_server_param
-      params.permit :ip_address, :mac_address
+      params.permit :api_port, :ip_address, :mac_address
     end
 end

@@ -16,6 +16,13 @@ Vue.component('voice-recognition-server-edit', {
           <label for="voice-recognition-server-edit-mac-address-{{ voiceRecognitionServer.id }}">Adresse MAC*</label>\
         </div>\
       </div>\
+      <div class="row">\
+        <div class="input-field col s12 m6">\
+          <input id="voice-recognition-server-edit-api-port-{{ voiceRecognitionServer.id }}" class="validate" type="text" v-model="voiceRecognitionServer.attributes.apiPort">\
+          <label for="voice-recognition-server-edit-api-port-{{ voiceRecognitionServer.id }}">Port API</label>\
+        </div>\
+      </div>\
+      <div class="row">\
       <button type="submit" class="btn waves-effect waves-light" @click="update">\
         Modifier\
         <i class="material-icons right">send</i>\
