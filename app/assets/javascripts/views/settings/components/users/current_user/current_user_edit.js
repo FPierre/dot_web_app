@@ -22,16 +22,6 @@ Vue.component('current-user-edit', {
           <label for="current-user-edit-email-{{ currentUser.id }}">Email*</label>\
         </div>\
       </div>\
-      <div class="row">\
-        <div class="col s6">\
-          <input id="approved-edit-user-{{ currentUser.id }}" type="checkbox" v-model="currentUser.attributes.approved">\
-          <label for="approved-edit-user-{{ currentUser.id }}">Approuvé</label>\
-        </div>\
-        <div class="col s6">\
-          <input id="admin-edit-user-{{ currentUser.id }}" type="checkbox" v-model="currentUser.attributes.admin">\
-          <label for="admin-edit-user-{{ currentUser.id }}">Administrateur</label>\
-        </div>\
-      </div>\
       <button type="submit" class="btn waves-effect waves-light" @click="update">\
         Modifier\
         <i class="material-icons right">send</i>\
