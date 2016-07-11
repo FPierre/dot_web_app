@@ -16,11 +16,13 @@ $(document).on('ready', function () {
           var notification = data.notification.data.attributes
 
           if ($('html.screens.team').length) {
+            var notificationDate = new Date(notification['created-at']).toLocaleString()
+
             if (notification.priority == 1) {
               var toastContent = $('<div class="notification priority-' + notification.priority + '">' +
                                      '<div class="user">' + notification.user + ' dit :</div>' +
                                      '<p class="content">' + notification.content + '</p>' +
-                                     '<p class="created-at">' + notification['created-at'] + '</p>' +
+                                     '<p class="created-at">' + notificationDate + '</p>' +
                                    '</div>')
 
               return Materialize.toast(toastContent, notification.duration * 60 * 1000)
@@ -40,9 +42,7 @@ $(document).on('ready', function () {
               $('#zone-2 .collection').prepend(
                 '<li class="collection-item">' +
                   '<span class="title">' + notification.user + ' dit :</span>' +
-                  '<p>' + notification.content + '<br>' +
-                    + notification.created_at +
-                  '</p>' +
+                  '<p>' + notification.content + '<br>' + notificationDate + '</p>' +
                   '<a href="#!" class="secondary-content">' + notification.priority + '</a>' +
                 '</li>'
               )
