@@ -20,10 +20,10 @@ $(document).on('ready', function () {
               var toastContent = $('<div class="notification priority-' + notification.priority + '">' +
                                      '<div class="user">' + notification.user + ' dit :</div>' +
                                      '<p class="content">' + notification.content + '</p>' +
-                                     '<p class="created-at">' + notification.created_at + '</p>' +
+                                     '<p class="created-at">' + notification['created-at'] + '</p>' +
                                    '</div>')
 
-              return Materialize.toast(toastContent, notification.duration, 'rounded')
+              return Materialize.toast(toastContent, notification.duration * 60 * 1000)
             }
             else {
               if ($('#zone-2 .collection').length == 0) {

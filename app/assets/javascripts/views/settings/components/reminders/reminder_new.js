@@ -11,13 +11,20 @@ Vue.component('reminder-new', {
           <input id="reminder-new-display-at" type="datetime-local" v-model="reminder.displayedAt">\
           <label for="reminder-new-display-at" class="active">Date d\'affichage</label>\
         </div>\
-        <div class="input-field col s12 m6">\
-          <select>\
-            <option value="1">1</option>\
-            <option value="2">2</option>\
-            <option value="3" selected>3</option>\
-          </select>\
+        <div class="col s12 m6">\
           <label>Priorité*</label>\
+          <p>\
+            <input name="group1" type="radio" id="test1" value="1" v-model="reminder.priority">\
+            <label for="test1">1</label>\
+          </p>\
+          <p>\
+            <input name="group1" type="radio" id="test2" value="2" v-model="reminder.priority">\
+            <label for="test2">2</label>\
+          </p>\
+          <p>\
+            <input name="group1" type="radio" id="test3" value="3" v-model="reminder.priority">\
+            <label for="test3">3</label>\
+          </p>\
         </div>\
       </div>\
       <div class="row">\
