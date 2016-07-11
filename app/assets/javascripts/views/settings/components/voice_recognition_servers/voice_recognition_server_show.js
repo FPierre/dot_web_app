@@ -13,6 +13,8 @@ Vue.component('voice-recognition-server-show', {
         <p>\
           Adresse IP : {{ voiceRecognitionServer.attributes.ipAddress }}\
           <br>\
+          Nom de domaine : {{ voiceRecognitionServer.attributes.domainName }}\
+          <br>\
           Adresse MAC : {{ voiceRecognitionServer.attributes.macAddress }}\
           <br>\
           Port API : {{ voiceRecognitionServer.attributes.apiPort }}\

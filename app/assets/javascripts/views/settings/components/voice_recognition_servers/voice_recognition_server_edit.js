@@ -12,11 +12,15 @@ Vue.component('voice-recognition-server-edit', {
           <label for="voice-recognition-server-edit-ip-address-{{ voiceRecognitionServer.id }}">Adresse IP*</label>\
         </div>\
         <div class="input-field col s12 m6">\
-          <input id="voice-recognition-server-edit-mac-address-{{ voiceRecognitionServer.id }}" class="validate" type="text" v-model="voiceRecognitionServer.attributes.macAddress" required>\
-          <label for="voice-recognition-server-edit-mac-address-{{ voiceRecognitionServer.id }}">Adresse MAC*</label>\
+          <input id="voice-recognition-server-edit-domain-name-{{ voiceRecognitionServer.id }}" class="validate" type="text" v-model="voiceRecognitionServer.attributes.domainName">\
+          <label for="voice-recognition-server-edit-domain-name-{{ voiceRecognitionServer.id }}">Nom de domaine</label>\
         </div>\
       </div>\
       <div class="row">\
+        <div class="input-field col s12 m6">\
+          <input id="voice-recognition-server-edit-mac-address-{{ voiceRecognitionServer.id }}" class="validate" type="text" v-model="voiceRecognitionServer.attributes.macAddress" required>\
+          <label for="voice-recognition-server-edit-mac-address-{{ voiceRecognitionServer.id }}">Adresse MAC*</label>\
+        </div>\
         <div class="input-field col s12 m6">\
           <input id="voice-recognition-server-edit-api-port-{{ voiceRecognitionServer.id }}" class="validate" type="text" v-model="voiceRecognitionServer.attributes.apiPort">\
           <label for="voice-recognition-server-edit-api-port-{{ voiceRecognitionServer.id }}">Port API</label>\
