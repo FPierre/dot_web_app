@@ -53,6 +53,6 @@ class RaspberriesController < ApplicationController
 
   private
     def raspberry_params
-      params.permit :api_port, :ip_address, :mac_address, :master_device, :name
+      params.permit :api_port, :domain_name, :ip_address, :mac_address, :master_device, :name
     end
 end

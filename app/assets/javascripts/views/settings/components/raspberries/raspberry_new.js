@@ -17,11 +17,15 @@ Vue.component('raspberry-new', {
           <label for="raspberry-new-ip-address">Adresse IP*</label>\
         </div>\
         <div class="input-field col s12 m6">\
-          <input id="raspberry-new-mac-address" class="validate" type="text" v-model="raspberry.macAddress" required>\
-          <label for="raspberry-new-mac-address">Adresse MAC*</label>\
+          <input id="raspberry-new-domain-name" class="validate" type="text" v-model="raspberry.domainName">\
+          <label for="raspberry-new-domain-name">Nom de domaine</label>\
         </div>\
       </div>\
       <div class="row">\
+        <div class="input-field col s12 m6">\
+          <input id="raspberry-new-mac-address" class="validate" type="text" v-model="raspberry.macAddress" required>\
+          <label for="raspberry-new-mac-address">Adresse MAC*</label>\
+        </div>\
         <div class="input-field col s12 m6">\
           <input id="raspberry-new-api-port" class="validate" type="text" v-model="raspberry.apiPort" required>\
           <label for="raspberry-new-api-port">Port API</label>\

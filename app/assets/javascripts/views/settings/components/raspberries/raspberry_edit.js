@@ -18,11 +18,15 @@ Vue.component('raspberry-edit', {
           <label for="raspberry-edit-ip-address-{{ raspberry.id }}">Adresse IP*</label>\
         </div>\
         <div class="input-field col s12 m6">\
-          <input id="raspberry-edit-mac-address-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.macAddress" required>\
-          <label for="raspberry-edit-mac-address-{{ raspberry.id }}">Adresse MAC*</label>\
+          <input id="raspberry-edit-domain-name-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.domainName">\
+          <label for="raspberry-edit-domain-name-{{ raspberry.id }}">Nom de domaine</label>\
         </div>\
       </div>\
       <div class="row">\
+        <div class="input-field col s12 m6">\
+          <input id="raspberry-edit-mac-address-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.macAddress" required>\
+          <label for="raspberry-edit-mac-address-{{ raspberry.id }}">Adresse MAC*</label>\
+        </div>\
         <div class="input-field col s12 m6">\
           <input id="raspberry-edit-api-port-{{ raspberry.id }}" class="validate" type="text" v-model="raspberry.attributes.apiPort">\
           <label for="raspberry-edit-api-port-{{ raspberry.id }}">Port API</label>\
