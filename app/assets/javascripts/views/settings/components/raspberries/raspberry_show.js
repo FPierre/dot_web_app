@@ -5,6 +5,8 @@ Vue.component('raspberry-show', {
     <p>\
       Adresse IP : {{ raspberry.attributes.ipAddress }}\
       <br>\
+      Nom de domaine : {{ raspberry.attributes.domainName }}\
+      <br>\
       Adresse MAC : {{ raspberry.attributes.macAddress }}\
       <br>\
       Port API : {{ raspberry.attributes.apiPort }}\
