@@ -17,17 +17,23 @@
 
     - if @weather
       .row class="#{weather_icons_codes[@weather[:weather][:icon]]}"
-        .col.s3
-          = fa_icon 'map-marker'
-          | Paris
+        .weather-info.col.s2.center-align
+          = fa_icon 'map-marker', text: 'Paris'
+
+        .weather-info.col.s4.center-align
+          = wi_icon weather_icons_codes[@weather[:weather][:icon]], text: "#{@weather[:weather][:description]}"
+
+        .weather-info.col.s3.center-align
+          = "#{@weather[:temp][:current]}°c"
 
         .col.s3
-          span = wi_icon weather_icons_codes[@weather[:weather][:icon]], class: 'wi-2x'
-          span = @weather[:weather][:description]
+          .row.right-align
+            .col.s12
+              = "Min : #{@weather[:temp][:min]}°c"
 
-        .col.s6
-          span = "#{@weather[:temp][:current]}°c"
-          span = "Min : #{@weather[:temp][:min]}°c Max : #{@weather[:temp][:max]}°c"
+            .col.s12
+              = "Max : #{@weather[:temp][:max]}°c"
+
     - else
       span Météo indisponible
 

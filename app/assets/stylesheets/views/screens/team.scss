@@ -84,6 +84,10 @@ html.screens.team {
           @extend .blue-grey, .lighten-2, .white-text, .z-depth-1;
 
           width: 49.4%;
+
+          .weather-info {
+            margin-top: 20px;
+          }
         }
       }
     }
