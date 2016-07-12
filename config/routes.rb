@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   get :settings, to: 'settings#show'
 
   resources :raspberries, only: [:index, :create, :update, :destroy]
-  resources :reminders, only: [:index, :create, :destroy]
+  resources :reminders, only: [:index, :create, :destroy] do
+    delete :erase_all, on: :collection
+  end
   resources :settings, only: :update
   resources :voice_recognition_servers, only: :update
   resources :users, only: [:index, :create, :update, :destroy] do

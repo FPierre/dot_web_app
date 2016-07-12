@@ -2,6 +2,8 @@ require 'net/http'
 require 'uri'
 require 'json'
 
+# Connecteur à l'API
+
 class DotApiConnector
   class Error < StandardError; end
 
@@ -23,8 +25,6 @@ class DotApiConnector
 
       @user_email = options[:email]
       @user_token = options[:token]
-
-      ap "@user_email: #{@user_email}"
     end
   end
 
@@ -90,6 +90,10 @@ class DotApiConnector
 
   def destroy_reminder reminder_id
     process { resource.delete(route_for("reminders/#{reminder_id}"), headers) }
+  end
+
+  def erase_all_reminders
+    process { resource.delete(route_for('reminders/erase_all'), headers) }
   end
 
   # Test
