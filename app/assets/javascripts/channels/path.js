@@ -1,11 +1,14 @@
+// Client du Channel Path
 $(document).on('ready', function () {
   if ($('html.screens.team').length) {
+    // Logo de l'entreprise à afficher sur la map
     mapLogoPath = $('.map-logo').data('path')
-    console.log(mapLogoPath)
 
     this.App.path = this.App.cable.subscriptions.create('PathChannel', {
       connected: function () {
         console.log('PathChannel: connected')
+
+        // Construction de la Google Map
 
         handler = Gmaps.build('Google')
 
@@ -14,17 +17,14 @@ $(document).on('ready', function () {
           provider: {
             disableDefaultUI: true,
             scrollwheel: false,
-            // styles: [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"saturation":-100},{"lightness":30},{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]}]
           }
         }, function () {
-          // directionsDisplay.setMap(handler.getMap())
-
           markers = handler.addMarkers([
             {
-              'lat': 48.9188200,
-              'lng': 2.3429520,
+              'lat': 48.9188200, // Lat des locaux de l'entreprise
+              'lng': 2.3429520,  // Lon des locaux de l'entreprise
               'picture': {
-                'url': mapLogoPath,
+                'url': mapLogoPath, // Logo de l'entreprise
                 'width':  120,
                 'height': 26
               },
@@ -42,36 +42,15 @@ $(document).on('ready', function () {
         console.log('PathChannel: received')
         console.log(data)
 
-        // // Google Map
-
-        // var directionsDisplay = new google.maps.DirectionsRenderer()
-        // var directionsService = new google.maps.DirectionsService()
-
-        // function calcRoute () {
-        //   var origin      = new google.maps.LatLng(data['path']['from']['lat'], data['path']['from']['lon'])
-        //   var destination = new google.maps.LatLng(data['path']['to']['lat'], data['path']['to']['lon'])
-        //   var request = {
-        //     destination: destination,
-        //     origin: origin,
-        //     travelMode: google.maps.TravelMode.DRIVING
-        //   }
-
-        //   directionsService.route(request, function (response, status) {
-        //     if (status == google.maps.DirectionsStatus.OK) {
-        //       directionsDisplay.setDirections(response)
-        //     }
-        //   })
-        // }
-
-        // calcRoute()
+        // Construction du chemin sur la Google Map
 
         var directionsDisplay = new google.maps.DirectionsRenderer()
         var directionsService = new google.maps.DirectionsService()
 
         function calcRoute() {
-          // var origin      = new google.maps.LatLng(41.850033, -87.6500523)
+          // Lat/lon du param From
           var origin      = new google.maps.LatLng(data['path']['from']['lat'], data['path']['from']['lon'])
-          // var destination = new google.maps.LatLng(42.850033, -85.6500523)
+          // Lat/lon du param To
           var destination = new google.maps.LatLng(data['path']['to']['lat'], data['path']['to']['lon'])
           var request = {
             destination: destination,
@@ -95,7 +74,6 @@ $(document).on('ready', function () {
           provider: {
             disableDefaultUI: true,
             scrollwheel: false,
-            // styles: [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"saturation":-100},{"lightness":30},{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]}]
           }
         }, function() {
           directionsDisplay.setMap(handler.getMap())
@@ -105,7 +83,7 @@ $(document).on('ready', function () {
               'lat': 0,
               'lng': 0,
               'picture': {
-                'url': 'http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png',
+                'url': mapLogoPath,
                 'width':  32,
                 'height': 32
               },
@@ -116,14 +94,7 @@ $(document).on('ready', function () {
           handler.bounds.extendWith(markers)
           handler.fitMapToBounds()
         })
-      },
-      // speak: function (path) {
-      //   console.log('PathChannel: speak')
-
-      //   return this.perform('speak', {
-      //     path: path
-      //   })
-      // }
+      }
     })
   }
 })

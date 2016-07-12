@@ -14,6 +14,7 @@ String.prototype.toBoolean = function () {
   return (this == 'true' || this == 'on') ? true : false
 }
 
+// Met en forme le retour de l'API pour être compréhensible par Vue.js
 function coerceProp(prop) {
   for (var index in prop) {
     if (prop.hasOwnProperty(index)) {

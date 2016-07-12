@@ -9,7 +9,7 @@ Vue.component('users-index', {
         <div class="col s8">\
           <div class="hide-on-med-and-down">\
             <button class="btn-flat waves-effect right" @click="delete">Supprimer</button>\
-            <button class="btn-flat waves-effect right">Approuver</button>\
+            <!--<button class="btn-flat waves-effect right">Approuver</button>-->\
           </div>\
           <div class="hide-on-med-and-up">\
             <button class="btn-flat waves-effect right" @click="delete">\

@@ -1,3 +1,4 @@
+// Client du Channel météo
 $(document).on('ready', function () {
   if ($('html.screens.team').length) {
     this.App.notification = this.App.cable.subscriptions.create('WeatherChannel', {
@@ -10,6 +11,7 @@ $(document).on('ready', function () {
         if (data.weather !== undefined) {
           var weather = data.weather.data
 
+          // Met à jour la zone d'affichage de la météo avec les nouvelles informations de l'API
           $('.weather').html(
             '<span><i class="wi ' + weather_icons_codes(weather.icon) + ' wi-2x"></i></span>\
             <span>' + weather.temp.current + '°c</span>\
@@ -21,6 +23,7 @@ $(document).on('ready', function () {
   }
 })
 
+// Correspondance entre les codes API et les icônes de la météo
 function weather_icons_codes(code) {
   return {
     '01d': 'day-sunny',

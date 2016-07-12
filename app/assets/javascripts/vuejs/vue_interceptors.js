@@ -1,4 +1,6 @@
+// Interceptors de vue-resource
 Vue.http.interceptors.push({
+  // Lors d'un appel à l'API
   request: function (request) {
     var data = request.data
 
@@ -25,6 +27,7 @@ Vue.http.interceptors.push({
 
     return request
   },
+  // Lors d'une réponse de l'API
   response: function (response) {
     var data = response.data
     var props = { attributes: {} }

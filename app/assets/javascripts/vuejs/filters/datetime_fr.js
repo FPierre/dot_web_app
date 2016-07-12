@@ -1,3 +1,4 @@
+// Formate la date en Francais
 Vue.filter('frDatetime', function (value) {
   var date  = new Date(value)
   var day   = date.getDay()

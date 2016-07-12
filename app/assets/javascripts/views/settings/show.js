@@ -96,11 +96,7 @@ $(document).on('ready page:load', function () {
           if (this.currentView == 'reminders-index') {
             this.numberReceivedReminders = 0
           }
-        },
-        // currentUserEdit: function (user) {
-        //   this.tappedUser = user
-        //   this.changeCurrentView('user-edit')
-        // }
+        }
       },
       events: {
         'change-current-view': function (view) {

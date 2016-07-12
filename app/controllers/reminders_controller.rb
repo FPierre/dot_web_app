@@ -34,6 +34,12 @@ class RemindersController < ApplicationController
     end
   end
 
+  def erase_all
+    @dot_api_connector.erase_all_reminders
+
+    head :ok
+  end
+
   private
     def reminder_params
       params.permit(:content, :displayed_at, :duration, :priority, :title).merge(user_id: @current_user[:id])

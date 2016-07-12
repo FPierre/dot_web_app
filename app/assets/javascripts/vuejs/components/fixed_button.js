@@ -13,11 +13,9 @@ Vue.component('fixed-button', {
 
       switch (this.currentView) {
         case 'users-index':
-        // case 'user-edit':
           viewToDispatch = 'user-new'
           break
         case 'raspberries-index':
-        // case 'raspberry-edit':
           viewToDispatch = 'raspberry-new'
           break
         case 'reminders-index':
