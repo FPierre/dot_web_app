@@ -28,7 +28,12 @@ $(document).on('ready', function () {
 
           if ($('html.screens.team').length) {
             // Formattage de la date de création du Reminder
-            var notificationDate = new Date(notification['created-at']).toLocaleString()
+	    if (notification['created-at']) {
+		var notificationDate = new Date(notification['created-at']).toLocaleString()
+	    }
+	    else {
+		var notificationDate = null
+	    }
 
             // Si c'est un Reminder de priorité 1
             if (notification.priority == 1) {
